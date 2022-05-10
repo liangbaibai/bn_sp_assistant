@@ -1,50 +1,53 @@
 <template>
   <div :class="'header-w '+ $route.meta.headerClass">
     <div class="header-c grid-contain">
-      <div class="logo-w" @click="onLogoClick"><img :src="logo" alt="" /></div>
+      <div class="logo-w" @click="onLogoClick"><img src="@/assets/image/logo.png" alt="" /></div>
       <div class="nav-w">
-        <el-dropdown
-          v-for="(item, i) in navList"
-          :key="i"
-          :hide-on-click="false"
-          trigger="hover"
-          :show-timeout="100"
-          :hide-timeout="100"
-          @click.native="onDropClick(item)"
-        >
+        <el-tabs v-model="indexCheck" @tab-click="tabClick">
+          <el-tab-pane v-for="(item, i) in navList" :key="item.title" :label="item.title" :name="item.title"></el-tab-pane>
+        </el-tabs>
+      </div>
+    </div>
+    <div class="tabs-c"></div>
+  </div>
+ <!-- <el-dropdown
+      v-for="(item, i) in navList"
+      :key="i"
+      :hide-on-click="false"
+      trigger="hover"
+      :show-timeout="100"
+      :hide-timeout="100"
+      @click.native="onDropClick(item)"
+  >
           <span>
             {{ item.title }}
           </span>
-          <el-dropdown-menu slot="dropdown" style="margin: 20px 0 0 0">
-            <!-- 正常条形布局 -->
-            <div class="l-normal-w" v-if="item.layoutType === 'normal'">
-              <el-dropdown-item
-                v-for="(menuI, i) in item.menu"
-                :key="i"
-                @click.native="onMenuItemClick(item, menuI)"
-              >
-                {{ menuI.name }}
-              </el-dropdown-item>
-            </div>
-            <!-- 图片形布局 -->
-            <div class="l-picture-w" v-if="item.layoutType === 'picture'">
-              <el-dropdown-item
-                v-for="(menuI, i) in item.menu"
-                :key="i"
-                @click.native="onMenuItemClick(item, menuI)"
-              >
-                <div class="picture-i">
-                  <img :src="menuI.img" alt="" />
-                  <span class="name">{{ menuI.name }}</span>
-                </div>
-              </el-dropdown-item>
-            </div>
-          </el-dropdown-menu>
-        </el-dropdown>
+    <el-dropdown-menu slot="dropdown" style="margin: 20px 0 0 0">
+      &lt;!&ndash; 正常条形布局 &ndash;&gt;
+      <div class="l-normal-w" v-if="item.layoutType === 'normal'">
+        <el-dropdown-item
+            v-for="(menuI, i) in item.menu"
+            :key="i"
+            @click.native="onMenuItemClick(item, menuI)"
+        >
+          {{ menuI.name }}
+        </el-dropdown-item>
       </div>
-    </div>
-
-  </div>
+      &lt;!&ndash; 图片形布局 &ndash;&gt;
+      <div class="l-picture-w" v-if="item.layoutType === 'picture'">
+        <el-dropdown-item
+            v-for="(menuI, i) in item.menu"
+            :key="i"
+            @click.native="onMenuItemClick(item, menuI)"
+        >
+          <div class="picture-i">
+            <img :src="menuI.img" alt="" />
+            <span class="name">{{ menuI.name }}</span>
+          </div>
+        </el-dropdown-item>
+      </div>
+    </el-dropdown-menu>
+  </el-dropdown>-->
 </template>
 
 <script>
@@ -60,12 +63,12 @@ export default {
 
   computed: {},
 
-  mounted() {},
+  mounted() {
+    this.indexCheck = sessionStorage.getItem('routeName')
+  },
 
   data() {
     return {
-      logo: "",
-
       navList: [
         {
           title: "医养服务",
@@ -90,7 +93,6 @@ export default {
           title: "智能穿戴产品",
           layoutType: "picture",
           name: "eleproducts",
-
           menu: [
             {
               name: "手表",
@@ -108,7 +110,6 @@ export default {
           title: "家庭医疗产品",
           layoutType: "picture",
           name: "familyproducts",
-
           menu: [
             {
               name: "体脂秤",
@@ -126,7 +127,6 @@ export default {
           title: "智慧养老方案",
           layoutType: "normal",
           name: "commandcenter",
-
           menu: [
             {
               name: "全国指挥中心",
@@ -146,7 +146,6 @@ export default {
           title: "运营平台",
           layoutType: "picture",
           name: "operating",
-
           menu: [
             {
               name: "客户端",
@@ -236,17 +235,32 @@ export default {
         },
       ],
       navIndex: null,
+      indexCheck: 0, //
     };
   },
-
   methods: {
     //nav项 click
-    onDropClick(item) {
+    onDropClick(item,index) {
+      this.indexCheck = index
+      sessionStorage.setItem('routeName', this.indexCheck)
       this.$router.push({
         path: "/" + item.name,
       });
     },
-
+    // 选中tab
+    tabClick(tab, event) {
+      console.log('获取列表：tab', tab)
+      this.navList.forEach((item,index) => {
+        console.log('获取列表：event', item)
+        if (tab.name == item.title) {
+          this.indexCheck = index
+          sessionStorage.setItem('routeName', this.indexCheck)
+          this.$router.push({
+            path: "/" + item.name,
+          });
+        }
+      })
+    },
     //菜单项 click
     onMenuItemClick(navItem, menuItem) {
       this.$router.push({
@@ -261,27 +275,25 @@ export default {
       this.$router.push("/");
     },
   },
-
-  updated() {
-    this.logo = require("@/assets/image/" +
-      (this.$route.meta.headerLogo || "logo.png"));
-  },
 };
 </script>
 
 <style lang="scss" >
 .header-w {
   
-  .header-c{
-position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 99;
-  padding: 26px 0;
+  .header-c {
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 99;
+    height: 73px;
+    line-height: 73px;
+    background: #ffffff;
   }
   .logo-w {
-    width: 142px;
+    width: 110px;
+    min-width: 110px;
     cursor: pointer;
   }
 }
@@ -289,26 +301,45 @@ position: relative;
 .nav-w {
   display: flex;
   align-items: center;
-  font-size: 14px;
-  & > div {
-    margin: 12px;
-    box-sizing: border-box;
-    cursor: pointer;
-    & > span {
-      padding: 0 0 10px 0;
-      &:hover {
-        border-bottom: 2px solid #23ac38;
-        box-sizing: border-box;
-        color: #23ac38;
-      }
-    }
+  .el-tabs {
+    margin-bottom: 1px;
   }
-  .el-dropdown {
-    color: #333;
-    font-size: 14px;
+  .el-tabs__header {
+    margin: 0;
+  }
+  .el-tabs__nav-scroll {
+    padding: 0 12px;
+  }
+  .el-tabs__nav-wrap::after {
+    background-color: #ffffff;
+  }
+  .el-tabs__active-bar {
+    height: 4px;
+    border-radius: 2px;
+  }
+  .el-tabs__item {
+    font-size: 16px;
+    padding-bottom: 45px;
+    color: #333333;
+    font-family: Microsoft YaHei;
+  }
+  .el-tabs__item.is-active {
+    font-weight: bold;
+  }
+  .el-tabs__item.is-active {
+    font-size: 16px;
+    color: #30C159;
+  }
+  .el-tabs__active-bar {
+    background-color: #30C159;
   }
 }
-
+.tabs-c {
+  width: 100%;
+  height: 74px;
+  background: #FFFFFF;
+  margin-top: 2px;
+}
 .l-picture-w {
   display: flex;
   .picture-i {

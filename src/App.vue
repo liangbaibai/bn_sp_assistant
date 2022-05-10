@@ -42,7 +42,7 @@ body{
 }
 
 .grid-contain{
-  width: 1000px;
+  /*width: 1000px;*/
   margin: 0 auto;
 }
 img {
