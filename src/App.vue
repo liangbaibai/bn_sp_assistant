@@ -35,7 +35,7 @@ export default {
 <style lang="scss">
 @import "./assets/css/base.css";
 #app{
-  
+  position: relative;
 }
 body{
   min-width: 1000px;
