@@ -7,86 +7,103 @@
         <img src="@/assets/image/h-b-1.png" alt="" />
         <div class="mask"></div>
       </div>
-
+      <!-- 内容 -->
       <div class="content-w grid-contain">
-        <div class="top display--flex" v-if="anmiIndex === null">
-          <div class="anim-i-c msg-w">
-            <div class="title">{{ homeData.topContent.title }}</div>
-            <div class="desc">
-              {{ homeData.topContent.desc }}
-            </div>
-            <div class="detail-btn" @click="onDetailClick('medicalservices')">
-              查看详情
-            </div>
-          </div>
-          <div
-            class="anim-i"
-            @mouseenter="onAnmiMouseEnter(i)"
-            v-for="(item, i) in homeData.topContent.imgs"
-            :key="i"
-          >
-            <img :src="item" alt="" />
-          </div>
-        </div>
-
-        <div
-          class="hover-top display--flex"
-          v-else
-          @mouseleave="onAnmiMouseLeave"
-        >
-          <div class="img">
-            <img :src="homeData.hoverData[anmiIndex].img" alt="" />
-          </div>
-          <div class="desc-w">
-            <div class="content">
-              <div class="quotes"></div>
-              <div class="name">
-                <span class="c-29A93E">{{
-                  homeData.hoverData[anmiIndex].title
-                }}</span>
-                <!-- <span class="c-0071BD">护理</span> -->
+        <!-- 医养服务 -->
+        <div class="yyfw">
+          <div class="yyfw_t">医养服务</div>
+          <div class="yyfw_subt">the medical nursing services</div>
+          <div class="yyfw_c">
+            <div class="yyfw_c_i" v-for="item in medicalCareList">
+              <div class="img" :style="{backgroundImage: `url(${item.img})`}"></div>
+              <div class="info">
+                <div class="info_t">{{item.title}}</div>
+                <div class="info_t1">{{item.text}}</div>
               </div>
-              <div class="title-desc">
-                {{ homeData.hoverData[anmiIndex].desc }}
-              </div>
-              <div class="cut-line"></div>
-              <div class="servie">
-                {{ homeData.hoverData[anmiIndex].serveContent }}
-              </div>
-            </div>
-
-            <div class="display--flex justify__content--flex-end">
-              <div
-                class="detail-btn"
-                @click="
-                  onDetailClick(
-                    'medicalservices',
-                    homeData.hoverData[anmiIndex].id
-                  )
-                "
-              >
-                查看详情
+              <div class="hover">
+                <i class="iconfont icon-guanwang-shouyetubiao" style="color: #ffffff;font-size: 33px;"></i>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="bottom">
-          <div
-            class="msg-w anim-i"
-            v-for="(item, i) in homeData.bottomNav"
-            :style="{
-              background: `url(${item.img}) 100% 100% / cover no-repeat`,
-            }"
-            :key="i"
-          >
-            <div class="title">{{ item.title }}</div>
-            <div class="desc">
-              {{ item.desc }}
+        <!-- 智能产品 -->
+        <div class="zncp">
+          <div class="zncp_t">智能产品</div>
+          <div class="zncp_subt">intelligent product</div>
+          <div class="zncp_c">
+            <div class="zncp_c_i"
+                 :style="{width: index == 0 ? '793px' : index == 1 ? '389px' : '590px'}"
+                 v-for="(item,index) in smartProductList">
+              <div class="zncp_c_i_img" :style="{backgroundImage: `url(${item.img})`}"></div>
+              <div class="zncp_c_i_info">
+                <div class="zncp_c_i_info_a">产品</div>
+                <div class="zncp_c_i_info_t">{{item.title}}</div>
+                <div class="zncp_c_i_info_t1">{{item.text}}</div>
+              </div>
             </div>
-            <div class="detail-btn" @click="onDetailClick(item.path)">
-              查看详情
+          </div>
+          <div class="zncp_c">
+            <div class="zncp_c_i" v-for="(item,index) in smartProductList2">
+              <div class="zncp_c_i_img" :style="{backgroundImage: `url(${item.img})`}"></div>
+              <div class="zncp_c_i_info">
+                <div class="zncp_c_i_info_a">产品</div>
+                <div class="zncp_c_i_info_t">{{item.title}}</div>
+                <div class="zncp_c_i_info_t1">{{item.text}}</div>
+              </div>
             </div>
+          </div>
+        </div>
+        <!-- 血压健康综合管理解决方案-->
+        <div class="jjfa">
+          <div class="jjfa_c">
+            <div class="jjfa_c_img"></div>
+            <div class="jjfa_c_info">
+              <div class="jjfa_c_info_t">血压健康综合管理解决方案</div>
+              <div class="jjfa_c_info_t1">血压动态监测丨血压异常干预丨血压管理周报</div>
+              <div class="jjfa_c_info_b">查看详情</div>
+            </div>
+          </div>
+        </div>
+        <!-- 新闻与活动 -->
+        <div class="xwhd">
+          <div class="xwhd_t">新闻与活动</div>
+          <div class="xwhd_subt">news and events</div>
+          <div class="xwhd_c">
+            <div class="xwhd_c_bottom">
+              <div class="xwhd_c_bottom_i" v-for="(item, index) in newsList">
+                <div class="xwhd_c_top">
+                  <div class="triangle"></div>
+                  <div class="xwhd_c_top_b">{{index == 0 ? '最新资讯' : '最新活动'}}</div>
+                </div>
+                <div class="xwhd_c_bottom_i_img" :style="{backgroundImage: `url(${item.img})`}"></div>
+                <div class="xwhd_c_bottom_i_info">
+                  <div class="xwhd_c_bottom_i_info_t">{{item.title}}</div>
+                  <div class="xwhd_c_bottom_i_info_t1">{{item.text}}</div>
+                </div>
+              </div>
+              <div class="xwhd_c_bottom_i">
+                <div class="xwhd_c_top s">
+                  <div class="triangle"></div>
+                  <div class="xwhd_c_top_b">其他资讯</div>
+                </div>
+                <div class="xwhd_c_bottom_list">
+                  <div class="xwhd_c_bottom_list_c" v-for="item in otherActivityList">
+                    <div class="xwhd_c_bottom_list_c_id">
+                      <div>{{item.id}}</div>
+                      <div class="xwhd_c_bottom_list_c_id_s">otc</div>
+                    </div>
+                    <div class="xwhd_c_bottom_list_c_t">
+                      <div>{{item.title}}</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="point"></div>
+              </div>
+            </div>
+          </div>
+          <div class="xwhd_bottom">
+            <div class="xwhd_bottom_b">更多咨询</div>
+            <div class="xwhd_bottom_b">更多活动</div>
           </div>
         </div>
       </div>
@@ -115,76 +132,63 @@ export default {
 
   data() {
     return {
-      anmiIndex: null,
-
-      homeData: {
-        topContent: {
-          title: "医养服务",
-          desc: "为长者提供居家/医院等不同场景的个性化医养服务。",
-
-          imgs: [
-            require("@/assets/image/h-c-1.png"),
-            require("@/assets/image/h-c-2.png"),
-            require("@/assets/image/h-c-3.png"),
-          ],
-        },
-        hoverData: [
-          {
-            title: "专业护理",
-            desc:
-              "多年来积累了丰富的护理服务经验, 在行业中树立了良好的品牌形象和口碑",
-            serveContent:
-              "床上擦浴、床上洗头、伤口护理、鼻胃管护理+口腔护理、等专业护理套餐服务。",
-            img: require("@/assets/image/h-2-1.png"),
-            id: "护理",
-          },
-          {
-            title: "专业陪护",
-            desc:
-              "五大服务保障：品牌口碑好、统一标准、细化管理、服务人员背景清晰、智能一体",
-            serveContent: "居家陪护和医院陪护",
-            img: require("@/assets/image/h-2-2.png"),
-            id: "陪护",
-          },
-          {
-            title: "长期护理保险",
-            desc: "居住在广州的广州职工或居民医保参保人员",
-            serveContent: "广州医保惠民新政策",
-            img: require("@/assets/image/h-2-3.png"),
-            id: "长护险",
-          },
-        ],
-        bottomNav: [
-          {
-            title: "智慧养老解决方案",
-            desc: "健康数据和医养服务相结合；集救援、照护等功能于一体。",
-            path: "commandcenter",
-            img: require("@/assets/image/h-c-4.png"),
-          },
-          {
-            title: "新闻资讯",
-            desc: "百年大健康推出健康百年讲坛，助力养老事业全方位发展",
-            path: "new",
-            img: require("@/assets/image/h-c-5.png"),
-          },
-          {
-            title: "顾问团队",
-            desc: "与知名三甲医院、行业权威专家教授，开展深度合作",
-            path: "consultantteam",
-            img: require("@/assets/image/h-c-6.png"),
-          },
-        ],
-      },
+      medicalCareList: [{
+        title: '长护险',
+        text: '7年磨一剑，专注居家养老服务;5大服务保障体系，18项服务标准;;三甲医院专家教在线指导，千名专业护理人员倾情服务',
+        img: require('../assets/image/medicalCarebg1.png')
+      },{
+        title: '护理服务 首选百年医养',
+        text: '方便 省心 专业',
+        img: require('../assets/image/medicalCarebg2.png')
+      },{
+        title: '居家陪护 五大保障',
+        text: '品牌口碑好丨统一标准丨细化管理丨服务人员背景清晰',
+        img: require('../assets/image/medicalCarebg3.png')
+      }], // 医养服务
+      smartProductList: [{
+        title: '医疗级健康监测手表',
+        text: '血压测量精准|心脑血管疾病预警|定位精准 电子围栏|一键救援 双向通话',
+        img: require('../assets/image/smartProductBg1.png'),
+      }, {
+        title: '百年医养&乐心手环',
+        text: '24H全天候守护长者',
+        img: require('../assets/image/smartProductBg2.png'),
+      }], // 智能产品
+      smartProductList2: [{
+        title: '百年医养&乐心血压计',
+        text: '全自动双管血压计；双管，量血压才更准！',
+        img: require('../assets/image/smartProductBg3.png'),
+      },{
+        title: '百年医养&乐心体脂秤',
+        text: '秤要精准 也要颜值',
+        img: require('../assets/image/smartProductBg4.png'),
+      },],
+      newsList: [{
+        title: '全国众多权威媒体争相报道虎艳芬出任百来俏品牌代言人！',
+        text: '近日，全国众多权威媒体、微博大V、自媒体争相报道《外来媳妇本地郎》苏妙婵扮演者虎艳芬出任百来俏品牌代言人的盛况传统媒体、门户网站、今日头条、微博微信...',
+        img: require('../assets/image/newsBg1.png')
+      },{
+        title: '全国众多权威媒体争相报道虎艳芬出任百来俏品牌代言人！',
+        text: '近日，全国众多权威媒体、微博大V、自媒体争相报道《外来媳妇本地郎》苏妙婵扮演者虎艳芬出任百来俏品牌代言人的盛况传统媒体、门户网站、今日头条、微博微信...',
+        img: require('../assets/image/activityBg1.png')
+      }], // 新闻列表
+      otherActivityList: [{
+        id: 29,
+        title: '如何正确操作百来俏腕表进行血压',
+      },{
+        id: 28,
+        title: '如何正确操作百来俏腕表进行血压数据对比测试？',
+      },{
+        id: 27,
+        title: '如何正确操作百来俏腕表进行血压数据对比测试？',
+      },{
+        id: 26,
+        title: '如何正确操作百来俏腕表进行血压数据对比测试？',
+      }], // 其他活动列表
     };
   },
 
   methods: {
-    onAnmiMouseEnter(index) {
-      this.anmiIndex = index;
-    },
-    onAnmiMouseLeave() {
-      this.anmiIndex = null;
-    },
     onDetailClick(name, id) {
       this.$router.push({
         path: "/" + name,
@@ -216,7 +220,7 @@ export default {
 .video-w {
   position: relative;
   width: 100%;
-  height: 600px;
+  height: 886px;
 
   & > img,
   .mask {
@@ -232,109 +236,348 @@ export default {
 }
 
 .content-w {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 5% 0 10% 0;
-  & > div {
-    // border: 0.5px solid #000;
-  }
-
-  .top {
-    height: 338px;
-
-    width: 100%;
-    .anim-i-c {
-      width: 37%;
-      padding: 10% 0 10% 5%;
-      border-radius: 9px;
-      background: #f0f0f0;
-      transition: width 0.4s ease-in-out;
+  /*padding: 5% 0 10% 0;*/
+  .yyfw {
+    background: #F4F4F4;
+    text-align: center;
+    padding-top: 58px;
+    padding-bottom: 112px;
+    &_t {
+      font-size: 34px;
+      font-family: Microsoft YaHei;
+      font-weight: bold;
+      color: #333333;
     }
-    .anim-i {
-      width: 21%;
+    &_subt {
+      font-size: 28px;
+      font-family: Arial;
+      font-weight: 400;
+      color: #999999;
+      text-transform: uppercase;
+      margin-top: 15px;
+      margin-bottom: 60px;
     }
-  }
-
-  .hover-top {
-    height: 338px;
-    width: 100%;
-
-    & > div {
-      width: 50%;
-    }
-    .img {
-      transition: all 0.4s ease-in-out;
-    }
-    .desc-w {
-      padding: 44px 31px 5px 78px;
-      font-size: 13px;
-      color: #666;
-      background: #f0f0f0;
-
-      .content {
-        width: 58%;
-        margin: 0 0 30px 0;
-
-        .quotes {
-          width: 16px;
-          height: 12px;
-          margin: 0 0 21px 0;
-          background: url("../assets/image/dian.png") 100% 100% / cover
-            no-repeat;
+    &_c {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &_i {
+        width: 386px;
+        height: 374px;
+        background: #FFFFFF;
+        border-radius: 10px;
+        margin-right: 20px;
+        position: relative;
+        .img {
+          width: 100%;
+          height: 240px;
+          border-radius: 10px 10px 0px 0px;
+          background: center center no-repeat;
+          background-size: auto;
         }
-        .name {
-          font-size: 18px;
-          font-weight: bold;
-          & > span {
-            letter-spacing: 2px;
+        .info {
+          text-align: left;
+          padding: 20px 11px;
+          .info_t {
+            font-size: 18px;
+            font-family: Microsoft YaHei;
+            font-weight: bold;
+            color: #333333;
+            margin-bottom: 15px;
+          }
+          .info_t1 {
+            font-size: 14px;
+            font-family: Microsoft YaHei;
+            font-weight: 400;
+            color: #666666;
           }
         }
-        .title-desc {
-          margin: 8px 0 26px 0;
-          line-height: 23px;
-        }
-        .cut-line {
-        }
-        .servie {
-          margin: 8px 0 0 0;
-          line-height: 23px;
-        }
+      }
+      .hover {
+        display: none
+      }
+      &_i:hover {
+        box-shadow: 0px 12px 18px -1px hsl(0deg 0% 49% / 35%);
+      }
+      &_i:hover .hover {
+        display: block;
+        position: absolute;
+        left: 45%;
+        bottom: -21px;
+        width: 43px;
+        height: 43px;
+        text-align: center;
+        line-height: 43px;
+        background: #30C159;
+        box-shadow: 0px 2px 8px 0px rgba(48, 193, 89, 0.35);
+        border-radius: 50%;
       }
     }
   }
-
-  .bottom {
-    display: flex;
-    height: 221px;
-    width: 100%;
-    margin: 30px 0 0 0;
-    & > div {
-      width: 100%;
-      flex-shrink: 2;
-    }
-    .anim-i {
-      padding: 20px 0 0 10px;
-      &:nth-child(2) {
-        margin: 0 15px;
-      }
-    }
-  }
-
-  .msg-w {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    .title {
-      font-size: 18px;
-      color: #29a93e;
+  .zncp {
+    background: #ffffff;
+    text-align: center;
+    padding-top: 58px;
+    padding-bottom: 112px;
+    &_t {
+      font-size: 34px;
+      font-family: Microsoft YaHei;
       font-weight: bold;
+      color: #333333;
     }
-    .desc {
-      width: 55%;
-      margin: 10px 0;
-      font-size: 13px;
-      line-height: 23px;
-      color: #666;
+    &_subt {
+      font-size: 28px;
+      font-family: Arial;
+      font-weight: 400;
+      color: #999999;
+      text-transform: uppercase;
+      margin-top: 15px;
+      margin-bottom: 60px;
+    }
+    &_c {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      &_i {
+        width: 590px;
+        height: 400px;
+        position: relative;
+        margin-right: 18px;
+        &_img {
+          width: 100%;
+          height: 400px;
+          border-radius: 10px 10px 0px 0px;
+          background: center center no-repeat;
+          background-image: url('../assets/image/medicalCarebg1.png');
+          background-size: auto;
+        }
+        &_info {
+          position: absolute;
+          bottom: 23px;
+          left: 19px;
+          text-align: left;
+          &_a {
+            font-size: 16px;
+            font-family: Microsoft YaHei;
+            font-weight: 400;
+            color: #FFFFFF;
+            margin-bottom: 13px;
+          }
+          &_t {
+            font-size: 20px;
+            font-family: Microsoft YaHei;
+            font-weight: bold;
+            color: #FFFFFF;
+            margin-bottom: 8px;
+          }
+          &_t1 {
+            font-size: 14px;
+            font-family: Microsoft YaHei;
+            font-weight: 400;
+            color: #FFFFFF;
+          }
+        }
+      }
+    }
+  }
+  .jjfa {
+    &_c {
+      width: 100%;
+      height: 400px;
+      position: relative;
+      &_img {
+        width: 100%;
+        height: 400px;
+        background: url('../assets/image/solutionBg1.png') center center no-repeat;
+        background-size: auto;
+      }
+      &_info {
+        position: absolute;
+        left: 20%;
+        top: 30%;
+        &_t {
+          font-size: 42px;
+          font-family: OPPOSans;
+          font-weight: bold;
+          color: #FFFFFF;
+          margin-bottom: 18px;
+        }
+        &_t1 {
+          font-size: 16px;
+          font-family: OPPOSans;
+          font-weight: 400;
+          color: #FFFFFF;
+          margin-bottom: 29px;
+        }
+        &_b {
+          width: 122px;
+          height: 40px;
+          background: #FFFFFF;
+          border: 1px solid #FFFFFF;
+          border-radius: 20px;
+          font-size: 16px;
+          font-family: Microsoft YaHei;
+          font-weight: 400;
+          color: #39C460;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+  .xwhd {
+    background: #F4F4F4;
+    text-align: center;
+    padding-top: 58px;
+    padding-bottom: 112px;
+    &_t {
+      font-size: 34px;
+      font-family: Microsoft YaHei;
+      font-weight: bold;
+      color: #333333;
+    }
+    &_subt {
+      font-size: 28px;
+      font-family: Arial;
+      font-weight: 400;
+      color: #999999;
+      text-transform: uppercase;
+      margin-top: 15px;
+      margin-bottom: 60px;
+    }
+    &_c {
+      &_top {
+        width: 100%;
+        border-bottom: 1px solid #EEEEEE;
+        margin-bottom: 19px;
+        position: relative;
+        .triangle {
+          width: 0;
+          height: 0;
+          border-left: 8px solid transparent;
+          border-right: 8px solid transparent;
+          border-bottom: 8px solid #fff;
+          position: absolute;
+          left: 13%;
+          bottom: 0;
+        }
+        &.s {
+          margin-bottom: 0px;
+        }
+        &_b {
+          width: 120px;
+          height: 46px;
+          background: #30C159;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 20px;
+          font-family: Microsoft YaHei;
+          font-weight: 400;
+          color: #FFFFFF;
+        }
+      }
+      &_bottom {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &_i {
+          width: 386px;
+          height: 472px;
+          background: #F4F4F4;
+          border-radius: 10px;
+          margin-right: 20px;
+          &_img {
+            width: 100%;
+            height: 240px;
+            border-radius: 10px 10px 0px 0px;
+            background: center center no-repeat;
+            background-size: auto;
+          }
+          &_info {
+            height: 167px;
+            text-align: left;
+            padding: 20px 11px;
+            background: #FFFFFF;
+            &_t {
+              font-size: 14px;
+              font-family: Microsoft YaHei;
+              font-weight: bold;
+              color: #333333;
+              margin-bottom: 15px;
+            }
+            &_t1 {
+              font-size: 14px;
+              font-family: Microsoft YaHei;
+              font-weight: 400;
+              color: #666666;
+            }
+          }
+        }
+        &_list {
+          width: 386px;
+          height: 396px;
+          background: #FFFFFF;
+          border-radius: 0px 0px 10px 10px;
+          &_c {
+            height: 97px;
+            padding: 28px 30px;
+            display: flex;
+            align-items: center;
+            text-align: left;
+            border-bottom: 1px solid #EEEEEE;
+            &_id {
+              font-size: 28px;
+              font-family: Arial;
+              font-weight: bold;
+              color: #666666;
+              &_s {
+                font-size: 20px;
+                color: #999999;
+              }
+            }
+            &_t {
+              font-size: 14px;
+              font-family: Microsoft YaHei;
+              font-weight: bold;
+              color: #333333;
+              margin-left: 11px;
+            }
+          }
+          &_c:last-child {
+            border-bottom: none;
+          }
+        }
+        .point {
+          width: 12px;
+          height: 12px;
+          background: #30C159;
+          border-radius: 50%;
+          margin-top: 18px;
+        }
+      }
+    }
+    &_bottom {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 60px;
+      &_b {
+        width: 122px;
+        height: 40px;
+        border: 1px solid #333333;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        font-family: Microsoft YaHei;
+        font-weight: 400;
+        color: #333333;
+        margin-right: 57px;
+      }
     }
   }
 }

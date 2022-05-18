@@ -39,16 +39,16 @@ export default {
           let that = this;
           for (let i = 0; i < target.length; i++) {
             target[i].addEventListener("mouseover", () => {
-              console.log('进入',targetChild)
+              // console.log('进入',targetChild)
               //切换左侧默认选项为第一个
               targetChild.addEventListener("mouseleave", () => {
-                console.log('移除1',targetChild)
+                // console.log('移除1',targetChild)
                 targetChild.style.display = 'none'
               })
               that.$refs.tabsMenu.handleTabClick(1, String(i));
             });
             target[i].addEventListener("mouseenter", () => {
-              console.log('移除2',targetChild)
+              // console.log('移除2',targetChild)
               targetChild.style.display = 'block'
             })
           }
