@@ -38,9 +38,28 @@ export default {
   position: relative;
 }
 body{
+  overflow-y: scroll;
   min-width: 1000px;
 }
-
+/*修改滚动条样式*/
+body::-webkit-scrollbar{
+  width: 6px;
+  height: 10px;
+}
+body::-webkit-scrollbar-track{
+  border-radius: 3px;
+}
+body::-webkit-scrollbar-thumb{
+  background: #ccc;
+  border-radius: 3px;
+}
+body::-webkit-scrollbar-thumb:hover{
+  background: #ccc;
+  border-radius: 3px;
+}
+body::-webkit-scrollbar-corner{
+  border-radius: 3px;
+}
 .grid-contain{
   /*width: 1000px;*/
   margin: 0 auto;

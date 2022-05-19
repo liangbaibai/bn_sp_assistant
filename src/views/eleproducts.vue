@@ -1,10 +1,13 @@
 <template>
   <div class="eleproducts-w">
     <div class="banner-w">
-      <img src="@/assets/image/e-b-1.png" alt="" />
+      <el-carousel indicator-position="outside">
+        <el-carousel-item v-for="item in bannerList" :key="item">
+          <img :src="item" alt="" />
+        </el-carousel-item>
+      </el-carousel>
     </div>
-
-    <div class="main-w">
+    <!--<div class="main-w">
       <van-tabs
         v-model="tabActive"
         title-active-color="#29A93E"
@@ -18,7 +21,7 @@
           <div slot="title" class="tab-title-w">
             <div  :class="
                 tabActive === '手表'
-                  ? 'tab-title--border tab-title'
+                  ? 'tab-title&#45;&#45;border tab-title'
                   : 'tab-title'
               ">手表</div>
           </div>
@@ -26,13 +29,11 @@
             <div class="tab-img"><img src="@/assets/image/e-c-1.png" alt=""></div>
           </div>
         </van-tab>
-
-
         <van-tab title-class="tab_title" name="手环">
           <div slot="title" class="tab-title-w">
             <div  :class="
                 tabActive === '手环'
-                  ? 'tab-title--border tab-title'
+                  ? 'tab-title&#45;&#45;border tab-title'
                   : 'tab-title'
               ">手环</div>
           </div>
@@ -41,6 +42,92 @@
           </div>
         </van-tab>
       </van-tabs>
+    </div>-->
+    <div class="eleproducts-c">
+      <div class="eleproducts-c_d">
+        <!-- 医疗级健康监测手表 -->
+        <div class="eleproducts-c_d_yl">
+          <div class="eleproducts-c_d_yl_left">
+            <img src="../assets/image/yl_logo.png" alt="" class="eleproducts-c_d_yl_left_ig">
+            <div class="eleproducts-c_d_yl_left_ti">医疗级健康监测手表</div>
+            <div class="eleproducts-c_d_yl_left_te">血压测量精准；心脑血管疾病预警；</div>
+            <div class="eleproducts-c_d_yl_left_te m">定位精准；电子围栏；一键救援； 双向通话</div>
+            <div class="eleproducts-c_d_yl_left_bn">
+              <div class="eleproducts-c_d_yl_left_bn_b">了解更多</div>
+              <div class="eleproducts-c_d_yl_left_bn_b c">立即购买</div>
+            </div>
+          </div>
+          <div class="eleproducts-c_d_yl_right">
+            <img src="../assets/image/yl_product_w.png" alt="" class="eleproducts-c_d_yl_right_ig">
+          </div>
+        </div>
+        <!-- 全自动双管血压计 -->
+        <div class="eleproducts-c_d_yl">
+          <div class="eleproducts-c_d_yl_right l">
+            <img src="../assets/image/lx_product.png" alt="" class="eleproducts-c_d_yl_right_ig">
+          </div>
+          <div class="eleproducts-c_d_yl_left">
+            <img src="../assets/image/lx_logo.png" alt="" class="eleproducts-c_d_yl_left_ig lx">
+            <div class="eleproducts-c_d_yl_left_ti">全自动双管血压计</div>
+            <div class="eleproducts-c_d_yl_left_te">
+              <span class="mg">一键测量</span>
+              <span class="mg">高清大屏</span>
+              <span class="mg">语音播报</span>
+            </div>
+            <div class="eleproducts-c_d_yl_left_te m">
+              <span class="mg">血压分析</span>
+              <span class="mg">降压方案</span>
+              <span class="mg">家人互联</span>
+            </div>
+            <div class="eleproducts-c_d_yl_left_bn">
+              <div class="eleproducts-c_d_yl_left_bn_b">了解更多</div>
+              <div class="eleproducts-c_d_yl_left_bn_b c">立即购买</div>
+            </div>
+          </div>
+        </div>
+        <!-- 乐心手环 -->
+        <div class="eleproducts-c_d_yl pd">
+          <div class="eleproducts-c_d_yl_left">
+            <img src="../assets/image/lx_logo.png" alt="" class="eleproducts-c_d_yl_left_ig lx">
+            <div class="eleproducts-c_d_yl_left_ti">24H全天候守护长者</div>
+            <div class="eleproducts-c_d_yl_left_te">心率、睡眠监测；全天活动监测；手环支付；</div>
+            <div class="eleproducts-c_d_yl_left_te m">天气提醒；来电拒接 ；微信短信；IP68级防水</div>
+            <div class="eleproducts-c_d_yl_left_bn">
+              <div class="eleproducts-c_d_yl_left_bn_b">了解更多</div>
+              <div class="eleproducts-c_d_yl_left_bn_b c">立即购买</div>
+            </div>
+          </div>
+          <div class="eleproducts-c_d_yl_right">
+            <img src="../assets/image/lx_product_w.png" alt="" class="eleproducts-c_d_yl_right_ig">
+          </div>
+        </div>
+        <!-- 秤要精准 也要颜值 -->
+        <div class="eleproducts-c_d_yl">
+          <div class="eleproducts-c_d_yl_right l">
+            <img src="../assets/image/lx_product_t.png" alt="" class="eleproducts-c_d_yl_right_ig">
+          </div>
+          <div class="eleproducts-c_d_yl_left">
+            <img src="../assets/image/lx_logo.png" alt="" class="eleproducts-c_d_yl_left_ig lx">
+            <div class="eleproducts-c_d_yl_left_ti">秤要精准 也要颜值</div>
+            <div class="eleproducts-c_d_yl_left_te">
+              <span class="mg">上秤秒出15项数据</span>
+              <span class="mg">BIA测量精准的0.1%</span>
+            </div>
+            <div class="eleproducts-c_d_yl_left_te">
+              <span class="mg">26项数据感知身体</span>
+              <span class="mg">9种形体智能分析</span>
+            </div>
+            <div class="eleproducts-c_d_yl_left_te m">
+              <span class="mg">全身健康检测报告</span>
+              <span class="mg">360圆弧美学设计</span>
+            </div>
+            <div class="eleproducts-c_d_yl_left_bn">
+              <div class="eleproducts-c_d_yl_left_bn_b">了解更多</div>
+              <div class="eleproducts-c_d_yl_left_bn_b c">立即购买</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -65,7 +152,9 @@ export default {
   data() {
     return {
       tabActive: "",
-    };
+      bannerList: [require('../assets/image/e-b-1.png'),require('../assets/image/b-b-01.png')], // banner图
+      // bannerList: [require('../assets/image/e-b-1.png'),require('../assets/image/b-b-01.png')], // banner图
+    }
   },
 
   methods: {},
@@ -76,16 +165,130 @@ export default {
 <style lang="scss">
 .eleproducts-w {
   background-color: #fff;
+  .banner-w {
+    .el-carousel__container {
+      height: 500px;
+    }
+    .el-carousel__button {
+      width: 10px;
+      height: 10px;
+      background: #30C159;
+      border-radius: 50%;
+    }
+    .el-carousel--horizontal {
+      position: relative;
+    }
+    .el-carousel__indicators--outside {
+      position: absolute;
+    }
+    .el-carousel__indicator.is-active button {
+      opacity: 1;
+      background: #30C159;
+    }
+    .el-carousel__indicators--outside button {
+      opacity: 1;
+      background: #FFFFFF;
+    }
+  }
   .van-tabs--line .van-tabs__wrap {
     width: 15%;
   }
-
   .tab-block-1{
     margin: 0 0 52px 0;
   }
 
   .main-w{
     padding: 0 0 78px 0;
+  }
+  .eleproducts-c {
+    background: #F6F6F6;
+    padding: 72px 0;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &_d {
+      &_yl {
+        background: #FFFFFF;
+        border-radius: 20px;
+        padding: 81px 114px;
+        margin-bottom: 21px;
+        display: flex;
+        justify-content: space-between;
+        &.pd {
+          padding-right: 0;
+        }
+        &_left {
+          &_ig {
+            width: 124px;
+            height: 41px;
+            margin-bottom: 40px;
+            &.lx {
+              width: 219px;
+              height: 32px;
+            }
+          }
+          &_ti {
+            font-size: 38px;
+            font-family: Microsoft YaHei;
+            font-weight: bold;
+            color: #333333;
+            margin-bottom: 20px;
+          }
+          &_te {
+            font-size: 16px;
+            font-family: Microsoft YaHei;
+            font-weight: 400;
+            color: #666666;
+            line-height: 24px;
+            &.m {
+              margin-bottom: 66px;
+            }
+            .mg {
+              line-height: 20px;
+              margin-right: 20px;
+            }
+          }
+          &_bn {
+            display: flex;
+            align-items: center;
+            &_b {
+              width: 108px;
+              height: 48px;
+              background: linear-gradient(1deg, #30C159, #32d960);
+              border-radius: 24px;
+              color: #FFFFFF;
+              font-size: 16px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              &.c {
+                border: 2px solid #CCCCCC;
+                border-radius: 24px;
+                color: #333333;
+                background: #ffffff;
+                margin-left: 40px;
+              }
+            }
+            &_b:hover {
+              box-shadow: 0px 8px 12px 0px rgba(48, 193, 89, 0.35);
+              &.c:hover {
+                box-shadow: 0px 8px 12px 0px rgba(204, 204, 204, 0.35);
+              }
+            }
+          }
+        }
+        &_right {
+          margin-top: -80px;
+          &.l {
+            margin-left: -114px;
+          }
+          &_ig {
+
+          }
+        }
+      }
+    }
   }
 }
 </style>

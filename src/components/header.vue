@@ -2,7 +2,7 @@
   <div :class="'header-w '+ $route.meta.headerClass">
     <div class="header-c grid-contain">
       <div class="nav-w">
-        <div class="logo-w" @click="onLogoClick"><img src="@/assets/image/logo.png" alt="" /></div>
+        <div class="logo-w" @click="onLogoClick"><img src="@/assets/image/webLogo.png" alt="" /></div>
         <el-tabs ref="tabsMenu" id="tabsMenuPane" v-model="indexCheckTitle" @tab-click="tabClick">
           <el-tab-pane v-for="(item, i) in navList" :key="i" :label="item.title">
             <!-- 左侧菜单二级 -->
@@ -66,6 +66,10 @@ export default {
           name: "medicalservices",
           menu: [
             {
+              name: "长护险",
+              id: "长护险",
+              url: "medicalservices?id=长护险",
+            }, {
               name: "护理",
               id: "护理",
               url: "medicalservices?id=护理",
@@ -74,11 +78,6 @@ export default {
               name: "陪护",
               id: "陪护",
               url: "medicalservices?id=陪护",
-            },
-            {
-              name: "长护险",
-              id: "长护险",
-              url: "medicalservices?id=长护险",
             },
           ],
         },
@@ -98,15 +97,7 @@ export default {
               img: require("@/assets/image/e-n-2.png"),
               id: "手环",
               url: "eleproducts?id=手环",
-            },
-          ],
-        },
-        {
-          title: "家庭医疗产品",
-          layoutType: "picture",
-          name: "familyproducts",
-          menu: [
-            {
+            },{
               name: "体脂秤",
               img: require("@/assets/image/nav-f-1.png"),
               id: "体脂秤",
@@ -160,12 +151,6 @@ export default {
               url: "operating?id=医护端",
             },
           ],
-        },
-        {
-          title: "|",
-          layoutType: "none",
-          menu: [],
-          name: "",
         },
         {
           title: "百年技术",
@@ -286,7 +271,7 @@ export default {
 
 <style lang="scss" >
 .header-w {
-  position: fixed;
+  position: relative;
   top: 0;
   z-index: 9999;
   width: 100vw;

@@ -1,6 +1,5 @@
 <template>
   <div class="home-w">
-
     <div class="home-c ">
       <div class="video-w">
         <!-- <my-video></my-video> -->
@@ -32,23 +31,25 @@
           <div class="zncp_subt">intelligent product</div>
           <div class="zncp_c">
             <div class="zncp_c_i"
-                 :style="{width: index == 0 ? '793px' : index == 1 ? '389px' : '590px'}"
+                 :style="{width: index == 0 ? '793px' : index == 1 ? '389px' : '590px', backgroundImage: `url(${item.img})`}"
                  v-for="(item,index) in smartProductList">
-              <div class="zncp_c_i_img" :style="{backgroundImage: `url(${item.img})`}"></div>
+<!--              <div class="zncp_c_i_img" :style="{backgroundImage: `url(${item.img})`}"></div>-->
               <div class="zncp_c_i_info">
                 <div class="zncp_c_i_info_a">产品</div>
                 <div class="zncp_c_i_info_t">{{item.title}}</div>
                 <div class="zncp_c_i_info_t1">{{item.text}}</div>
+                <div class="hover">了解更多<i class="el-icon-arrow-right" style="color: #30C159;font-weight: bold;"/></div>
               </div>
             </div>
           </div>
           <div class="zncp_c">
-            <div class="zncp_c_i" v-for="(item,index) in smartProductList2">
-              <div class="zncp_c_i_img" :style="{backgroundImage: `url(${item.img})`}"></div>
+            <div class="zncp_c_i" v-for="(item,index) in smartProductList2" :style="{backgroundImage: `url(${item.img})`}">
+<!--              <div class="zncp_c_i_img" :style="{backgroundImage: `url(${item.img})`}"></div>-->
               <div class="zncp_c_i_info">
                 <div class="zncp_c_i_info_a">产品</div>
                 <div class="zncp_c_i_info_t">{{item.title}}</div>
                 <div class="zncp_c_i_info_t1">{{item.text}}</div>
+                <div class="hover">了解更多<i class="el-icon-arrow-right" style="color: #30C159;font-weight: bold;"/></div>
               </div>
             </div>
           </div>
@@ -107,6 +108,10 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="back-top">
+      <div class="back-top-f"></div>
+      <div class="back-top-s"><i class="el-icon-arrow-up" style="font-weight: bold;font-size: 55px"></i></div>
     </div>
   </div>
 </template>
@@ -202,22 +207,22 @@ export default {
 </script>
 
 <style lang="scss">
-.detail-btn {
-  padding: 7px 18px;
-  font-size: 13px;
-  color: #fff;
-  border-radius: calc(100vh - 1px);
-  background-color: #29a93e;
-  cursor: pointer;
-}
-.home-w {
-  width: 100%;
-  img {
-    width: 100%;
-    height: 100%;
+  .detail-btn {
+    padding: 7px 18px;
+    font-size: 13px;
+    color: #fff;
+    border-radius: calc(100vh - 1px);
+    background-color: #29a93e;
+    cursor: pointer;
   }
-}
-.video-w {
+  .home-w {
+    width: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .video-w {
   position: relative;
   width: 100%;
   height: 886px;
@@ -234,8 +239,7 @@ export default {
     background-color: rgba(0, 0, 0, 0.5);
   }
 }
-
-.content-w {
+  .content-w {
   /*padding: 5% 0 10% 0;*/
   .yyfw {
     background: #F4F4F4;
@@ -311,6 +315,7 @@ export default {
         background: #30C159;
         box-shadow: 0px 2px 8px 0px rgba(48, 193, 89, 0.35);
         border-radius: 50%;
+        cursor: pointer;
       }
     }
   }
@@ -344,14 +349,11 @@ export default {
         height: 400px;
         position: relative;
         margin-right: 18px;
-        &_img {
-          width: 100%;
-          height: 400px;
-          border-radius: 10px 10px 0px 0px;
-          background: center center no-repeat;
-          background-image: url('../assets/image/medicalCarebg1.png');
-          background-size: auto;
-        }
+        border-radius: 10px;
+        background: center center no-repeat;
+        background-image: url('../assets/image/medicalCarebg1.png');
+        background-size: auto;
+        display: block;
         &_info {
           position: absolute;
           bottom: 23px;
@@ -378,6 +380,21 @@ export default {
             color: #FFFFFF;
           }
         }
+      }
+      .hover {
+        display: none;
+      }
+      &_i:hover {
+        box-shadow: 0 0 0 0 #333, inset 0 0 0 0 #423880, inset 0 -224px 118px -107px #5f534a, inset 0px 0px 0 0 #5f534a;
+      }
+      &_i:hover .hover {
+        display: block;
+        font-size: 16px;
+        font-family: Microsoft YaHei;
+        font-weight: 400;
+        color: #30C159;
+        cursor: pointer;
+        margin-top: 15px;
       }
     }
   }
@@ -578,7 +595,36 @@ export default {
         color: #333333;
         margin-right: 57px;
       }
+      &_b:hover {
+        color: #ffffff;
+        border: 1px solid #30C159;
+        background: #30C159;
+        border-radius: 20px;
+        cursor: pointer;
+      }
     }
   }
 }
+  .back-top {
+    position: fixed;
+    right: 0;
+    bottom: 20%;
+    .back-top-f {
+      width: 80px;
+      height: 80px;
+      background: #57cb78;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .back-top-s {
+      width: 80px;
+      height: 80px;
+      background: #ababab;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 </style>

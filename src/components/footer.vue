@@ -237,10 +237,11 @@ export default {
 
 .footer-main {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 
   .right {
     display: flex;
+    margin-left: 97px;
     .item-w {
       margin: 0 10px;
       white-space: nowrap;
