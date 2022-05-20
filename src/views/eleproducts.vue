@@ -7,42 +7,6 @@
         </el-carousel-item>
       </el-carousel>
     </div>
-    <!--<div class="main-w">
-      <van-tabs
-        v-model="tabActive"
-        title-active-color="#29A93E"
-        color="#29A93E"
-        line-height="0"
-        scrollspy
-        sticky
-        ref="tabs"
-      >
-        <van-tab title-class="tab_title" name="手表">
-          <div slot="title" class="tab-title-w">
-            <div  :class="
-                tabActive === '手表'
-                  ? 'tab-title&#45;&#45;border tab-title'
-                  : 'tab-title'
-              ">手表</div>
-          </div>
-          <div class="tab-block-1">
-            <div class="tab-img"><img src="@/assets/image/e-c-1.png" alt=""></div>
-          </div>
-        </van-tab>
-        <van-tab title-class="tab_title" name="手环">
-          <div slot="title" class="tab-title-w">
-            <div  :class="
-                tabActive === '手环'
-                  ? 'tab-title&#45;&#45;border tab-title'
-                  : 'tab-title'
-              ">手环</div>
-          </div>
-          <div class="tab-block-2">
-                        <div class="tab-img"><img src="@/assets/image/e-c-2.png" alt=""></div>
-          </div>
-        </van-tab>
-      </van-tabs>
-    </div>-->
     <div class="eleproducts-c">
       <div class="eleproducts-c_d">
         <!-- 医疗级健康监测手表 -->
@@ -152,8 +116,10 @@ export default {
   data() {
     return {
       tabActive: "",
-      bannerList: [require('../assets/image/e-b-1.png'),require('../assets/image/b-b-01.png')], // banner图
-      // bannerList: [require('../assets/image/e-b-1.png'),require('../assets/image/b-b-01.png')], // banner图
+      bannerList: [
+        require('../assets/image/e-b-n-1.png'),
+        require('../assets/image/e-b-n-2.png')
+      ], // banner图
     }
   },
 
@@ -180,6 +146,7 @@ export default {
     }
     .el-carousel__indicators--outside {
       position: absolute;
+      bottom: 4px;
     }
     .el-carousel__indicator.is-active button {
       opacity: 1;

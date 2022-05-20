@@ -24,7 +24,9 @@ import {} from "@/assets/js/index";
 
 export default {
   props: {},
-  created() {},
+  created() {
+    console.log('获取当前路由：', this.$route)
+  },
   components: {},
 
   computed: {},
@@ -90,24 +92,24 @@ export default {
               name: "手表",
               img: require("@/assets/image/e-n-1.png"),
               id: "手表",
-              url: "eleproducts?id=手表",
+              url: "eleproducts/ylWatch",
             },
             {
               name: "手环",
               img: require("@/assets/image/e-n-2.png"),
               id: "手环",
-              url: "eleproducts?id=手环",
+              url: "eleproducts/lxWatch",
             },{
               name: "体脂秤",
               img: require("@/assets/image/nav-f-1.png"),
               id: "体脂秤",
-              url: "familyproducts?id=体脂秤",
+              url: "eleproducts/weighingScale",
             },
             {
               name: "血压仪",
               img: require("@/assets/image/nav-f-2.png"),
               id: "血压仪",
-              url: "familyproducts?id=血压仪",
+              url: "eleproducts/bloodPressure",
             },
           ],
         },

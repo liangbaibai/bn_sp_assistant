@@ -38,6 +38,30 @@ const routes = [
     meta: { title: '智能穿戴产品', headerClass: 'origin--header' },
   },
   {
+    path: '/eleproducts/bloodPressure',
+    name: 'bloodPressure',
+    component: () => import('@/views/eleproducts/bloodPressure'),
+    meta: { title: '智能穿戴产品', headerClass: 'origin--header' },
+  },
+  {
+    path: '/eleproducts/lxWatch',
+    name: 'lxWatch',
+    component: () => import('@/views/eleproducts/lxWatch'),
+    meta: { title: '智能穿戴产品', headerClass: 'origin--header' },
+  },
+  {
+    path: '/eleproducts/weighingScale',
+    name: 'weighingScale',
+    component: () => import('@/views/eleproducts/weighingScale'),
+    meta: { title: '智能穿戴产品', headerClass: 'origin--header' },
+  },
+  {
+    path: '/eleproducts/ylWatch',
+    name: 'ylWatch',
+    component: () => import('@/views/eleproducts/ylWatch'),
+    meta: { title: '智能穿戴产品', headerClass: 'origin--header' },
+  },
+  {
     path: '/familyproducts',
     name: 'familyproducts',
     component: () => import('@/views/familyproducts'),
