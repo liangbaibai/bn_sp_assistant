@@ -15,16 +15,16 @@
         ref="tabs"
         @click="onTabsClick"
       >
-        <van-tab title-class="tab_title" name="护理">
+        <van-tab title-class="tab_title" name="长护险">
           <div slot="title" class="tab-title-w">
             <div
               :class="
-                tabActive === '护理'
+                tabActive === '长护险'
                   ? 'tab-title--border tab-title'
                   : 'tab-title'
               "
             >
-              护理
+              长护险
             </div>
           </div>
           <div class="tab-block">
@@ -114,16 +114,16 @@
           </div>
         </van-tab>
 
-        <van-tab title-class="tab_title" name="长护险">
+        <van-tab title-class="tab_title" name="护理">
           <div slot="title" class="tab-title-w">
             <div
               :class="
-                tabActive === '长护险'
+                tabActive === '护理'
                   ? 'tab-title--border tab-title'
                   : 'tab-title'
               "
             >
-              长护险
+              护理
             </div>
           </div>
 
@@ -205,7 +205,7 @@ export default {
       hlDetailImg: [
         require('@/assets/image/hl_d_1.png'),
         require('@/assets/image/hl_d_2.png'),
-      ], // 护理详情图片 // 长护险详情图片
+      ],// 护理详情图片
       phDetailImg: [
         require('@/assets/image/ph_d_1.jpg'),
         require('@/assets/image/ph_d_2.jpg'),

@@ -35,6 +35,15 @@
           require('../../assets/image/w_d_i_13.jpg')
         ]
       }
+    },
+    mounted() {
+      this.topFunction()
+    },
+    methods: {
+      topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
     }
   }
 </script>

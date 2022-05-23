@@ -87,6 +87,12 @@ const routes = [
     meta: { title: '智慧养老方案', headerClass: 'origin--header' },
   },
   {
+    path: '/homeCareSolutions',
+    name: 'homeCareSolutions',
+    component: () => import('@/views/homeCareSolutions'),
+    meta: { title: '智慧养老方案', headerClass: 'origin--header' },
+  },
+  {
     path: '/walkbn',
     name: 'walkbn',
     component: () => import('@/views/walkbn'),
@@ -102,6 +108,12 @@ const routes = [
     path: '/operating',
     name: 'operating',
     component: () => import('@/views/operating'),
+    meta: { title: '运营平台', headerClass: 'origin--header' },
+  },
+  {
+    path: '/operatingCare',
+    name: 'operatingCare',
+    component: () => import('@/views/operatingCare'),
     meta: { title: '运营平台', headerClass: 'origin--header' },
   },
 ];

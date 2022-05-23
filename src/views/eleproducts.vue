@@ -17,7 +17,7 @@
             <div class="eleproducts-c_d_yl_left_te">血压测量精准；心脑血管疾病预警；</div>
             <div class="eleproducts-c_d_yl_left_te m">定位精准；电子围栏；一键救援； 双向通话</div>
             <div class="eleproducts-c_d_yl_left_bn">
-              <div class="eleproducts-c_d_yl_left_bn_b">了解更多</div>
+              <div class="eleproducts-c_d_yl_left_bn_b" @click="toDetail(1)">了解更多</div>
               <div class="eleproducts-c_d_yl_left_bn_b c">立即购买</div>
             </div>
           </div>
@@ -44,7 +44,7 @@
               <span class="mg">家人互联</span>
             </div>
             <div class="eleproducts-c_d_yl_left_bn">
-              <div class="eleproducts-c_d_yl_left_bn_b">了解更多</div>
+              <div class="eleproducts-c_d_yl_left_bn_b" @click="toDetail(2)">了解更多</div>
               <div class="eleproducts-c_d_yl_left_bn_b c">立即购买</div>
             </div>
           </div>
@@ -57,7 +57,7 @@
             <div class="eleproducts-c_d_yl_left_te">心率、睡眠监测；全天活动监测；手环支付；</div>
             <div class="eleproducts-c_d_yl_left_te m">天气提醒；来电拒接 ；微信短信；IP68级防水</div>
             <div class="eleproducts-c_d_yl_left_bn">
-              <div class="eleproducts-c_d_yl_left_bn_b">了解更多</div>
+              <div class="eleproducts-c_d_yl_left_bn_b" @click="toDetail(3)">了解更多</div>
               <div class="eleproducts-c_d_yl_left_bn_b c">立即购买</div>
             </div>
           </div>
@@ -86,7 +86,7 @@
               <span class="mg">360圆弧美学设计</span>
             </div>
             <div class="eleproducts-c_d_yl_left_bn">
-              <div class="eleproducts-c_d_yl_left_bn_b">了解更多</div>
+              <div class="eleproducts-c_d_yl_left_bn_b" @click="toDetail(4)">了解更多</div>
               <div class="eleproducts-c_d_yl_left_bn_b c">立即购买</div>
             </div>
           </div>
@@ -123,7 +123,32 @@ export default {
     }
   },
 
-  methods: {},
+  methods: {
+    // 跳转详情页
+    toDetail(type) {
+      if (type == 1) {
+        // 医疗级健康监测手表
+        this.$router.push({
+          path: '/eleproducts/ylWatch'
+        })
+      } else if (type == 2) {
+        // 全自动双管血压计
+        this.$router.push({
+          path: '/eleproducts/bloodPressure'
+        })
+      } else if (type == 3) {
+        // 全自动双管血压计
+        this.$router.push({
+          path: '/eleproducts/lxWatch'
+        })
+      } else if (type == 4) {
+        // 体重秤
+        this.$router.push({
+          path: '/eleproducts/weighingScale'
+        })
+      }
+    }
+  },
 };
 </script>
 
@@ -239,6 +264,7 @@ export default {
             }
             &_b:hover {
               box-shadow: 0px 8px 12px 0px rgba(48, 193, 89, 0.35);
+              cursor: pointer;
               &.c:hover {
                 box-shadow: 0px 8px 12px 0px rgba(204, 204, 204, 0.35);
               }

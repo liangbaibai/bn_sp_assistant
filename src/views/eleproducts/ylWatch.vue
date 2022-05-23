@@ -49,6 +49,15 @@
           require('../../assets/image/yl_w_d_i_27.jpg'),
         ]
       }
+    },
+    mounted() {
+      this.topFunction()
+    },
+    methods: {
+      topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
     }
   }
 </script>

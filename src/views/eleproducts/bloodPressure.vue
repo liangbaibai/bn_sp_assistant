@@ -40,6 +40,15 @@
           require('../../assets/image/bp_d_i_18.jpg'),
         ]
       }
+    },
+    mounted() {
+      this.topFunction()
+    },
+    methods: {
+      topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
     }
   }
 </script>
