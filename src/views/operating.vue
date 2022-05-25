@@ -13,12 +13,12 @@
               <span>IOS下载</span>
             </div>
             <div class="banner-w_top_l_btn an">
-              <img src="@/assets/image/android_web_icon.png" alt="" class="banner-w_top_l_btn_icon an">
+              <img src="@/assets/image/android-icon.png" alt="" class="banner-w_top_l_btn_icon an">
               <span>安卓下载</span>
             </div>
           </div>
           <div class="banner-w_top_l_qrCode">
-            <img src="" class="banner-w_top_l_qrCode_img">
+            <img src="@/assets/image/ewm01.png" class="banner-w_top_l_qrCode_img">
             <div class="banner-w_top_l_qrCode_t">扫一扫下载APP</div>
           </div>
         </div>
@@ -232,7 +232,6 @@ export default {
           border-radius: 31px;
           color: #ffffff;
           font-size: 16px;
-          cursor: pointer;
           &.an {
             margin-left: 41px;
             background: #42C253;
@@ -254,6 +253,7 @@ export default {
           border-radius: 5px;
           padding: 10px 9px;
           text-align: center;
+          margin-top: 33px;
           &_img {
             width: 112px;
             height: 112px;

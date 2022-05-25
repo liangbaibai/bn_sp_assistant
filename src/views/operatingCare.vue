@@ -18,7 +18,7 @@
             </div>
           </div>
           <div class="banner-w_top_l_qrCode">
-            <img src="" class="banner-w_top_l_qrCode_img">
+            <img src="@/assets/image/ewm02.png" class="banner-w_top_l_qrCode_img">
             <div class="banner-w_top_l_qrCode_t">扫一扫下载APP</div>
           </div>
         </div>
@@ -64,6 +64,16 @@
         <div class="main-w-img-r-c">
           <div class="main-w-img-r-c-t">社区服务订单分配</div>
           <div class="main-w-img-r-c-p">平台注册的护士、护工人员（兼职、全职），可以如同“滴滴司机”一样注册、上线，接受平台分配的上门护理、居家陪护、医院陪护等订单，获得可观的经济收入。
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main-w-img-btm">
+      <div class="main-w-img-btm-r">
+        <img src="@/assets/image/yypt_icon.png" alt="" style="width: 95px;height: 12px;">
+        <div class="main-w-img-btm-r-c">
+          <div class="main-w-img-btm-r-c-t">医护人员学习、培训</div>
+          <div class="main-w-img-btm-r-c-p">护士、护工人员职业技能高效率在线学习、培训平台。致力于为学习者提供优质的在线学习服务，帮助学习者提升各方面的能力，满足不同层次的学习需求，建立持续的个人学习数据信息档案。
           </div>
         </div>
       </div>
@@ -136,7 +146,6 @@
             border-radius: 31px;
             color: #ffffff;
             font-size: 16px;
-            cursor: pointer;
 
             &.an {
               margin-left: 41px;
@@ -162,7 +171,7 @@
             border-radius: 5px;
             padding: 10px 9px;
             text-align: center;
-
+            margin-top: 33px;
             &_img {
               width: 112px;
               height: 112px;
@@ -276,6 +285,36 @@
           }
           &-p {
             width: 340px;
+            font-size: 16px;
+            font-family: Microsoft YaHei;
+            font-weight: 400;
+            color: #666666;
+            text-align: left;
+            letter-spacing: 1px;
+          }
+        }
+      }
+    }
+    .main-w-img-btm {
+      width: 100%;
+      height: 960px;
+      background: url('../assets/image/yyCare_d_p4.png') center center no-repeat;
+      position: relative;
+      &-r {
+        position: absolute;
+        left: 22%;
+        top: 20%;
+        &-c {
+          margin-top: 15px;
+          &-t {
+            font-size: 36px;
+            font-family: Microsoft YaHei;
+            font-weight: bold;
+            color: #333333;
+            margin-bottom: 36px;
+          }
+          &-p {
+            width: 396px;
             font-size: 16px;
             font-family: Microsoft YaHei;
             font-weight: 400;

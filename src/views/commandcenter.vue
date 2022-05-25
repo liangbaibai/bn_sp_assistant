@@ -5,7 +5,7 @@
       <div class="banner-w_i">
         <div class="banner-w_i_t">高血压监测管理解决方案</div>
         <div class="banner-w_i_t s">血压检测管理解决方案血压检测管理解决方案</div>
-        <div class="banner-w_i_btn">服务咨询</div>
+        <div class="banner-w_i_btn" @click="onContactClick">服务咨询</div>
       </div>
     </div>
     <div class="main-w">
@@ -93,33 +93,45 @@
         </div>
       </div>
     </div>
+    <serviceWindow :show="openService" @onClose="onCloseService"/>
   </div>
 </template>
 
 
 <script>
 import { index } from "@/utils/mixins";
-
+import serviceWindow from '@/components/serviceWindow'
 import { myRequest } from "@/request/index";
 import { data_data_list } from "@/request/api/base";
 export default {
   mixins: [index],
 
   props: {},
-  components: {},
   created() {},
-
+  components: {
+    serviceWindow
+  },
   computed: {},
 
   mounted() {},
 
   data() {
     return {
-
+      openService:false,
     };
   },
 
-  methods: {},
+  methods: {
+    //立即咨询 click
+    onContactClick(){
+      console.log('onContactClick')
+      this.openService = true
+    },
+    //关闭服务窗口 click
+    onCloseService(){
+      this.openService = false
+    },
+  },
 };
 </script>
 

@@ -18,7 +18,7 @@
             <div class="eleproducts-c_d_yl_left_te m">定位精准；电子围栏；一键救援； 双向通话</div>
             <div class="eleproducts-c_d_yl_left_bn">
               <div class="eleproducts-c_d_yl_left_bn_b" @click="toDetail(1)">了解更多</div>
-              <div class="eleproducts-c_d_yl_left_bn_b c">立即购买</div>
+              <div class="eleproducts-c_d_yl_left_bn_b c" @click="toBuy(1)">立即购买</div>
             </div>
           </div>
           <div class="eleproducts-c_d_yl_right">
@@ -45,7 +45,7 @@
             </div>
             <div class="eleproducts-c_d_yl_left_bn">
               <div class="eleproducts-c_d_yl_left_bn_b" @click="toDetail(2)">了解更多</div>
-              <div class="eleproducts-c_d_yl_left_bn_b c">立即购买</div>
+              <div class="eleproducts-c_d_yl_left_bn_b c" @click="toBuy(2)">立即购买</div>
             </div>
           </div>
         </div>
@@ -58,7 +58,7 @@
             <div class="eleproducts-c_d_yl_left_te m">天气提醒；来电拒接 ；微信短信；IP68级防水</div>
             <div class="eleproducts-c_d_yl_left_bn">
               <div class="eleproducts-c_d_yl_left_bn_b" @click="toDetail(3)">了解更多</div>
-              <div class="eleproducts-c_d_yl_left_bn_b c">立即购买</div>
+              <div class="eleproducts-c_d_yl_left_bn_b c" @click="toBuy(3)">立即购买</div>
             </div>
           </div>
           <div class="eleproducts-c_d_yl_right">
@@ -87,7 +87,7 @@
             </div>
             <div class="eleproducts-c_d_yl_left_bn">
               <div class="eleproducts-c_d_yl_left_bn_b" @click="toDetail(4)">了解更多</div>
-              <div class="eleproducts-c_d_yl_left_bn_b c">立即购买</div>
+              <div class="eleproducts-c_d_yl_left_bn_b c" @click="toBuy(4)">立即购买</div>
             </div>
           </div>
         </div>
@@ -146,6 +146,22 @@ export default {
         this.$router.push({
           path: '/eleproducts/weighingScale'
         })
+      }
+    },
+    // 跳转天猫购买
+    toBuy(type) {
+      if (type == 1) {
+        // 医疗级健康监测手表
+        window.open('https://detail.tmall.com/item.htm?spm=a220o.1000855.w4023-24145098805.3.15e7acaeTHpvD3&id=663449498011&sku_properties=149204407:3269303;204252002:1904313917')
+      } else if (type == 2) {
+        // 乐心手表
+        window.open('https://detail.tmall.com/item.htm?spm=a1z10.1-b.w4004-24145098791.4.8bc41015MTAlOJ&id=667456271317')
+      } else if (type == 3) {
+        // 全自动双管血压计
+        window.open('https://bailaiqiao.tmall.com/?spm=a220o.1000855.1997427133.d4918061.398b7286shY1m0')
+      } else if (type == 4) {
+        // 体重秤
+        window.open('https://bailaiqiao.tmall.com/?spm=a220o.1000855.1997427133.d4918061.398b7286shY1m0')
       }
     }
   },

@@ -4,10 +4,10 @@
       <div class="nav-w">
         <div class="logo-w" @click="onLogoClick"><img src="@/assets/image/webLogo.png" alt="" /></div>
         <el-tabs ref="tabsMenu" id="tabsMenuPane" v-model="indexCheckTitle" @tab-click="tabClick">
-          <el-tab-pane v-for="(item, i) in navList" :key="i" :label="item.title">
+          <el-tab-pane v-for="(item, i) in navList" :key="i" :label="item.title" :name="item.title">
             <!-- 左侧菜单二级 -->
             <el-tabs id="tabsMenuPaneChild" style="height: 73px;" class="menu-contain-left" tab-position="top" v-model="indexCheckTitleChild" ref="tabsMenuChild" @tab-click="tabChildClick">
-              <el-tab-pane v-for="(menuSecond, x) in item.menu" :key="x" :label="menuSecond.name" :name="menuSecond.url"></el-tab-pane>
+              <el-tab-pane v-for="(menuSecond, x) in item.menu" :key="menuSecond.name" :label="menuSecond.name" :name="menuSecond.url"></el-tab-pane>
             </el-tabs>
           </el-tab-pane>
         </el-tabs>
@@ -33,29 +33,28 @@ export default {
 
   mounted() {
     this.$nextTick(() => {
-        this.$refs.tabsMenu.$refs.nav.$nextTick(() => {
+      this.$refs.tabsMenu.$refs.nav.$nextTick(() => {
           // 此时tab的nav才渲染dom 否则拿不到el-tabs__item
           let target = document.getElementById('tabsMenuPane').firstChild.firstChild.firstChild.firstChild.getElementsByClassName("el-tabs__item is-top");
           let targetChild = document.getElementById('tabsMenuPane').lastChild
-          console.log('targetChild', targetChild)
           let that = this;
           for (let i = 0; i < target.length; i++) {
             target[i].addEventListener("mouseover", () => {
-              // console.log('进入',targetChild)
-              //切换左侧默认选项为第一个
+              // 切换左侧默认选项为第一个
               targetChild.addEventListener("mouseleave", () => {
-                // console.log('移除1',targetChild)
                 targetChild.style.display = 'none'
               })
               that.$refs.tabsMenu.handleTabClick(1, String(i));
             });
             target[i].addEventListener("mouseenter", () => {
-              // console.log('移除2',targetChild)
               targetChild.style.display = 'block'
+              targetChild.children[i].style.display = 'block'
+              that.indexCheckTitle = that.navList[i].title
             })
           }
         });
     });
+    console.log('获取vuex"', this.$store.state.tabMenu.menuIndex)
     this.indexCheckTitle = sessionStorage.getItem('routeName')
   },
 
@@ -231,7 +230,6 @@ export default {
       indexCheckTitleChild: '', // tabs二级菜单
       indexCheckName: '', // tabs
       menuSecondary: '', // 二级菜单
-      indexCheckIndex: 0, // 二级菜单选中
     };
   },
   methods: {
@@ -239,7 +237,8 @@ export default {
     tabClick(tab, event) {
       this.navList.forEach((item,index) => {
         if (tab.label == item.title) {
-          this.indexCheckIndex = 0
+          console.log('选中一级：', item, index)
+          this.indexCheckTitleChild = item.menu[0].url
           this.menuSecondary = item.menu
           this.indexCheckTitle = item.title
           this.indexCheckName = item.name
@@ -253,16 +252,41 @@ export default {
     // 二级菜单点击
     tabChildClick(tab, event) {
       this.indexCheckTitleChild = tab.paneName
-      this.indexCheckIndex = tab.paneName
+      console.log('选中二级：', tab)
       this.$router.push({
-        path: "/" + tab.paneName,
+        path: '/' + tab.paneName,
       });
     },
     //logo click
     onLogoClick() {
       this.$router.push("/");
     },
+    getPath(){
+      console.log(this.$route.path);
+    },
   },
+  watch: {
+    indexCheckTitleChild(val) {
+      console.log('监听二级变化：1', val)
+      this.$store.commit('tabMenu/setMenuIndex', val)
+    },
+    $route: {
+      deep: true,
+      handler(newVal, oldVal) {
+        // console.log('监听路由变化：1', newVal)
+        this.indexCheckTitle = newVal.meta.title
+        let data = newVal.path.replace('/','').replace(/[\\]/g,'')
+        if (newVal.query.id) {
+          this.indexCheckTitleChild = data + '?id=' + newVal.query.id
+          console.log('监听路由变化：2', data)
+        } else {
+          this.indexCheckTitleChild = data
+          console.log('监听路由变化：3', data)
+        }
+        this.$store.commit('tabMenu/setMenuIndex', newVal.path)
+      }
+    }
+  }
 };
 </script>
 

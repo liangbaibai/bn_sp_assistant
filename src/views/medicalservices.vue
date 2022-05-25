@@ -179,7 +179,6 @@ import { index } from "@/utils/mixins";
 import serviceWindow from '@/components/serviceWindow.vue'
 import { myRequest } from "@/request/index";
 import { data_data_list } from "@/request/api/base";
-
 export default {
   mixins: [index],
 
@@ -213,8 +212,17 @@ export default {
       ], // 陪护详情图片
     };
   },
+  computed: {
 
+  },
   methods: {
+    onTabsClick(tab, event) {
+      console.log('点击：1',tab);
+      console.log('点击：2', this.$store.state.tabMenu.menuIndex);
+      /*this.$router.push({
+        path: '/' + tab.paneName,
+      });*/
+    },
     //立即咨询 click
     onContactClick(){
       console.log('onContactClick')

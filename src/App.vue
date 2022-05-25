@@ -60,6 +60,11 @@ body::-webkit-scrollbar-thumb:hover{
 body::-webkit-scrollbar-corner{
   border-radius: 3px;
 }
+.el-button--success.is-plain:focus, .el-button--success.is-plain:hover {
+  background: #30C159 !important;
+  border-color: #30C159 !important;
+  color: #FFF;
+}
 .grid-contain{
   /*width: 1000px;*/
   margin: 0 auto;

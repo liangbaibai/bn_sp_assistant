@@ -5,7 +5,7 @@
       <div class="banner-w_i">
         <div class="banner-w_i_t">长者居家监护解决方案</div>
         <div class="banner-w_i_t s">血压检测管理解决方案血压检测管理解决方案</div>
-        <div class="banner-w_i_btn">服务咨询</div>
+        <div class="banner-w_i_btn" @click="onContactClick">服务咨询</div>
       </div>
     </div>
     <div class="main-w">
@@ -33,22 +33,39 @@
         </div>
       </div>
     </div>
+    <serviceWindow :show="openService" @onClose="onCloseService"/>
   </div>
 </template>
 
 <script>
+  import serviceWindow from '@/components/serviceWindow'
   export default {
     name: 'homeCareSolutions',
     data() {
       return {
         list: [{
-          data: ['安防监控','智能看护','远程看家','远程看家',]
+          data: ['安防监控','智能看护','远程看家','紧急救援',]
         },{
           data: ['语音对讲','护理上门','居家陪护','护士服务',]
         },{
           data: ['适老改造','康复护理','定期巡访','医养结合',]
-        }]
+        }],
+        openService:false,
       }
+    },
+    components: {
+      serviceWindow
+    },
+    methods: {
+      //立即咨询 click
+      onContactClick(){
+        console.log('onContactClick')
+        this.openService = true
+      },
+      //关闭服务窗口 click
+      onCloseService(){
+        this.openService = false
+      },
     }
   }
 </script>

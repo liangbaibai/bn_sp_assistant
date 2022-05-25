@@ -62,13 +62,13 @@
             <div class="item-list">
               <div
                 class="item-i"
-                @click="onMenuItemClick('eleproducts', '手表')"
+                @click="onMenuItemClick('eleproducts/ylWatch')"
               >
                 手表
               </div>
               <div
                 class="item-i"
-                @click="onMenuItemClick('eleproducts', '手环')"
+                @click="onMenuItemClick('eleproducts/lxWatch')"
               >
                 手环
               </div>
@@ -80,14 +80,14 @@
             <div class="item-list">
               <div
                 class="item-i"
-                @click="onMenuItemClick('familyproducts', '体脂秤')"
+                @click="onMenuItemClick('eleproducts/weighingScale')"
               >
                 体脂秤
               </div>
               <!-- <div class="item-i">防摔跤床垫</div> -->
               <div
                 class="item-i"
-                @click="onMenuItemClick('familyproducts', '血压仪')"
+                @click="onMenuItemClick('eleproducts/bloodPressure')"
               >
                 血压仪
               </div>
@@ -101,21 +101,15 @@
             <div class="item-list">
               <div
                 class="item-i"
-                @click="onMenuItemClick('commandcenter', '全国指挥中心')"
+                @click="onMenuItemClick('commandcenter')"
               >
-                全国指挥中心
+                血压健康综合管理解决方案
               </div>
               <div
                 class="item-i"
-                @click="onMenuItemClick('commandcenter', '养老院指挥中心')"
+                @click="onMenuItemClick('homeCareSolutions')"
               >
-                养老院指挥中心
-              </div>
-              <div
-                class="item-i"
-                @click="onMenuItemClick('commandcenter', '社区指挥中心')"
-              >
-                社区指挥中心
+                长者居家监护解决方案
               </div>
             </div>
           </div>
@@ -217,6 +211,10 @@ export default {
           id: id,
         },
       });
+      this.$store.commit('tabMenu/setMenuIndex', "/" + name)
+      // sessionStorage.setItem('routeName', name)
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
     },
   },
 };

@@ -4,7 +4,7 @@
       <div class="title">十岁后有这些特征，注定长寿</div>
 
       <div class="new-info">
-        <div class="avator-name">百年医养</div>
+        <div class="avator-name">文章来源：<span class="avator-name c">百年医养</span></div>
         <div class="date">2020-07-04</div>
       </div>
 
@@ -62,19 +62,32 @@ export default {
     background-color: #fff;
     .title{
       color: #333;
+      font-size: 40px;
+      font-family: Microsoft YaHei;
       font-weight: bold;
+      text-align: center;
     }
     .new-info{
       display: flex;
       align-items: center;
+      justify-content: center;
       margin: 13px 0 26px 0;
       font-size: 12px;
       .avator-name{
-        color: #0071BD;
+        font-size: 14px;
+        font-family: Microsoft YaHei;
+        font-weight: 400;
+        color: #999999;
+        &.c {
+          color: #30C159;
+        }
       }
       .date{
         margin: 0 0 0 26px;
-        color: #999;
+        font-size: 14px;
+        font-family: Microsoft YaHei;
+        font-weight: 400;
+        color: #999999;
       }
     }
     .new-content{

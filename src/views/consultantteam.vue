@@ -69,7 +69,7 @@
         </van-tab>
       </van-tabs>
     </div>
-   
+
   </div>
 </template>
 
@@ -94,12 +94,12 @@ export default {
   data() {
     return {
       tabActive: "",
-      
+
     };
   },
 
   methods: {
-   
+
   },
 };
 </script>

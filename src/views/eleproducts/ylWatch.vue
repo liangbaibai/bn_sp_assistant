@@ -2,7 +2,7 @@
   <div class="ylWatch">
     <div class="ylWatch_top">
       <div class="ylWatch_top_t">医疗级健康监测手表</div>
-      <el-button class="ylWatch_top_btn" type="success" plain>立即购买</el-button>
+      <el-button class="ylWatch_top_btn" type="success" plain @click="toBuy">立即购买</el-button>
     </div>
     <div class="ylWatch_bottom">
       <div>
@@ -57,6 +57,10 @@
       topFunction() {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
+      },
+      // 跳转天猫购买
+      toBuy() {
+        window.open('https://detail.tmall.com/item.htm?spm=a220o.1000855.w4023-24145098805.3.15e7acaeTHpvD3&id=663449498011&sku_properties=149204407:3269303;204252002:1904313917')
       }
     }
   }

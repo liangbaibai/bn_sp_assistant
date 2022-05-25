@@ -2,7 +2,7 @@
   <div class="bloodPressure">
     <div class="bloodPressure_top">
       <div class="bloodPressure_top_t">全自动双管血压计</div>
-      <el-button class="bloodPressure_top_btn" type="success" plain>立即购买</el-button>
+      <el-button class="bloodPressure_top_btn" type="success" plain @click="toBuy">立即购买</el-button>
     </div>
     <div class="bloodPressure_bottom">
       <div>
@@ -48,6 +48,10 @@
       topFunction() {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
+      },
+      // 跳转天猫购买
+      toBuy() {
+        window.open('https://bailaiqiao.tmall.com/?spm=a220o.1000855.1997427133.d4918061.398b7286shY1m0')
       }
     }
   }

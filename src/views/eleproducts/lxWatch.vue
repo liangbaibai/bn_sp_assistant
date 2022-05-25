@@ -2,7 +2,7 @@
   <div class="lxWatch">
     <div class="lxWatch_top">
       <div class="lxWatch_top_t">24H全天候守护长者</div>
-      <el-button class="lxWatch_top_btn" type="success" plain>立即购买</el-button>
+      <el-button class="lxWatch_top_btn" type="success" plain @click="toBuy">立即购买</el-button>
     </div>
     <div class="lxWatch_bottom">
       <div>
@@ -52,6 +52,10 @@
       topFunction() {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
+      },
+      // 跳转天猫购买
+      toBuy() {
+        window.open('https://detail.tmall.com/item.htm?spm=a1z10.1-b.w4004-24145098791.4.8bc41015MTAlOJ&id=667456271317')
       }
     }
   }

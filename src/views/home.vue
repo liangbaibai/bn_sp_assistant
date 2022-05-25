@@ -103,16 +103,17 @@
             </div>
           </div>
           <div class="xwhd_bottom">
-            <div class="xwhd_bottom_b">更多咨询</div>
-            <div class="xwhd_bottom_b">更多活动</div>
+            <div class="xwhd_bottom_b" @click="toNew(1)">更多咨询</div>
+            <div class="xwhd_bottom_b" @click="toNew(2)">更多活动</div>
           </div>
         </div>
       </div>
     </div>
     <div class="back-top">
-      <div class="back-top-f"><i class="iconfont icon-kefu" style="font-size: 57px; color: #fff;"></i></div>
-      <div class="back-top-s"><i class="el-icon-arrow-up" style="font-weight: bold;font-size: 55px"></i></div>
+      <div class="back-top-f" @click="onContactClick"><i class="iconfont icon-kefu" style="font-size: 57px; color: #fff;"></i></div>
+      <div class="back-top-s" @click="toTop"><i class="el-icon-arrow-up" style="font-weight: bold;font-size: 55px"></i></div>
     </div>
+    <serviceWindow :show="openService" @onClose="onCloseService"/>
   </div>
 </template>
 
@@ -121,12 +122,13 @@ import { myRequest } from "@/request/index";
 import { data_list } from "@/request/api/base";
 import myVideo from "@/components/video.vue";
 import myFooter from "@/components/footer.vue";
-
+import serviceWindow from '@/components/serviceWindow'
 export default {
   props: {},
   components: {
     myVideo,
     myFooter,
+    serviceWindow
   },
   created() {},
   computed: {},
@@ -137,6 +139,7 @@ export default {
 
   data() {
     return {
+      openService:false,
       medicalCareList: [{
         title: '长护险',
         text: '7年磨一剑，专注居家养老服务;5大服务保障体系，18项服务标准;;三甲医院专家教在线指导，千名专业护理人员倾情服务',
@@ -202,6 +205,32 @@ export default {
         },
       });
     },
+    //立即咨询 click
+    onContactClick(){
+      console.log('onContactClick')
+      this.openService = true
+    },
+    //关闭服务窗口 click
+    onCloseService(){
+      this.openService = false
+    },
+    // 返回顶部
+    toTop() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    },
+    // 跳转咨询
+    toNew(type) {
+      if (type == 1) {
+        this.$router.push({
+          path: 'new?id=企业资讯'
+        })
+      } else {
+        this.$router.push({
+          path: 'new?id=健康资讯'
+        })
+      }
+    }
   },
 };
 </script>
