@@ -71,15 +71,26 @@
           <div class="xwhd_subt">news and events</div>
           <div class="xwhd_c">
             <div class="xwhd_c_bottom">
-              <div class="xwhd_c_bottom_i" v-for="(item, index) in newsList">
+              <div class="xwhd_c_bottom_i">
                 <div class="xwhd_c_top">
                   <div class="triangle"></div>
-                  <div class="xwhd_c_top_b">{{index == 0 ? '最新资讯' : '最新活动'}}</div>
+                  <div class="xwhd_c_top_b">最新资讯</div>
                 </div>
-                <div class="xwhd_c_bottom_i_img" :style="{backgroundImage: `url(${item.img})`}"></div>
+                <div class="xwhd_c_bottom_i_img" :style="{backgroundImage: `url(${newestInformation.titleImg})`}"></div>
                 <div class="xwhd_c_bottom_i_info">
-                  <div class="xwhd_c_bottom_i_info_t">{{item.title}}</div>
-                  <div class="xwhd_c_bottom_i_info_t1">{{item.text}}</div>
+                  <div class="xwhd_c_bottom_i_info_t">{{newestInformation.title}}</div>
+                  <div class="xwhd_c_bottom_i_info_t1">{{newestInformation.brief}}</div>
+                </div>
+              </div>
+              <div class="xwhd_c_bottom_i">
+                <div class="xwhd_c_top">
+                  <div class="triangle"></div>
+                  <div class="xwhd_c_top_b">最新活动</div>
+                </div>
+                <div class="xwhd_c_bottom_i_img" :style="{backgroundImage: `url(${newestActivity.titleImg})`}"></div>
+                <div class="xwhd_c_bottom_i_info">
+                  <div class="xwhd_c_bottom_i_info_t">{{newestActivity.title}}</div>
+                  <div class="xwhd_c_bottom_i_info_t1">{{newestActivity.brief}}</div>
                 </div>
               </div>
               <div class="xwhd_c_bottom_i">
@@ -88,10 +99,10 @@
                   <div class="xwhd_c_top_b">其他资讯</div>
                 </div>
                 <div class="xwhd_c_bottom_list">
-                  <div class="xwhd_c_bottom_list_c" v-for="item in otherActivityList">
+                  <div class="xwhd_c_bottom_list_c" v-for="item in otherInformationList">
                     <div class="xwhd_c_bottom_list_c_id">
-                      <div>{{item.id}}</div>
-                      <div class="xwhd_c_bottom_list_c_id_s">otc</div>
+                      <div>{{item.date}}</div>
+                      <div class="xwhd_c_bottom_list_c_id_s">{{item.time}}</div>
                     </div>
                     <div class="xwhd_c_bottom_list_c_t">
                       <div>{{item.title}}</div>
@@ -118,11 +129,12 @@
 </template>
 
 <script>
-import { myRequest } from "@/request/index";
-import { data_list } from "@/request/api/base";
+import { articleHome } from '@/request/api/new'
 import myVideo from "@/components/video.vue";
 import myFooter from "@/components/footer.vue";
 import serviceWindow from '@/components/serviceWindow'
+import moment from 'moment'
+
 export default {
   props: {},
   components: {
@@ -133,7 +145,9 @@ export default {
   created() {},
   computed: {},
   watch: {},
-  mounted() {},
+  mounted() {
+    this.getArticleData()
+  },
 
   updated() {},
 
@@ -171,32 +185,41 @@ export default {
         text: '秤要精准 也要颜值',
         img: require('../assets/image/smartProductBg4.png'),
       },],
-      newsList: [{
-        title: '全国众多权威媒体争相报道虎艳芬出任百来俏品牌代言人！',
-        text: '近日，全国众多权威媒体、微博大V、自媒体争相报道《外来媳妇本地郎》苏妙婵扮演者虎艳芬出任百来俏品牌代言人的盛况传统媒体、门户网站、今日头条、微博微信...',
-        img: require('../assets/image/newsBg1.png')
-      },{
-        title: '全国众多权威媒体争相报道虎艳芬出任百来俏品牌代言人！',
-        text: '近日，全国众多权威媒体、微博大V、自媒体争相报道《外来媳妇本地郎》苏妙婵扮演者虎艳芬出任百来俏品牌代言人的盛况传统媒体、门户网站、今日头条、微博微信...',
-        img: require('../assets/image/activityBg1.png')
-      }], // 新闻列表
-      otherActivityList: [{
-        id: 29,
-        title: '如何正确操作百来俏腕表进行血压',
-      },{
-        id: 28,
-        title: '如何正确操作百来俏腕表进行血压数据对比测试？',
-      },{
-        id: 27,
-        title: '如何正确操作百来俏腕表进行血压数据对比测试？',
-      },{
-        id: 26,
-        title: '如何正确操作百来俏腕表进行血压数据对比测试？',
-      }], // 其他活动列表
+      newestInformation: [], // 最新资讯
+      newestActivity: [], // 最新活动
+      otherInformationList: [], // 其他资讯列表
+      otherInformationData: [], // 其他资讯列表
     };
   },
 
   methods: {
+    getArticleData() {
+      const params = {}
+      articleHome(params).then(res => {
+        console.log('获取资讯信息:', res)
+        if (res.code == 0) {
+          this.newestInformation = res.data.newestInformation
+          this.newestActivity = res.data.newestActivity
+          let monthsShort = moment.monthsShort()
+          let months = 0
+          let monthsText = ''
+          let list = res.data.otherInformationList.slice(0,12)
+          this.otherInformationList = list.map(item => {
+            months = moment(item.publishDatetime).format('M') - 1
+            monthsText = monthsShort[months]
+            return {
+              categoryId: item.categoryId,
+              id: item.id,
+              publishDatetime: item.publishDatetime,
+              time: monthsText,
+              date: moment(item.publishDatetime).format('DD'),
+              title: item.title,
+            }
+          })
+          console.log('改变日期：', this.otherInformationList)
+        }
+      })
+    },
     onDetailClick(name, id) {
       this.$router.push({
         path: "/" + name,
@@ -547,6 +570,7 @@ export default {
             text-align: left;
             padding: 20px 11px;
             background: #FFFFFF;
+            border-radius: 10px;
             &_t {
               font-size: 14px;
               font-family: Microsoft YaHei;

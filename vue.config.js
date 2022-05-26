@@ -8,12 +8,19 @@ module.exports = {
   lintOnSave: false, //是否开启eslint
 
   devServer: {
-    disableHostCheck: true,
-    open: false, //是否自动弹出浏览器页面
-    host: "0.0.0.0",//
-    https: false,   //是否使用https协议
-    hotOnly: true, //是否开启热更新
-    port: 8003,
+    hot: true, // 热加载
+    host: '0.0.0.0', // ip地址
+    port: 8003, // 端口
+    https: false, // false关闭https，true为开启
+    open: false, // 自动打开浏览器
+    proxy: {
+      '/official-website': {
+        // target: 'http://192.168.10.85:10001/', // 后端本地
+        target: 'http://192.168.10.195/',
+        changeOrigin: true,  // 设置跨域
+        pathRewrite: {}
+      },
+    }
   },
   publicPath: '',
   chainWebpack: (config) => {

@@ -1,29 +1,15 @@
 <template>
   <div class="new-detail-w">
     <div class="content grid-contain">
-      <div class="title">十岁后有这些特征，注定长寿</div>
+      <div class="title">{{articleDetailData.title}}</div>
 
       <div class="new-info">
-        <div class="avator-name">文章来源：<span class="avator-name c">百年医养</span></div>
-        <div class="date">2020-07-04</div>
+        <div class="avator-name">文章来源：<span class="avator-name c">{{articleDetailData.source}}</span></div>
+        <div class="date">{{articleDetailData.publishDatetime}}</div>
       </div>
 
       <div class="new-content">
-        <p>
-          内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
-          内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
-          内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
-          内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
-        </p>
-        <img src="@/assets/image/n-detail-1.png" alt="" />
-        <p>
-          内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
-          内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
-          内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
-          内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
-          内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
-          内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
-        </p>
+        <div v-html="articleDetailData.content"></div>
       </div>
     </div>
   </div>
@@ -31,22 +17,49 @@
 
 
 <script>
-import { myRequest } from "@/request/index";
-import { data_desc } from "@/request/api/base";
+  import { articleDetail } from '@/request/api/new'
+
 export default {
-  props: {},
+  props: {
+    articleInfo: {
+      type: Object,
+      default() {
+        return {}
+      }
+    }
+  },
   components: {},
-  created() {},
+  created() {
+
+  },
 
   computed: {},
 
-  mounted() {},
-
-  data() {
-    return {};
+  mounted() {
+    this.getDetail()
   },
 
-  methods: {},
+  data() {
+    return {
+      articleDetailData: {}, // 资讯详情
+    };
+  },
+
+  methods: {
+    getDetail() {
+      const params = {
+        id: this.articleInfo.id
+      }
+      articleDetail(params).then(res => {
+        console.log('获取资讯详情:', res)
+        if (res.code == 0) {
+          this.articleDetailData = res.data
+        } else {
+          this.$message.error(res.msg)
+        }
+      })
+    }
+  },
 };
 </script>
 

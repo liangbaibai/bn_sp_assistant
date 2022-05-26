@@ -10,17 +10,17 @@
         animated
         ref="tabs"
       >
-        <van-tab title-class="tab_title" name="企业资讯">
+        <van-tab v-for="item in categoryList" title-class="tab_title" :name="item.name">
           <div slot="title" class="tab-title-w">
             <div
               :class="
-                tabActive === '企业资讯'
+                tabActive === item.name
                   ? 'tab-title--border tab-title'
                   : 'tab-title'
               "
-              @click="onSwitchNew('企业资讯')"
+              @click="onSwitchNew(item)"
             >
-              企业资讯
+              {{item.name}}
             </div>
           </div>
           <div v-if="showDetail" class="tab-block-1 tab-content">
@@ -33,18 +33,18 @@
             </div>
             <div class="dynamic-main grid-contain">
               <div class="new-list-w">
-                <div class="new-i-w" v-for="item in tableList" @click="onDetailClick">
-                  <img src="@/assets/image/n-c-1.png" alt="" />
+                <div class="new-i-w" v-for="item in tableList.data" @click="onDetailClick(item)">
+                  <img :src="item.titleImg" alt="" />
                   <div class="content">
                     <div class="top">
                       <div class="title">{{item.title}}</div>
                       <div class="desc">
-                        {{item.content}}
+                        {{item.brief}}
                       </div>
                     </div>
 
                     <div class="bottom">
-                      <div class="date">{{item.updateTime}}</div>
+                      <div class="date">{{item.publishDatetime}}</div>
                     </div>
                   </div>
                 </div>
@@ -52,98 +52,16 @@
               <el-pagination
                   background
                   @current-change="handleCurrentChange"
-                  :page-size="10"
+                  :current-page="pageInfo.skip"
+                  :page-size="pageInfo.limit"
                   layout="total,prev, pager, next, jumper"
-                  :total="100"
+                  :total="tableList.total"
                   class="newPagination"
               >
               </el-pagination>
             </div>
           </div>
-          <NewDetail v-else/>
-        </van-tab>
-        <van-tab title-class="tab_title" name="健康资讯">
-          <div slot="title" class="tab-title-w">
-            <div
-              :class="
-                tabActive === '健康资讯'
-                  ? 'tab-title--border tab-title'
-                  : 'tab-title'
-              "
-              @click="onSwitchNew('健康资讯')"
-            >
-              健康资讯
-            </div>
-          </div>
-          <div class="tab-block-2 tab-content">
-            <div class="tab-img">
-              <img src="@/assets/image/qyzx_jk_bn.png" alt="" />
-              <div class="img-content">
-                <p class="img-content-p">{{bgTitle}}</p>
-                <p class="t-2">Health information</p>
-              </div>
-            </div>
-            <div class="dynamic-main grid-contain">
-              <div class="new-list-w">
-                <div class="new-i-w" @click="onDetailClick">
-                  <img src="@/assets/image/n-c-1.png" alt="" />
-                  <div class="content">
-                    <div class="top">
-                      <div class="title">人类新挑战：资讯过载引发生活失衡</div>
-                      <div class="desc">
-                        人类新挑战人类新挑战人类新挑战人类新挑战人类新挑战人类新挑战人类新挑战人类新挑战人类新挑战人类新挑战人类新挑战
-                      </div>
-                    </div>
-
-                    <div class="bottom">
-                      <div class="date">2021-01-01</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="new-i-w" @click="onDetailClick">
-                  <img src="@/assets/image/n-c-1.png" alt="" />
-                  <div class="content">
-                    <div class="top">
-                      <div class="title">人类新挑战：资讯过载引发生活失衡</div>
-                      <div class="desc">
-                        人类新挑战人类新挑战人类新挑战人类新挑战人类新挑战人类新挑战人类新挑战人类新挑战人类新挑战人类新挑战人类新挑战
-                      </div>
-                    </div>
-
-                    <div class="bottom">
-                      <div class="date">2021-01-01</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="new-i-w" @click="onDetailClick">
-                  <img src="@/assets/image/n-c-1.png" alt="" />
-                  <div class="content">
-                    <div class="top">
-                      <div class="title" @click="onDetailClick">
-                        人类新挑战：资讯过载引发生活失衡
-                      </div>
-                      <div class="desc">
-                        人类新挑战人类新挑战人类新挑战人类新挑战人类新挑战人类新挑战人类新挑战人类新挑战人类新挑战人类新挑战人类新挑战
-                      </div>
-                    </div>
-
-                    <div class="bottom">
-                      <div class="date">2021-01-01</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <el-pagination
-                  background
-                  @current-change="handleCurrentChange"
-                  :page-size="10"
-                  layout="total,prev, pager, next, jumper"
-                  :total="100"
-                  class="newPagination"
-              >
-              </el-pagination>
-            </div>
-          </div>
+          <NewDetail v-else :articleInfo="articleInfo"/>
         </van-tab>
       </van-tabs>
     </div>
@@ -153,9 +71,8 @@
 <script>
 import { index } from "@/utils/mixins";
 import NewDetail from './newDetail'
+import { categoryData, articleData } from '@/request/api/new'
 
-import { myRequest } from "@/request/index";
-import { data_data_list } from "@/request/api/base";
 export default {
   mixins: [index],
 
@@ -167,6 +84,8 @@ export default {
 
   mounted() {
     this.bgTitle = this.$route.query.id || '企业资讯'
+    this.getCategoryList()
+    this.getArticleList()
   },
 
   beforeRouteUpdate(to,from,next){
@@ -178,33 +97,71 @@ export default {
     return {
       tabActive: "",
       bgTitle: '',
-      showDetail: false, // 是否显示详情
-      tableList: [{
-        id: 0,
-        title: '全国众多权威媒体争相报道虎艳芬出任百来俏品牌代言人！',
-        content: '近日，全国众多权威媒体、微博大V、自媒体争相报道《外来媳妇本地郎》苏妙婵扮演者虎艳芬出任百来俏品牌代言人的盛况传统媒体、门户网站、今日头条、微博微信...',
-        updateTime: '2021-01-01'
-      }], // 资讯列表
+      showDetail: true, // 是否显示详情
+      categoryList: [], // 资讯分类
+      categoryId: 1, // 资讯分类ID
+      articleList: [], // 资讯分类
+      articleInfo: {}, // 资讯详情
+      pageInfo: {
+        skip: 1,
+        limit: 4,
+      },
+      tableList: [], // 资讯列表
     };
   },
 
   methods: {
-    handleCurrentChange() {},
-
-    onDetailClick() {
-      this.$router.push({
+    handleSizeChange() {
+      this.pageInfo.skip = val;
+    },
+    handleCurrentChange() {
+      this.pageInfo.limit = val;
+    },
+    // 获取资讯分类
+    getCategoryList() {
+      const params = {}
+      categoryData(params).then(res => {
+        console.log('获取资讯分类：', res)
+        if (res.code == 0) {
+          this.categoryList = res.data
+        } else {
+          this.$message.error(res.msg)
+        }
+      })
+    },
+    // 获取资讯分类列表
+    getArticleList() {
+      const params = {
+        categoryId: this.categoryId, // 分类id
+        pageIndex: this.pageInfo.skip, // 页数
+        pageSize: this.pageInfo.limit, // 页码
+      }
+      articleData(params).then(res => {
+        console.log('获取资讯分类列表：', res)
+        if (res.code == 0) {
+          this.tableList = res
+        } else {
+          this.$message.error(res.msg)
+        }
+      })
+    },
+    onDetailClick(item) {
+      this.articleInfo = item
+      this.showDetail = false
+      /*this.$router.push({
         name: "newdetail",
         params: {
           id: 1,
         },
-      });
+      });*/
     },
 
     //切换tab项 click
-    onSwitchNew(title){
-      this.bgTitle = title
+    onSwitchNew(item){
+      this.bgTitle = item.name
+      this.categoryId = item.categoryId
       this.$router.push({
-        path: '/new?id=' + title
+        path: '/new?id=' + item.name
       })
     },
   },
