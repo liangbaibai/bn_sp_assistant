@@ -3,7 +3,7 @@
     <div class="window-w" v-if="show">
       <div class="window-w-c">
         <div class="header">
-          <div>
+          <div style="text-align: center">
             <div class="title">请选择你想要联系的客服</div>
             <div class="text">我们将热心为您服务</div>
           </div>
@@ -79,6 +79,9 @@ export default {
 </script>
 
 <style lang="scss">
+  @function torem($px){//$px为需要转换的字号
+    @return $px / 30px * 1rem; //100px为根字体大小
+  }
 .window-w {
   position: fixed;
   top: 30%;
@@ -86,38 +89,38 @@ export default {
   left: 40%;
   right: 0;
   z-index: 111;
-  width: 400px;
-  height: 360px;
+  width: torem(400px);
+  height: torem(360px);
   .window-w-c {
-    width: 400px;
-    height: 360px;
+    width: torem(400px);
+    height: torem(360px);
     background: #FFFFFF;
-    border-radius: 10px;
+    border-radius: torem(10px);
   }
   .header {
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    padding: 5px;
+    padding: torem(5px);
     color: #333;
-    padding-top: 29px;
+    padding-top: torem(29px);
     .title{
       margin: 0 auto;
-      font-size: 18px;
+      font-size: torem(18px);
       font-family: Microsoft YaHei;
       font-weight: bold;
       color: #333333;
     }
     .text {
-      font-size: 14px;
+      font-size: torem(14px);
       font-family: Microsoft YaHei;
       font-weight: 400;
       color: #999999;
     }
   }
   .close-btn{
-    width: 36px;
-    height: 36px;
+    width: torem(36px);
+    height: torem(36px);
     background: #EEEEEE;
     border-radius: 50%;
     display: flex;
@@ -125,31 +128,33 @@ export default {
     justify-content: center;
     cursor: pointer;
     margin: 0 auto;
-    margin-top: 20px;
+    margin-top: torem(20px);
     &>i{
-      font-size: 23px;
+      font-size: torem(23px);
     }
   }
 
   .main-w {
     display: flex;
     flex-direction: column;
-    padding: 26px 39px 0 39px;
+    align-items: center;
+    justify-content: center;
+    margin-top: torem(40px);
   }
 
   .service-i {
     display: flex;
     align-items: center;
-    margin: 0 0 26px 0;
+    margin: 0 0 torem(35px) 0;
     &-icon {
       position: relative;
-      width: 62px;
-      height: 62px;
+      width: torem(62px);
+      height: torem(62px);
       &-c {
-        width: 62px;
-        height: 62px;
+        width: torem(62px);
+        height: torem(62px);
         background: #1C93FD;
-        box-shadow: 0px 2px 6px 0px rgba(189, 224, 255, 0.72);
+        box-shadow: 0px torem(2px) torem(6px) 0px rgba(189, 224, 255, 0.72);
         border-radius: 50%;
         z-index: 55;
         position: absolute;
@@ -158,31 +163,31 @@ export default {
         justify-content: center;
         &.s {
           background: #FB8726;
-          box-shadow: 0px 2px 6px 0px rgba(255, 191, 137, 0.72);
+          box-shadow: 0px torem(2px) torem(6px) 0px rgba(255, 191, 137, 0.72);
         }
       }
       &-t {
-        width: 43px;
-        height: 43px;
+        width: torem(43px);
+        height: torem(43px);
         background: #89D5F6;
         border-radius: 50%;
         z-index: 11;
         position: absolute;
-        top: 2px;
-        left: -4px;
+        top: torem(2px);
+        left: torem(-4px);
         &.s {
           background: #FFD17F;
         }
       }
       &-b {
-        width: 25px;
-        height: 25px;
+        width: torem(25px);
+        height: torem(25px);
         background: #89D5F6;
         border-radius: 50%;
         z-index: 99;
         position: absolute;
         bottom: 0px;
-        right: -4px;
+        right: torem(-4px);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -192,37 +197,37 @@ export default {
       }
     }
     &>img{
-      width: 122px;
-      height: 80px;
+      width: torem(122px);
+      height: torem(80px);
     }
   }
   .content-r {
-      margin: 0 0 0 18px;
+      margin: 0 0 0 torem(18px);
     .title {
-      font-size: 16px;
+      font-size: torem(16px);
       font-family: Microsoft YaHei;
       font-weight: 400;
       color: #333333;
-      margin-bottom: 12px;
+      margin-bottom: torem(12px);
     }
     .desc {
-      font-size: 14px;
+      font-size: torem(14px);
       font-family: Microsoft YaHei;
       font-weight: 400;
       color: #999999;
-      line-height: 20px;
+      line-height: torem(20px);
       .phone {
         color: #30C159;
       }
     }
     .contact-online{
         cursor: pointer;
-        margin: 5px 0 0 0;
-        padding: 7px 15px;
-        font-size: 12px;
+        margin: torem(5px) 0 0 0;
+        padding: torem(7px) torem(15px);
+        font-size: torem(12px);
         background-color: #23AC38;
         color: #fff;
-        border-radius: 3px;
+        border-radius: torem(3px)
     }
   }
 }

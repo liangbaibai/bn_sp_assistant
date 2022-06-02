@@ -23,7 +23,7 @@
               {{item.name}}
             </div>
           </div>
-          <div v-if="showDetail" class="tab-block-1 tab-content">
+          <div class="tab-block-1 tab-content">
             <div class="tab-img">
               <img src="@/assets/image/qyzx_qy_bn.png" alt="" />
               <div class="img-content">
@@ -32,26 +32,23 @@
               </div>
             </div>
             <div class="dynamic-main grid-contain">
-              <div class="new-list-w">
-                <div class="new-i-w" v-for="item in tableList.data" @click="onDetailClick(item)">
-                  <img :src="item.titleImg" alt="" />
-                  <div class="content">
-                    <div class="top">
-                      <div class="title">{{item.title}}</div>
-                      <div class="desc">
-                        {{item.brief}}
-                      </div>
+              <div class="new-i-w" v-for="item in tableList.data" @click="onDetailClick(item)">
+                <img :src="item.titleImg" alt="" />
+                <div class="content">
+                  <div class="top">
+                    <div class="title">{{item.title}}</div>
+                    <div class="desc">
+                      {{item.brief}}
                     </div>
-
-                    <div class="bottom">
-                      <div class="date">{{item.publishDatetime}}</div>
-                    </div>
+                  </div>
+                  <div class="bottom">
+                    <div class="date">{{item.publishDatetime}}</div>
                   </div>
                 </div>
               </div>
               <el-pagination
                   background
-                  @current-change="handleCurrentChange"
+                  @current-change="handleSizeChange"
                   :current-page="pageInfo.skip"
                   :page-size="pageInfo.limit"
                   layout="total,prev, pager, next, jumper"
@@ -61,7 +58,6 @@
               </el-pagination>
             </div>
           </div>
-          <NewDetail v-else :articleInfo="articleInfo"/>
         </van-tab>
       </van-tabs>
     </div>
@@ -84,6 +80,12 @@ export default {
 
   mounted() {
     this.bgTitle = this.$route.query.id || '企业资讯'
+    console.log('路由：', this.bgTitle)
+    if (this.bgTitle == '健康资讯') {
+      this.categoryId = 2
+    } else {
+      this.categoryId = 1
+    }
     this.getCategoryList()
     this.getArticleList()
   },
@@ -111,11 +113,9 @@ export default {
   },
 
   methods: {
-    handleSizeChange() {
+    handleSizeChange(val) {
       this.pageInfo.skip = val;
-    },
-    handleCurrentChange() {
-      this.pageInfo.limit = val;
+      this.getArticleList()
     },
     // 获取资讯分类
     getCategoryList() {
@@ -130,10 +130,10 @@ export default {
       })
     },
     // 获取资讯分类列表
-    getArticleList() {
+    getArticleList(type) {
       const params = {
         categoryId: this.categoryId, // 分类id
-        pageIndex: this.pageInfo.skip, // 页数
+        pageIndex: type == 1 ? 1 : this.pageInfo.skip, // 页数
         pageSize: this.pageInfo.limit, // 页码
       }
       articleData(params).then(res => {
@@ -146,113 +146,120 @@ export default {
       })
     },
     onDetailClick(item) {
-      this.articleInfo = item
-      this.showDetail = false
-      /*this.$router.push({
+      console.log('点击详情参数：', item)
+      this.$router.push({
         name: "newdetail",
         params: {
-          id: 1,
+          id: item.id,
         },
-      });*/
+        query: {
+          id: this.bgTitle
+        }
+      });
     },
 
     //切换tab项 click
-    onSwitchNew(item){
+    onSwitchNew(item) {
       this.bgTitle = item.name
-      this.categoryId = item.categoryId
+      console.log('切换分类：', item.categoryId)
       this.$router.push({
-        path: '/new?id=' + item.name
+        path: '/new?id=' + item.name,
       })
     },
   },
-
-  updated(){
-  },
+  watch: {
+    $route: {
+      deep: true,
+      handler(newVal, oldVal) {
+        if (newVal.query.id == '企业资讯' || newVal.query.id == '企业咨讯') {
+          this.categoryId = 1
+          this.getArticleList(1)
+          console.log('监听路由：1', newVal.query.id)
+        } else {
+          this.categoryId = 2
+          this.getArticleList(1)
+          console.log('监听路由：2', newVal.query.id)
+        }
+      }
+    }
+  }
 };
 </script>
 
 <style lang="scss">
+  @function torem($px){//$px为需要转换的字号
+    @return $px / 30px * 1rem; //100px为根字体大小
+  }
 .newpage-w {
-/*  .el-pagination{
-    .number{
-      &:hover{
-      color: #23AC38;
-
-      }
-    }
-    .active{
-      color: #23AC38;
-    }
-  }*/
   .el-pagination.is-background .btn-next, .el-pagination.is-background .btn-prev, .el-pagination.is-background .el-pager li {
-    min-width: 22px !important;
+    min-width: torem(22px) !important;
   }
   .el-pagination.is-background .el-pager li:not(.disabled):hover {
     color: #30C159 !important;
   }
   .el-pagination {
     .el-pager li {
-      max-width: 22px;
-      width: 22px;
-      height: 22px;
+      max-width: torem(22px);
+      width: torem(22px);
+      height: torem(22px);
       background: #EEEEEE;
-      border-radius: 2px;
+      border-radius: torem(2px);
       padding: 0;
-      font-size: 14px;
+      font-size: torem(14px);
       font-family: Microsoft YaHei;
       font-weight: 400;
       color: #333333;
-      line-height: 22px;
+      line-height: torem(22px);
     }
     .el-pagination__total {
-      font-size: 14px;
+      font-size: torem(14px);
       font-family: Microsoft YaHei;
       font-weight: 400;
       color: #333333;
     }
     .el-pager li.active {
-      max-width: 22px;
-      min-width: 22px;
-      width: 22px;
-      height: 22px;
+      max-width: torem(22px);
+      min-width: torem(22px);
+      width: torem(22px);
+      height: torem(22px);
       background: #30C159 !important;
-      border-radius: 2px;
+      border-radius: torem(2px);
       padding: 0;
     }
     .btn-prev {
       color: #CCCCCC;
-      max-width: 22px;
-      min-width: 22px;
-      width: 22px;
-      height: 22px;
+      max-width: torem(22px);
+      min-width: torem(22px);
+      width: torem(22px);
+      height: torem(22px);
       background: #EEEEEE;
-      border-radius: 2px;
+      border-radius: torem(2px);
     }
     .btn-next {
       color: #CCCCCC;
-      max-width: 22px;
-      min-width: 22px;
-      width: 22px;
-      height: 22px;
+      max-width: torem(22px);
+      min-width: torem(22px);
+      width: torem(22px);
+      height: torem(22px);
       background: #EEEEEE;
-      border-radius: 2px;
+      border-radius: torem(2px)
     }
     .el-pagination__jump {
-      font-size: 14px;
+      font-size: torem(14px);
       font-family: Microsoft YaHei;
       font-weight: 400;
       color: #666666;
     }
   }
   .el-pagination.is-background .el-pager li:not(.disabled).active {
-    font-size: 14px;
+    font-size: torem(14px);
     font-family: Microsoft YaHei;
     font-weight: 400;
     color: #FFFFFF;
   }
   .van-sticky {
     padding: 0;
-    border: 1px solid #EEEEEE;
+    border: torem(1px) solid #EEEEEE;
   }
   .van-tabs--line .van-tabs__wrap {
     width: 15%;
@@ -271,19 +278,19 @@ export default {
         bottom: 0;
         left: 0;
         right: 0;
-        width: 390px;
-        height: 130px;
+        width: torem(390px);
+        height: torem(130px);
         color: #fff;
         margin: auto;
         .img-content-p {
-          font-size: 36px;
+          font-size: torem(36px);
           font-family: Microsoft YaHei;
           font-weight: bold;
           color: #333333;
         }
         .t-2 {
-          margin: 13px 0 0 0;
-          font-size: 22px;
+          margin: torem(13px) 0 0 0;
+          font-size: torem(22px);
           font-family: OPPOSans;
           font-weight: 400;
           color: #999999;
@@ -296,49 +303,52 @@ export default {
   .main-w {
     background: #f4f4f4;
     .tab-title-w .tab-title--border {
-      font-size: 14px;
+      font-size: torem(14px);
       font-family: Microsoft YaHei;
       font-weight: bold !important;
       color: #30C159 !important;
     }
     .tab-title-w .tab-title {
-      font-size: 14px;
+      font-size: torem(14px);
       font-family: Microsoft YaHei;
       font-weight: 400;
       color: #333333;
     }
     .tab-title-w .tab-title--border {
-      border-bottom: 3px solid #23ac38;
+      border-bottom: torem(3px) solid #30C159;
     }
   }
   .dynamic-main {
-    width: 1199px;
+    width: torem(1199px);
     margin: 0 auto;
     padding: 3% 0 6% 0;
 
     .new-list-w {
-      padding: 0 39px;
       box-sizing: content-box;
-      background-color: #fff;
+      display: flex;
+      align-items: center;
     }
     .el-pagination {
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 52px 0;
-      background-color: #fff;
+      padding: torem(52px) 0;
     }
   }
 
   .new-i-w {
+    height: torem(231px);
+    margin-bottom: torem(19px);
+    padding: torem(30px) torem(66px);
+    background-color: #fff;
+
     display: flex;
     align-items: center;
-    height: 143px;
-    padding: 26px 0;
-    border-bottom: 1px solid #eee;
     transition: transform 0.2s ease-in-out;
     & > img {
-      width: auto;
+      width: torem(229px);
+      height: torem(171px);
+      border-radius: torem(5px);
     }
     &:hover {
       transform: scale(1.05);
@@ -348,35 +358,36 @@ export default {
       }
     }
     .title {
-      margin: 0 0 26px 0;
-      font-size: 14px; 
+      margin: 0 0 torem(26px) 0;
+      font-size: torem(18px);
       color: #333;
       font-weight: bold;
     }
     .desc {
-      font-size: 12px;
-      color: #666;
+      font-size: torem(14px);
+      color: #999999;
     }
     .date {
-      font-size: 12px;
+      font-size: torem(12px);
       color: #666;
+      font-weight: 400;
     }
     .content {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       height: 100%;
-      margin: 0 0 0 18px;
+      margin: 0 0 0 torem(18px);
       .top {
-        margin: 26px 0 0 0;
+
       }
       .bottom {
         display: flex;
         justify-content: space-between;
         align-items: center;
         .icon {
-          width: 21px;
-          height: 21px;
+          width: torem(21px);
+          height: torem(21px);
         }
       }
     }

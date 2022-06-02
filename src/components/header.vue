@@ -6,8 +6,13 @@
         <el-tabs ref="tabsMenu" id="tabsMenuPane" v-model="indexCheckTitle" @tab-click="tabClick">
           <el-tab-pane v-for="(item, i) in navList" :key="i" :label="item.title" :name="item.title">
             <!-- 左侧菜单二级 -->
-            <el-tabs id="tabsMenuPaneChild" style="height: 73px;" class="menu-contain-left" tab-position="top" v-model="indexCheckTitleChild" ref="tabsMenuChild" @tab-click="tabChildClick">
-              <el-tab-pane v-for="(menuSecond, x) in item.menu" :key="menuSecond.name" :label="menuSecond.name" :name="menuSecond.url"></el-tab-pane>
+            <el-tabs id="tabsMenuPaneChild" :style="{height: item.layoutType == 'picture' ? '130px' : '73px'}" class="menu-contain-left" tab-position="top" v-model="indexCheckTitleChild" ref="tabsMenuChild" @tab-click="tabChildClick">
+              <el-tab-pane v-for="(menuSecond, x) in item.menu" :key="menuSecond.name" :label="menuSecond.name" :name="menuSecond.url">
+               <div slot="label" v-if="item.layoutType == 'picture'" class="tabLabel">
+                 <img :src="menuSecond.img" alt="">
+                 <div>{{menuSecond.name}}</div>
+               </div>
+              </el-tab-pane>
             </el-tabs>
           </el-tab-pane>
         </el-tabs>
@@ -17,8 +22,6 @@
 </template>
 
 <script>
-import { myRequest } from "@/request/index";
-import { getElement } from "@/utils/util";
 import {} from "@/request/api/base";
 import {} from "@/assets/js/index";
 
@@ -83,30 +86,30 @@ export default {
           ],
         },
         {
-          title: "智能穿戴产品",
+          title: "产品生态",
           layoutType: "picture",
           name: "eleproducts",
           menu: [
             {
               name: "手表",
-              img: require("@/assets/image/e-n-1.png"),
+              img: require("@/assets/image/tab_img_sb.png"),
               id: "手表",
               url: "eleproducts/ylWatch",
             },
             {
               name: "手环",
-              img: require("@/assets/image/e-n-2.png"),
+              img: require("@/assets/image/tab_img_sh.png"),
               id: "手环",
               url: "eleproducts/lxWatch",
             },{
               name: "体脂秤",
-              img: require("@/assets/image/nav-f-1.png"),
+              img: require("@/assets/image/tab_img_tzc.png"),
               id: "体脂秤",
               url: "eleproducts/weighingScale",
             },
             {
               name: "血压仪",
-              img: require("@/assets/image/nav-f-2.png"),
+              img: require("@/assets/image/tab_img_xyy.png"),
               id: "血压仪",
               url: "eleproducts/bloodPressure",
             },
@@ -131,7 +134,7 @@ export default {
         },
         {
           title: "运营平台",
-          layoutType: "picture",
+          layoutType: "normal",
           name: "operating",
           menu: [
             {
@@ -273,11 +276,16 @@ export default {
     $route: {
       deep: true,
       handler(newVal, oldVal) {
-        // console.log('监听路由变化：1', newVal)
+        console.log('监听路由变化：header', newVal)
+        // new?id=健康资讯
+        console.log('监听路由变化：header1', this.indexCheckTitleChild)
         this.indexCheckTitle = newVal.meta.title
         let data = newVal.path.replace('/','').replace(/[\\]/g,'')
         if (newVal.query.id) {
           this.indexCheckTitleChild = data + '?id=' + newVal.query.id
+          if (newVal.query.id == '健康资讯' || newVal.query.id == '企业资讯') {
+            this.indexCheckTitleChild = 'new?id=' + newVal.query.id
+          }
           console.log('监听路由变化：2', data)
         } else {
           this.indexCheckTitleChild = data
@@ -291,8 +299,11 @@ export default {
 </script>
 
 <style lang="scss" >
+  @function torem($px){//$px为需要转换的字号
+    @return $px / 30px * 1rem; //100px为根字体大小
+  }
 .header-w {
-  position: relative;
+  position: sticky;
   top: 0;
   z-index: 9999;
   width: 100vw;
@@ -302,16 +313,16 @@ export default {
     /*justify-content: space-evenly;*/
     /*align-items: center;*/
     z-index: 99;
-    height: 73px;
-    line-height: 73px;
+    height: torem(73px);
+    line-height: torem(73px);
     background: #ffffff;
   }
   .logo-w {
-    width: 110px;
-    min-width: 110px;
+    width: torem(110px);
+    min-width: torem(110px);
     cursor: pointer;
     position: absolute;
-    left: 300px;
+    left: torem(300px);
   }
 }
 
@@ -320,26 +331,26 @@ export default {
   align-items: center;
   position: relative;
   .el-tabs {
-    margin-bottom: 1px;
+    margin-bottom: torem(1px);
     position: relative;
-    left: 600px;
+    left: torem(600px);
   }
   .el-tabs__header {
     margin: 0;
   }
   .el-tabs__nav-scroll {
-    padding: 0 12px;
+    padding: 0 torem(12px);
   }
   .el-tabs__nav-wrap::after {
     background-color: #ffffff;
   }
   .el-tabs__active-bar {
-    height: 4px;
-    border-radius: 2px;
+    height: torem(4px);
+    border-radius: torem(2px);
   }
   .el-tabs__item {
-    font-size: 16px;
-    padding-bottom: 45px;
+    font-size: torem(16px);
+    padding-bottom: torem(45px);
     color: #333333;
     font-family: Microsoft YaHei;
   }
@@ -347,7 +358,7 @@ export default {
     font-weight: bold;
   }
   .el-tabs__item.is-active {
-    font-size: 16px;
+    font-size: torem(16px);
     color: #30C159;
   }
   .el-tabs__active-bar {
@@ -355,27 +366,32 @@ export default {
   }
   .el-tabs__content {
     position: absolute;
-    top: 73px;
+    top: torem(73px);
     z-index: 9999;
     background: #ffffff;
     width: 100vw;
-    left: -600px;
+    left: torem(-600px);
   }
   .el-tabs__item:hover {
     color: #30C159;
   }
+  .tabLabel {
+    margin-top: torem(15px);
+    text-align: center;
+    margin-right: torem(40px);
+  }
 }
 .tabs-c {
   width: 100%;
-  height: 74px;
+  height: torem(74px);
   background: #FFFFFF;
   text-align: center;
   .tabs-c-t {
-    font-size: 16px;
+    font-size: torem(16px);
     font-family: Microsoft YaHei;
     font-weight: 400;
     color: #333333;
-    margin-right: 38px;
+    margin-right: torem(38px);
     &:hover {
       color: #30C159;
     }
@@ -393,7 +409,7 @@ export default {
 }
 
 .el-dropdown-menu {
-  box-shadow: 0px 0px 18px 0px rgba(125, 125, 125, 0.28);
+  box-shadow: 0px 0px torem(18px) 0px rgba(125, 125, 125, 0.28);
   .el-dropdown-menu__item {
     &:focus {
       color: #29a93e;

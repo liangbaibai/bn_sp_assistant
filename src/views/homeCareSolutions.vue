@@ -71,6 +71,9 @@
 </script>
 
 <style lang="scss" scoped>
+  @function torem($px){//$px为需要转换的字号
+    @return $px / 30px * 1rem; //100px为根字体大小
+  }
   .homeCareSolutions {
     background: #FFFFFF;
     .banner-w {
@@ -80,31 +83,31 @@
         left: 20.5%;
         top: 29%;
         &_t {
-          font-size: 36px;
+          font-size: torem(36px);
           font-family: OPPOSans;
           font-weight: bold;
           color: #FFFFFF;
-          margin-bottom: 18px;
+          margin-bottom: torem(18px);
           &.s {
-            font-size: 16px;
+            font-size: torem(16px);
             font-weight: 400;
             color: #FFFFFF;
           }
         }
         &_btn {
-          width: 122px;
-          height: 40px;
+          width: torem(122px);
+          height: torem(40px);
           background: #30C159;
-          border-radius: 20px;
+          border-radius: torem(20px);
           display: flex;
           align-items: center;
           justify-content: center;
           color: #ffffff;
-          font-size: 14px;
+          font-size: torem(14px);
           font-family: Microsoft YaHei;
           font-weight: 400;
           color: #FFFFFF;
-          margin-top: 40px;
+          margin-top: torem(40px);
           cursor: pointer;
         }
       }
@@ -112,25 +115,25 @@
     .main-w {
       &_c {
         text-align: center;
-        padding-top: 66px;
+        padding-top: torem(66px);
         &_t {
-          font-size: 28px;
+          font-size: torem(28px);
           font-family: Microsoft YaHei;
           font-weight: bold;
           color: #333333;
-          margin-bottom: 53px;
+          margin-bottom: torem(53px);
         }
         &_t1 {
-          font-size: 20px;
+          font-size: torem(20px);
           font-family: Microsoft YaHei;
           font-weight: bold;
           color: #30C159;
           display: flex;
           align-items: center;
           justify-content: center;
-          margin-bottom: 44px;
+          margin-bottom: torem(44px);
           &_p {
-            margin-right: 63px;
+            margin-right: torem(63px);
           }
         }
         &_t2 {
@@ -138,41 +141,41 @@
           align-items: center;
           justify-content: center;
           &_p {
-            font-size: 16px;
+            font-size: torem(16px);
             font-family: Microsoft YaHei;
             font-weight: 400;
             color: #666666;
             display: flex;
             align-items: center;
             &.m {
-              margin-right: 128px;
+              margin-right: torem(128px)
             }
           }
           &_line {
             width: 46%;
-            height: 1px;
+            height: torem(1px);
             background: #F4F4F4;
-            margin: 29px auto;
+            margin: torem(29px) auto;
           }
           &.point {
-            width: 8px;
-            height: 8px;
+            width: torem(8px);
+            height: torem(8px);
             background: #DDDDDD;
             border-radius: 50%;
-            margin-right: 4px;
+            margin-right: torem(4px);
           }
         }
         &_t3 {
-          margin-top: 91px;
+          margin-top: torem(91px);
           width: 100%;
-          height: 960px;
+          height: torem(960px);
           background: #FFFFFF;
           background: url('../assets/image/znjj_d_1.png') center center no-repeat;
           background-size: cover;
           position: relative;
           &_img {
             position: absolute;
-            width: 921px;
+            width: torem(921px);
             height: auto;
             top: 14%;
             left: 19%;
@@ -180,14 +183,14 @@
         }
         &_t4 {
           width: 100%;
-          height: 960px;
+          height: torem(960px);
           background: #FFFFFF;
           background: url('../assets/image/znjj_d_2.png') center center no-repeat;
           background-size: cover;
           position: relative;
           &_img {
             position: absolute;
-            width: 637px;
+            width: torem(637px);
             height: auto;
             top: 20%;
             right: 19%;
@@ -195,15 +198,15 @@
         }
         &_t5 {
           width: 100%;
-          height: 960px;
+          height: torem(960px);
           background: #FFFFFF;
           background: url('../assets/image/znjj_d_3.png') center center no-repeat;
           background-size: cover;
           position: relative;
-          margin-top: -61px;
+          margin-top: torem(-61px);
           &_img {
             position: absolute;
-            width: 938px;
+            width: torem(938px);
             height: auto;
             top: 17%;
             left: 19%;

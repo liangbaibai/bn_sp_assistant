@@ -54,7 +54,7 @@
               <div>1小时汇报1次血压情况</div>
               <div>24小时实时监测异常波动</div>
             </div>
-            <div class="main-w_c_i_w_btn">立即咨询</div>
+            <div class="main-w_c_i_w_btn" @click="onContactClick">立即咨询</div>
           </div>
         </div>
         <div class="main-w_c_i">
@@ -67,7 +67,7 @@
               <div>属采取合理应对措施，并做急救前预案</div>
               <div>准备。</div>
             </div>
-            <div class="main-w_c_i_w_btn">立即咨询</div>
+            <div class="main-w_c_i_w_btn" @click="onContactClick">立即咨询</div>
           </div>
           <div>
             <img src="@/assets/image/xygl__d_6.png" alt="">
@@ -88,7 +88,7 @@
               <div>眠·疫情疫区…），来预防高血压、</div>
               <div>心脑血管疾病等意外事件发生。</div>
             </div>
-            <div class="main-w_c_i_w_btn">立即咨询</div>
+            <div class="main-w_c_i_w_btn" @click="onContactClick">立即咨询</div>
           </div>
         </div>
       </div>
@@ -137,6 +137,9 @@ export default {
 
 
 <style lang="scss">
+  @function torem($px){//$px为需要转换的字号
+    @return $px / 30px * 1rem; //100px为根字体大小
+  }
 .commandcenter-w {
   background-color: #fff;
   .banner-w {
@@ -146,31 +149,31 @@ export default {
       left: 20.5%;
       top: 29%;
       &_t {
-        font-size: 36px;
+        font-size: torem(36px);
         font-family: OPPOSans;
         font-weight: bold;
         color: #FFFFFF;
-        margin-bottom: 18px;
+        margin-bottom: torem(18px);
         &.s {
-          font-size: 16px;
+          font-size: torem(16px);
           font-weight: 400;
           color: #FFFFFF;
         }
       }
       &_btn {
-        width: 122px;
-        height: 40px;
+        width: torem(122px);
+        height: torem(40px);
         background: #30C159;
-        border-radius: 20px;
+        border-radius: torem(20px);
         display: flex;
         align-items: center;
         justify-content: center;
         color: #ffffff;
-        font-size: 14px;
+        font-size: torem(14px);
         font-family: Microsoft YaHei;
         font-weight: 400;
         color: #FFFFFF;
-        margin-top: 40px;
+        margin-top: torem(40px);
         cursor: pointer;
       }
     }
@@ -179,21 +182,21 @@ export default {
     background: #ffffff;
     &_i {
       width: 100%;
-      height: 401px;
+      height: torem(401px);
       background: url('../assets/image/xygl__d_3.png') center center no-repeat;
       background-size: cover;
       display: flex;
       align-items: center;
       justify-content: center;
       &_l {
-        margin-right: 260px;
+        margin-right: torem(260px);
         text-align: center;
         &.m {
           margin-right: 0;
         }
         &_c {
-          width: 96px;
-          height: 96px;
+          width: torem(96px);
+          height: torem(96px);
           background: #FFFFFF;
           border-radius: 50%;
           display: flex;
@@ -201,23 +204,23 @@ export default {
           justify-content: center;
         }
         .iconts {
-          font-size: 74px;
+          font-size: torem(74px);
           background: linear-gradient(to right, #36D8EF, #2A92E7);
           -webkit-background-clip: text;
           color: transparent;
-          text-shadow: 0px 8px 12px rgb(49 192 211 / 35%);
+          text-shadow: 0px torem(8px) torem(12px) rgb(49 192 211 / 35%);
         }
         &_t {
-          font-size: 42px;
+          font-size: torem(42px);
           font-family: Arial;
           font-weight: 400;
           color: #FFFFFF;
           &.c {
-            font-size: 20px;
-            margin-left: 5px;
+            font-size: torem(20px);
+            margin-left: torem(5px);
           }
           &.s {
-            font-size: 16px;
+            font-size: torem(16px);
             font-family: Microsoft YaHei;
           }
         }
@@ -225,50 +228,50 @@ export default {
     }
     &_c {
       text-align: center;
-      padding: 60px 0;
+      padding: torem(60px) 0;
       &_t {
-        font-size: 28px;
+        font-size: torem(28px);
         font-family: Microsoft YaHei;
         font-weight: bold;
         color: #333333;
-        margin-bottom: 82px;
+        margin-bottom: torem(82px);
       }
       &_i {
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 119px;
+        margin-bottom: torem(119px);
         &_w {
-          margin-left: 105px;
+          margin-left: torem(105px);
           text-align: left;
           &.right {
-            margin-right: 105px;
+            margin-right: torem(105px);
             margin-left: 0;
           }
           &_t {
-            font-size: 26px;
+            font-size: torem(26px);
             font-family: Microsoft YaHei;
             font-weight: bold;
             color: #333333;
-            margin-bottom: 30px;
+            margin-bottom: torem(30px);
           }
           &_p {
-            font-size: 16px;
+            font-size: torem(16px);
             font-family: Microsoft YaHei;
             font-weight: 400;
             color: #666666;
-            margin-bottom: 30px;
-            line-height: 28px;
-            letter-spacing: 2px;
+            margin-bottom: torem(30px);
+            line-height: torem(28px);
+            letter-spacing: torem(2px);
           }
           &_btn {
-            width: 140px;
-            height: 36px;
-            line-height: 36px;
+            width: torem(140px);
+            height: torem(36px);
+            line-height: torem(36px);
             text-align: center;
             background: #30C159;
-            border-radius: 18px;
-            font-size: 16px;
+            border-radius: torem(18px);
+            font-size: torem(16px);
             font-family: Microsoft YaHei;
             font-weight: 400;
             color: #FFFFFF;

@@ -58,27 +58,33 @@
 </script>
 
 <style lang="scss" scoped>
+  @function torem($px){//$px为需要转换的字号
+    @return $px / 30px * 1rem; //100px为根字体大小
+  }
   .bloodPressure {
     background: #FFFFFF;
     &_top {
-      height: 70px;
-      line-height: 70px;
+      position: fixed;
+      width: 100vw;
+      top: torem(73px);
+      background: #ffffff;
+      border: torem(1px) solid #EEEEEE;
+      height: torem(70px);
+      line-height: torem(70px);
       display: flex;
       align-items: center;
       justify-content: space-around;
-      border-top: 1px solid #EEEEEE;
-      border-bottom: 1px solid #EEEEEE;
       &_t {
-        font-size: 24px;
+        font-size: torem(24px);
         font-family: Microsoft YaHei;
         font-weight: bold;
         color: #333333;
       }
       &_btn {
-        width: 122px;
-        height: 40px;
+        width: torem(122px);
+        height: torem(40px);
         background: #30C159;
-        border-radius: 20px;
+        border-radius: torem(20px);
         color: #ffffff;
         display: flex;
         align-items: center;
@@ -89,6 +95,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-top: torem(68px);
     }
   }
 </style>

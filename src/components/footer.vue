@@ -58,7 +58,7 @@
             </div>
           </div>
           <div class="item-w">
-            <div class="item-title">智能穿戴产品</div>
+            <div class="item-title">产品生态</div>
             <div class="item-list">
               <div
                 class="item-i"
@@ -221,6 +221,9 @@ export default {
 </script>
 
 <style lang="scss" >
+  @function torem($px){//$px为需要转换的字号
+    @return $px / 30px * 1rem; //100px为根字体大小
+  }
 .footer-w {
   background-color: #1e1e1e;
   
@@ -239,9 +242,9 @@ export default {
 
   .right {
     display: flex;
-    margin-left: 97px;
+    margin-left: torem(97px);
     .item-w {
-      margin: 0 10px;
+      margin: 0 torem(10px);
       white-space: nowrap;
       .item-i {
         cursor: pointer;
@@ -253,33 +256,33 @@ export default {
   display: flex;
   flex-direction: column;
   .item-title {
-    margin: 0 0 20px 0;
-    font-size: 16px;
+    margin: 0 0 torem(20px) 0;
+    font-size: torem(16px);
   }
   .item-list {
-    font-size: 12px;
+    font-size: torem(12px);
     color: #ccc;
     .item-i {
-      margin: 0 0 10px 0;
+      margin: 0 0 torem(10px) 0;
     }
   }
 }
 .copyright {
   margin: 5% 0 0 0;
   text-align: center;
-  font-size: 13px;
+  font-size: torem(13px);
   color: #999;
   & > p {
-    line-height: 26px;
+    line-height: torem(26px);
   }
 }
 
 .attention {
-  margin: 20px 0 0 0;
+  margin: torem(20px) 0 0 0;
   .item-list {
     display: flex;
     .item-i {
-      margin: 0 10px 0 0;
+      margin: 0 torem(10px) 0 0;
     }
   }
 }

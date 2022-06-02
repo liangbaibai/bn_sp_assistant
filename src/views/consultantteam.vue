@@ -106,6 +106,9 @@ export default {
 
 
 <style lang="scss">
+  @function torem($px){//$px为需要转换的字号
+    @return $px / 30px * 1rem; //100px为根字体大小
+  }
 .medicalservices-w {
   background-color: #fff;
   .van-tabs--line .van-tabs__wrap {
@@ -113,11 +116,11 @@ export default {
   }
 
   .tab-block-1{
-    margin: 0 0 52px 0;
+    margin: 0 0 torem(52px) 0;
   }
 
   .main-w{
-    padding: 0 0 78px 0;
+    padding: 0 0 torem(78px) 0;
   }
 }
 </style>

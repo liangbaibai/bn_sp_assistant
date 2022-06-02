@@ -3,10 +3,12 @@
     <my-header></my-header>
     <router-view />
     <my-footer></my-footer>
+    <BackTop />
   </div>
 </template>
 
 <script>
+  import BackTop from '@/components/backTop'
 import { top_video } from "@/request/api/base";
 import { myRequest } from "@/request/index";
 import myHeader from "@/components/header.vue";
@@ -16,6 +18,7 @@ export default {
   components: {
     myHeader,
     myFooter,
+    BackTop
   },
 
   created() {
@@ -34,31 +37,34 @@ export default {
 
 <style lang="scss">
 @import "./assets/css/base.css";
+@function torem($px){//$px为需要转换的字号
+  @return $px / 30px * 1rem; //100px为根字体大小
+}
 #app{
   position: relative;
 }
 body{
   overflow-y: scroll;
-  min-width: 1000px;
+  min-width: torem(1000px);
 }
 /*修改滚动条样式*/
 body::-webkit-scrollbar{
-  width: 6px;
-  height: 10px;
+  width: torem(6px);
+  height: torem(10px);
 }
 body::-webkit-scrollbar-track{
-  border-radius: 3px;
+  border-radius: torem(3px);
 }
 body::-webkit-scrollbar-thumb{
   background: #ccc;
-  border-radius: 3px;
+  border-radius: torem(3px);
 }
 body::-webkit-scrollbar-thumb:hover{
   background: #ccc;
-  border-radius: 3px;
+  border-radius: torem(3px);
 }
 body::-webkit-scrollbar-corner{
-  border-radius: 3px;
+  border-radius: torem(3px);
 }
 .el-button--success.is-plain:focus, .el-button--success.is-plain:hover {
   background: #30C159 !important;
@@ -83,7 +89,7 @@ img {
 
 
 .home--header {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   right: 0;
@@ -98,7 +104,7 @@ img {
 
 /*重置tabs样式*/
 .van-sticky {
-  padding: 13px 0;
+  padding: torem(13px) 0;
   background-color: #fff;
 }
 .van-tabs--line .van-tabs__wrap {
@@ -109,20 +115,20 @@ img {
 }
 /*自定义tab-title*/
 .tab-title-w {
-  font-size: 16px;
+  font-size: torem(16px);
   .tab-title {
-    padding: 0 0 5px 0;
-    margin: 10px 0;
+    padding: 0 0 torem(5px) 0;
+    margin: torem(10px) 0;
   }
   .tab-title--border{
-    border-bottom: 2px solid #23ac38;
+    border-bottom: torem(2px) solid #23ac38;
   }
 }
 
 .cut-line {
-  width: 29px;
-  height: 2px;
+  width: torem(29px);
+  height: torem(2px);
   background-color: #333;
-  border-radius: 1px;
+  border-radius: torem(1px);
 }
 </style>

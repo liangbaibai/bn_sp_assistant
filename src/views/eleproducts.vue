@@ -100,13 +100,10 @@
 <script>
 import { index } from "@/utils/mixins";
 
-import { myRequest } from "@/request/index";
-import { data_data_list } from "@/request/api/base";
 export default {
   mixins: [index],
 
   props: {},
-  components: {},
   created() {},
 
   computed: {},
@@ -170,15 +167,18 @@ export default {
 
 
 <style lang="scss">
+  @function torem($px){//$px为需要转换的字号
+    @return $px / 30px * 1rem; //100px为根字体大小
+  }
 .eleproducts-w {
   background-color: #fff;
   .banner-w {
     .el-carousel__container {
-      height: 500px;
+      height: torem(500px);
     }
     .el-carousel__button {
-      width: 10px;
-      height: 10px;
+      width: torem(10px);
+      height: torem(10px);
       background: #30C159;
       border-radius: 50%;
     }
@@ -187,7 +187,7 @@ export default {
     }
     .el-carousel__indicators--outside {
       position: absolute;
-      bottom: 4px;
+      bottom: torem(4px);
     }
     .el-carousel__indicator.is-active button {
       opacity: 1;
@@ -202,15 +202,15 @@ export default {
     width: 15%;
   }
   .tab-block-1{
-    margin: 0 0 52px 0;
+    margin: 0 0 torem(52px) 0;
   }
 
   .main-w{
-    padding: 0 0 78px 0;
+    padding: 0 0 torem(78px) 0;
   }
   .eleproducts-c {
     background: #F6F6F6;
-    padding: 72px 0;
+    padding: torem(72px) 0;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -218,9 +218,9 @@ export default {
     &_d {
       &_yl {
         background: #FFFFFF;
-        border-radius: 20px;
-        padding: 81px 114px;
-        margin-bottom: 21px;
+        border-radius: torem(20px);
+        padding: torem(81px) torem(114px);
+        margin-bottom: torem(21px);
         display: flex;
         justify-content: space-between;
         &.pd {
@@ -228,69 +228,69 @@ export default {
         }
         &_left {
           &_ig {
-            width: 124px;
-            height: 41px;
-            margin-bottom: 40px;
+            width: torem(124px);
+            height: torem(41px);
+            margin-bottom: torem(40px);
             &.lx {
-              width: 219px;
-              height: 32px;
+              width: torem(219px);
+              height: torem(32px);
             }
           }
           &_ti {
-            font-size: 38px;
+            font-size: torem(38px);
             font-family: Microsoft YaHei;
             font-weight: bold;
             color: #333333;
-            margin-bottom: 20px;
+            margin-bottom: torem(20px);
           }
           &_te {
-            font-size: 16px;
+            font-size: torem(16px);
             font-family: Microsoft YaHei;
             font-weight: 400;
             color: #666666;
-            line-height: 24px;
+            line-height: torem(24px);
             &.m {
-              margin-bottom: 66px;
+              margin-bottom: torem(66px);
             }
             .mg {
-              line-height: 20px;
-              margin-right: 20px;
+              line-height: torem(20px);
+              margin-right: torem(20px);
             }
           }
           &_bn {
             display: flex;
             align-items: center;
             &_b {
-              width: 108px;
-              height: 48px;
+              width: torem(108px);
+              height: torem(48px);
               background: linear-gradient(1deg, #30C159, #32d960);
-              border-radius: 24px;
+              border-radius: torem(24px);
               color: #FFFFFF;
-              font-size: 16px;
+              font-size: torem(16px);
               display: flex;
               align-items: center;
               justify-content: center;
               &.c {
-                border: 2px solid #CCCCCC;
-                border-radius: 24px;
+                border: torem(2px) solid #CCCCCC;
+                border-radius: torem(24px);
                 color: #333333;
                 background: #ffffff;
-                margin-left: 40px;
+                margin-left: torem(40px);
               }
             }
             &_b:hover {
-              box-shadow: 0px 8px 12px 0px rgba(48, 193, 89, 0.35);
+              box-shadow: 0px torem(8px) torem(12px) 0px rgba(48, 193, 89, 0.35);
               cursor: pointer;
               &.c:hover {
-                box-shadow: 0px 8px 12px 0px rgba(204, 204, 204, 0.35);
+                box-shadow: 0px torem(8px) torem(12px) 0px rgba(204, 204, 204, 0.35);
               }
             }
           }
         }
         &_right {
-          margin-top: -80px;
+          margin-top: torem(-80px);
           &.l {
-            margin-left: -114px;
+            margin-left: torem(-114px);
           }
           &_ig {
 

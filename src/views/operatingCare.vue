@@ -88,6 +88,9 @@
 </script>
 
 <style lang="scss" scoped>
+  @function torem($px){//$px为需要转换的字号
+    @return $px / 30px * 1rem; //100px为根字体大小
+  }
   .operating-w {
     background-color: #fff;
     .banner-w {
@@ -108,81 +111,81 @@
           left: 19%;
 
           &_t {
-            font-size: 42px;
+            font-size: torem(42px);
             font-family: OPPOSans;
             font-weight: bold;
             color: #333333;
-            line-height: 69px;
-            text-shadow: 0px 4px 8px rgba(169, 169, 169, 0.35);
-            margin-bottom: 54px;
+            line-height: torem(69px);
+            text-shadow: 0px torem(4px) torem(8px) rgba(169, 169, 169, 0.35);
+            margin-bottom: torem(54px);
           }
 
           &_p {
-            font-size: 24px;
+            font-size: torem(24px);
             font-family: OPPOSans;
             font-weight: 400;
             color: #333333;
-            margin-bottom: 13px;
+            margin-bottom: torem(13px);
           }
 
           &_h {
-            width: 405px;
+            width: torem(405px);
             height: auto;
-            font-size: 14px;
+            font-size: torem(14px);
             font-family: OPPOSans;
             font-weight: 400;
             color: #333333;
-            line-height: 25px;
-            margin-bottom: 45px;
+            line-height: torem(25px);
+            margin-bottom: torem(45px);
           }
 
           &_btn {
-            width: 176px;
-            height: 61px;
+            width: torem(176px);
+            height: torem(61px);
             display: flex;
             align-items: center;
             justify-content: center;
             background: #333333;
-            border-radius: 31px;
+            border-radius: torem(31px);
             color: #ffffff;
-            font-size: 16px;
+            font-size: torem(16px);
 
             &.an {
-              margin-left: 41px;
+              margin-left: torem(41px);
               background: #42C253;
             }
 
             &_icon {
-              width: 29px;
-              height: 35px;
-              margin-right: 10px;
+              width: torem(29px);
+              height: torem(35px);
+              margin-right: torem(10px);
 
               &.an {
-                width: 32px;
-                height: 36px;
+                width: torem(32px);
+                height: torem(36px);
               }
             }
           }
 
           &_qrCode {
-            width: 130px;
-            height: 156px;
+            width: torem(130px);
+            height: torem(156px);
             background: #FFFFFF;
-            border-radius: 5px;
-            padding: 10px 9px;
+            border-radius: torem(5px);
+            padding: torem(10px) torem(9px);
             text-align: center;
-            margin-top: 33px;
+            margin-top: torem(33px);
             &_img {
-              width: 112px;
-              height: 112px;
+              width: torem(112px);
+              height: torem(112px);
             }
 
             &_t {
-              font-size: 14px;
+              font-size: torem(14px);
               font-family: Microsoft YaHei;
               font-weight: 400;
               color: #333333;
-              margin-top: 6px;
+              margin-top: torem(6px);
             }
           }
         }
@@ -199,35 +202,35 @@
       }
     }
     .main-w {
-      margin-top: 228px;
-      padding-bottom: 41px;
+      margin-top: torem(228px);
+      padding-bottom: torem(41px);
       &_top {
         text-align: center;
         &_t {
-          font-size: 32px;
+          font-size: torem(32px);
           font-family: OPPOSans;
           font-weight: 300;
           color: #666666;
-          margin-bottom: 35px;
+          margin-bottom: torem(35px);
         }
         &_line {
-          width: 60px;
-          height: 8px;
+          width: torem(60px);
+          height: torem(8px);
           background: #333333;
-          margin: 21px auto;
+          margin: torem(21px) auto;
         }
         &_p {
-          font-size: 32px;
+          font-size: torem(32px);
           font-family: OPPOSans;
           font-weight: bold;
           color: #333333;
           margin: 0 auto;
-          margin-bottom: 22px;
+          margin-bottom: torem(22px);
         }
         &_h {
-          width: 771px;
+          width: torem(771px);
           height: auto;
-          font-size: 16px;
+          font-size: torem(16px);
           font-family: Microsoft YaHei;
           font-weight: 400;
           color: #666666;
@@ -239,28 +242,28 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding-top: 97px;
-      padding-bottom: 74px;
-      background: linear-gradient(5deg, #F7FBFE, #f8fbfe);
+      padding-top: torem(97px);
+      padding-bottom: torem(74px);
+      background: linear-gradient(5deg, #F7FBFE, #FFFFFF);
       &-r {
-        margin-left: 92px;
+        margin-left: torem(92px);
         &-c {
-          margin-top: 15px;
+          margin-top: torem(15px);
           &-t {
-            font-size: 36px;
+            font-size: torem(36px);
             font-family: Microsoft YaHei;
             font-weight: bold;
             color: #333333;
-            margin-bottom: 36px;
+            margin-bottom: torem(36px);
           }
           &-p {
-            width: 340px;
-            font-size: 16px;
+            width: torem(340px);
+            font-size: torem(16px);
             font-family: Microsoft YaHei;
             font-weight: 400;
             color: #666666;
             text-align: left;
-            letter-spacing: 1px;
+            letter-spacing: torem(1px);
           }
         }
       }
@@ -269,35 +272,35 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding-top: 97px;
-      padding-bottom: 74px;
-      background: linear-gradient(5deg, #F7FBFE, #f8fbfe);
+      padding-top: torem(97px);
+      padding-bottom: torem(74px);
+      background: #FFFFFF;
       &-r {
-        margin-right: 180px;
+        margin-right: torem(180px);
         &-c {
-          margin-top: 15px;
+          margin-top: torem(15px);
           &-t {
-            font-size: 36px;
+            font-size: torem(36px);
             font-family: Microsoft YaHei;
             font-weight: bold;
             color: #333333;
-            margin-bottom: 36px;
+            margin-bottom: torem(36px);
           }
           &-p {
-            width: 340px;
-            font-size: 16px;
+            width: torem(340px);
+            font-size: torem(16px);
             font-family: Microsoft YaHei;
             font-weight: 400;
             color: #666666;
             text-align: left;
-            letter-spacing: 1px;
+            letter-spacing: torem(1px);
           }
         }
       }
     }
     .main-w-img-btm {
       width: 100%;
-      height: 960px;
+      height: torem(960px);
       background: url('../assets/image/yyCare_d_p4.png') center center no-repeat;
       position: relative;
       &-r {
@@ -305,22 +308,22 @@
         left: 22%;
         top: 20%;
         &-c {
-          margin-top: 15px;
+          margin-top: torem(15px);
           &-t {
-            font-size: 36px;
+            font-size: torem(36px);
             font-family: Microsoft YaHei;
             font-weight: bold;
             color: #333333;
-            margin-bottom: 36px;
+            margin-bottom: torem(36px);
           }
           &-p {
-            width: 396px;
-            font-size: 16px;
+            width: torem(396px);
+            font-size: torem(16px);
             font-family: Microsoft YaHei;
             font-weight: 400;
             color: #666666;
             text-align: left;
-            letter-spacing: 1px;
+            letter-spacing: torem(1px);
           }
         }
       }

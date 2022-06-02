@@ -136,6 +136,9 @@ export default {
 
 
 <style lang="scss">
+  @function torem($px){//$px为需要转换的字号
+    @return $px / 30px * 1rem; //100px为根字体大小
+  }
 .bntech-w {
   background-color: #fff;
   .van-tabs--line .van-tabs__wrap {
@@ -145,12 +148,12 @@ export default {
   .main-w {
     width: 1000px;
     margin: 0 auto;
-    padding: 0 0 78px 0;
+    padding: 0 0 torem(78px) 0;
   }
   .tab-content {
     display: flex;
     align-items: center;
-    margin: 52px 0;
+    margin: torem(52px) 0;
   }
   .view-r {
     width: 40%;
@@ -160,19 +163,19 @@ export default {
     .name {
       display: flex;
       align-items: center;
-      font-size: 14px;  //14px
+      font-size: torem(14px);  //14px
       font-weight: bold;
       .line{
-        width: 2px;
-        height: 15px;
-        margin: 0 5px 0 0;
+        width: torem(2px);
+        height: torem(15px);
+        margin: 0 torem(5px) 0 0;
         background-color: #29A93E;
       }
     }
     .desc {
-      margin: 13px 0 0 0;
-      font-size: 12px;
-      line-height: 20px;
+      margin: torem(13px) 0 0 0;
+      font-size: torem(12px);
+      line-height: torem(20px);
     }
   }
 }

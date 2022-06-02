@@ -353,6 +353,9 @@ export default {
 
 
 <style lang="scss" >
+  @function torem($px){//$px为需要转换的字号
+    @return $px / 30px * 1rem; //100px为根字体大小
+  }
 .walkbn-w {
   background-color: #fff;
   .van-tabs--line .van-tabs__wrap {
@@ -360,22 +363,22 @@ export default {
   }
 
   .tab-block-1 {
-    margin: 0 0 52px 0;
+    margin: 0 0 torem(52px) 0;
   }
 
   .main-w {
     width: 1000px;
     margin: 0 auto;
-    padding: 0 0 78px 0;
+    padding: 0 0 torem(78px) 0;
   }
 
   .tab-content {
     // margin: 0 20%;
 
     .title-img {
-      margin: 52px 0;
+      margin: torem(52px) 0;
       img {
-        width: 286px;
+        width: torem(286px);
         margin: 0 auto;
       }
     }
@@ -383,23 +386,23 @@ export default {
   .brand-s {
     display: flex;
     justify-content: space-around;
-    margin: 52px 0 0 0;
+    margin: torem(52px) 0 0 0;
   }
   .brand-i {
-    width: 260px;
+    width: torem(260px);
     color: #333;
     & > img {
       width: 100%;
       height: auto;
     }
     .name {
-      margin: 12px 0;
-      font-size: 14px;
+      margin: torem(12px) 0;
+      font-size: torem(14px);
       font-weight: bold;
     }
     .desc {
-      line-height: 24px;
-      font-size: 12px;
+      line-height: torem(24px);
+      font-size: torem(12px);
     }
   }
 }
@@ -407,25 +410,25 @@ export default {
 .w-culture-swipe {
   display: flex;
   align-items: center;
-  height: 377px;
+  height: torem(377px);
   .swipe-i {
     width: 20%;
     height: 100%;
-    padding: 65px 26px 0 18px;
+    padding: torem(65px) torem(26px) 0 torem(18px);
     background-color: #f4f4f4;
     .quotes {
-      width: 16px;
-      height: 12px;
+      width: torem(16px);
+      height: torem(12px);
       background: url("../assets/image/dian.png") 100% 100% / cover no-repeat;
     }
     .num {
-      margin: 13px 0 5px 0;
+      margin: torem(13px) 0 torem(5px);
       color: #ccc;
-      font-size: 52px;
+      font-size: torem(52px);
     }
     .name {
-      margin: 0 0 12px 0;
-      font-size: 14px;
+      margin: 0 0 torem(12px) 0;
+      font-size: torem(14px);
       color: #333;
       font-weight: bold;
     }
@@ -434,9 +437,9 @@ export default {
       -webkit-box-orient: vertical; /*值必须为vertical*/
       -webkit-line-clamp: 8; /*值为数字，表示一共显示几行*/
       overflow: hidden;
-      line-height: 22px;
+      line-height: torem(22px);
       color: #666;
-      font-size: 12px;
+      font-size: torem(12px);
     }
   }
   .active {
@@ -444,7 +447,7 @@ export default {
     position: relative;
     align-items: center;
     width: 60%;
-    padding: 18px;
+    padding: torem(18px);
     background-color: #29a93e;
     .quotes {
       background: url("../assets/image/dian-while.png") 100% 100% / cover
@@ -455,8 +458,8 @@ export default {
       position: absolute;
       top: 0;
       bottom: 0;
-      width: 26px;
-      height: 26px;
+      width: torem(26px);
+      height: torem(26px);
       margin: auto;
       cursor: pointer;
     }
@@ -479,8 +482,8 @@ export default {
   .view-r {
     width: 46%;
     height: 100%;
-    margin: 0 0 0 21px;
-    padding: 26px 0;
+    margin: 0 0 0 torem(21px);
+    padding: torem(26px) 0;
 
     .num {
       color: rgba(255, 255, 255, 0.5);
@@ -504,38 +507,38 @@ export default {
     display: flex;
     position: relative;
     align-items: center;
-    margin: 0 0 78px 0;
+    margin: 0 0 torem(78px) 0;
   }
   .swipe-w {
     position: relative;
     z-index: 1;
-    width: 572px;
+    width: torem(572px);
   }
 
   .content-detail {
     position: relative;
     z-index: 2;
-    width: 338px;
-    margin: 0 0 0 -16px;
-    padding: 52px 26px 52px 39px;
+    width: torem(338px);
+    margin: 0 0 0 torem(-16px);
+    padding: torem(52px) torem(26px) torem(52px) torem(39px);
     background: #f4f4f4;
     .title {
-      font-size: 14px;
+      font-size: torem(14px);
       font-weight: bold;
     }
     .desc {
-      line-height: 24px;
-      font-size: 12px;
+      line-height: torem(24px);
+      font-size: torem(12px);
     }
   }
 }
 .walkbn-w {
   .line {
-    width: 39px;
-    height: 2.5px;
-    margin: 18px 0 12px 0;
+    width: torem(39px);
+    height: torem(2.5px);
+    margin: torem(18px) 0 torem(12px) 0;
     background-color: #29a93e;
-    border-radius: 2px;
+    border-radius: torem(2px);
   }
   .tab-block-3 {
     margin: 0;
@@ -555,18 +558,18 @@ export default {
     .detail {
       width: 42%;
 
-      margin: 0 0 0 78px;
-      padding: 0 52px 0 0;
+      margin: 0 0 0 torem(78px);
+      padding: 0 torem(52px) 0 0;
     }
     .title {
-      font-size: 14px;
+      font-size: torem(14px);
       font-weight: bold;
     }
     .line {
     }
     .desc {
-      font-size: 12px;
-      line-height: 20px;
+      font-size: torem(12px);
+      line-height: torem(20px);
     }
   }
 }

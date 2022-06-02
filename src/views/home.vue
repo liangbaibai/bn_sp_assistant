@@ -2,8 +2,8 @@
   <div class="home-w">
     <div class="home-c ">
       <div class="video-w">
-        <!-- <my-video></my-video> -->
-        <img src="@/assets/image/h-b-1.png" alt="" />
+         <my-video :src="'http://1253484761.vod2.myqcloud.com/9d41b30bvodcq1253484761/7033e149387702301233726239/f0.mp4'"></my-video>
+<!--        <img src="@/assets/image/h-b-1.png" alt="" />-->
         <div class="mask"></div>
       </div>
       <!-- 内容 -->
@@ -13,13 +13,13 @@
           <div class="yyfw_t">医养服务</div>
           <div class="yyfw_subt">the medical nursing services</div>
           <div class="yyfw_c">
-            <div class="yyfw_c_i" v-for="item in medicalCareList">
+            <div class="yyfw_c_i" v-for="(item,index) in medicalCareList">
               <div class="img" :style="{backgroundImage: `url(${item.img})`}"></div>
               <div class="info">
                 <div class="info_t">{{item.title}}</div>
                 <div class="info_t1">{{item.text}}</div>
               </div>
-              <div class="hover">
+              <div class="hover" @click="toCare(index)">
                 <i class="iconfont icon-guanwang-shouyetubiao" style="color: #ffffff;font-size: 33px;"></i>
               </div>
             </div>
@@ -33,23 +33,21 @@
             <div class="zncp_c_i"
                  :style="{width: index == 0 ? '793px' : index == 1 ? '389px' : '590px', backgroundImage: `url(${item.img})`}"
                  v-for="(item,index) in smartProductList">
-<!--              <div class="zncp_c_i_img" :style="{backgroundImage: `url(${item.img})`}"></div>-->
               <div class="zncp_c_i_info">
                 <div class="zncp_c_i_info_a">产品</div>
                 <div class="zncp_c_i_info_t">{{item.title}}</div>
                 <div class="zncp_c_i_info_t1">{{item.text}}</div>
-                <div class="hover">了解更多<i class="el-icon-arrow-right" style="color: #30C159;font-weight: bold;"/></div>
+                <div class="hover" @click="toProduct(1,index)">了解更多<i class="el-icon-arrow-right" style="color: #30C159;font-weight: bold;"/></div>
               </div>
             </div>
           </div>
           <div class="zncp_c">
             <div class="zncp_c_i" v-for="(item,index) in smartProductList2" :style="{backgroundImage: `url(${item.img})`}">
-<!--              <div class="zncp_c_i_img" :style="{backgroundImage: `url(${item.img})`}"></div>-->
               <div class="zncp_c_i_info">
                 <div class="zncp_c_i_info_a">产品</div>
                 <div class="zncp_c_i_info_t">{{item.title}}</div>
                 <div class="zncp_c_i_info_t1">{{item.text}}</div>
-                <div class="hover">了解更多<i class="el-icon-arrow-right" style="color: #30C159;font-weight: bold;"/></div>
+                <div class="hover" @click="toProduct(2,index)">了解更多<i class="el-icon-arrow-right" style="color: #30C159;font-weight: bold;"/></div>
               </div>
             </div>
           </div>
@@ -61,7 +59,7 @@
             <div class="jjfa_c_info">
               <div class="jjfa_c_info_t">血压健康综合管理解决方案</div>
               <div class="jjfa_c_info_t1">血压动态监测丨血压异常干预丨血压管理周报</div>
-              <div class="jjfa_c_info_b">查看详情</div>
+              <div class="jjfa_c_info_b" @click="toProgram()">查看详情</div>
             </div>
           </div>
         </div>
@@ -76,10 +74,13 @@
                   <div class="triangle"></div>
                   <div class="xwhd_c_top_b">最新资讯</div>
                 </div>
-                <div class="xwhd_c_bottom_i_img" :style="{backgroundImage: `url(${newestInformation.titleImg})`}"></div>
-                <div class="xwhd_c_bottom_i_info">
-                  <div class="xwhd_c_bottom_i_info_t">{{newestInformation.title}}</div>
-                  <div class="xwhd_c_bottom_i_info_t1">{{newestInformation.brief}}</div>
+                <div class="xwhd_c_bottom_i_h" @click="toDetail(newestInformation)">
+                  <div class="xwhd_c_bottom_i_img" :style="{backgroundImage: `url(${newestInformation.titleImg})`}"></div>
+                  <div class="xwhd_c_bottom_i_info">
+                    <div class="xwhd_c_bottom_i_info_t">{{newestInformation.title}}</div>
+                    <div class="xwhd_c_bottom_i_info_t1">{{newestInformation.brief}}</div>
+                    <div class="xwhd_c_bottom_i_info_t2">{{newestActivity.publishDatetime}}</div>
+                  </div>
                 </div>
               </div>
               <div class="xwhd_c_bottom_i">
@@ -87,10 +88,13 @@
                   <div class="triangle"></div>
                   <div class="xwhd_c_top_b">最新活动</div>
                 </div>
-                <div class="xwhd_c_bottom_i_img" :style="{backgroundImage: `url(${newestActivity.titleImg})`}"></div>
-                <div class="xwhd_c_bottom_i_info">
-                  <div class="xwhd_c_bottom_i_info_t">{{newestActivity.title}}</div>
-                  <div class="xwhd_c_bottom_i_info_t1">{{newestActivity.brief}}</div>
+                <div class="xwhd_c_bottom_i_h" @click="toDetail(newestActivity)">
+                  <div class="xwhd_c_bottom_i_img" :style="{backgroundImage: `url(${newestActivity.titleImg})`}"></div>
+                  <div class="xwhd_c_bottom_i_info">
+                    <div class="xwhd_c_bottom_i_info_t">{{newestActivity.title}}</div>
+                    <div class="xwhd_c_bottom_i_info_t1">{{newestActivity.brief}}</div>
+                    <div class="xwhd_c_bottom_i_info_t2">{{newestActivity.publishDatetime}}</div>
+                  </div>
                 </div>
               </div>
               <div class="xwhd_c_bottom_i">
@@ -99,7 +103,7 @@
                   <div class="xwhd_c_top_b">其他资讯</div>
                 </div>
                 <div class="xwhd_c_bottom_list">
-                  <div class="xwhd_c_bottom_list_c" v-for="item in otherInformationList">
+                  <div class="xwhd_c_bottom_list_c" v-for="item in otherInformation" @click="toDetail(item)">
                     <div class="xwhd_c_bottom_list_c_id">
                       <div>{{item.date}}</div>
                       <div class="xwhd_c_bottom_list_c_id_s">{{item.time}}</div>
@@ -109,7 +113,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="point"></div>
+                <div class="pointInfo">
+                  <div v-for="(item, index) in otherInformationData" :class="{point: checkOtherIndex == index, pointC: checkOtherIndex != index}" @click="clickOtherInfo(item, index)"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -120,31 +126,22 @@
         </div>
       </div>
     </div>
-    <div class="back-top">
-      <div class="back-top-f" @click="onContactClick"><i class="iconfont icon-kefu" style="font-size: 57px; color: #fff;"></i></div>
-      <div class="back-top-s" @click="toTop"><i class="el-icon-arrow-up" style="font-weight: bold;font-size: 55px"></i></div>
-    </div>
-    <serviceWindow :show="openService" @onClose="onCloseService"/>
   </div>
 </template>
 
 <script>
 import { articleHome } from '@/request/api/new'
-import myVideo from "@/components/video.vue";
-import myFooter from "@/components/footer.vue";
-import serviceWindow from '@/components/serviceWindow'
+import myVideo from '@/components/video'
+import myFooter from '@/components/footer'
 import moment from 'moment'
 
 export default {
   props: {},
   components: {
     myVideo,
-    myFooter,
-    serviceWindow
+    myFooter
   },
   created() {},
-  computed: {},
-  watch: {},
   mounted() {
     this.getArticleData()
   },
@@ -153,10 +150,9 @@ export default {
 
   data() {
     return {
-      openService:false,
       medicalCareList: [{
         title: '长护险',
-        text: '7年磨一剑，专注居家养老服务;5大服务保障体系，18项服务标准;;三甲医院专家教在线指导，千名专业护理人员倾情服务',
+        text: '7年磨一剑，专注居家养老服务;5大服务保障体系，18项服务标准;三甲医院专家教在线指导，千名专业护理人员倾情服务',
         img: require('../assets/image/medicalCarebg1.png')
       },{
         title: '护理服务 首选百年医养',
@@ -189,9 +185,13 @@ export default {
       newestActivity: [], // 最新活动
       otherInformationList: [], // 其他资讯列表
       otherInformationData: [], // 其他资讯列表
+      otherInformation: [],
+      checkOtherIndex: 0, // 选中其他资讯
     };
   },
+  computed: {
 
+  },
   methods: {
     getArticleData() {
       const params = {}
@@ -216,9 +216,19 @@ export default {
               title: item.title,
             }
           })
-          console.log('改变日期：', this.otherInformationList)
+          this.otherInformationData = this.splitArray(this.otherInformationList,4)
+          this.otherInformation = this.otherInformationData[0]
+          console.log('改变日期：', this.otherInformationData)
         }
       })
+    },
+    splitArray(arr, len){
+      let a_len = arr.length;
+      let result = [];
+      for(let i = 0;i < a_len; i += len) {
+        result.push(arr.slice(i,i+len));
+      }
+      return result;
     },
     onDetailClick(name, id) {
       this.$router.push({
@@ -228,19 +238,51 @@ export default {
         },
       });
     },
-    //立即咨询 click
-    onContactClick(){
-      console.log('onContactClick')
-      this.openService = true
+    // 选中分页
+    clickOtherInfo(type,index) {
+      this.checkOtherIndex = index
     },
-    //关闭服务窗口 click
-    onCloseService(){
-      this.openService = false
+    // 跳转医养
+    toCare(type) {
+      if (type == 0) {
+        this.$router.push({
+          path: 'medicalservices?id=长护险'
+        })
+      } else if (type == 1) {
+        this.$router.push({
+          path: 'medicalservices?id=护理'
+        })
+      } else if (type == 2) {
+        this.$router.push({
+          path: 'medicalservices?id=陪护'
+        })
+      }
     },
-    // 返回顶部
-    toTop() {
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
+    // 跳转产品
+    toProduct(type, index) {
+      if (type == 1 && index == 0) {
+        this.$router.push({
+          path: 'eleproducts/ylWatch'
+        })
+      } else if (type == 1 && index == 1) {
+        this.$router.push({
+          path: 'eleproducts/lxWatch'
+        })
+      } else if (type == 2 && index == 0) {
+        this.$router.push({
+          path: 'eleproducts/bloodPressure'
+        })
+      } else if (type == 2 && index == 1) {
+        this.$router.push({
+          path: 'eleproducts/weighingScale'
+        })
+      }
+    },
+    // 跳转解决方案
+    toProgram() {
+      this.$router.push({
+        path: 'commandcenter'
+      })
     },
     // 跳转咨询
     toNew(type) {
@@ -253,15 +295,53 @@ export default {
           path: 'new?id=健康资讯'
         })
       }
+    },
+    // 跳转咨询详情
+    toDetail(detail) {
+      if (detail.categoryId == 1) {
+        // 企业资讯
+        this.$router.push({
+          name: "newdetail",
+          params: {
+            id: detail.id,
+          },
+          query: {
+            id: '企业资讯'
+          }
+        })
+      } else if (detail.categoryId == 2) {
+        // 健康资讯
+        this.$router.push({
+          name: "newdetail",
+          params: {
+            id: detail.id,
+          },
+          query: {
+            id: '健康资讯'
+          }
+        })
+      }
     }
   },
+  watch: {
+    checkOtherIndex(val) {
+      console.log('监听数据：', val)
+      let data = this.otherInformationData.find((item, index) => index == val)
+      console.log('监听数据：2', data)
+      this.otherInformation = data
+      console.log('监听数据：3', this.otherInformation)
+    }
+  }
 };
 </script>
 
 <style lang="scss">
+  @function torem($px){//$px为需要转换的字号
+    @return $px / 30px * 1rem; //100px为根字体大小
+  }
   .detail-btn {
-    padding: 7px 18px;
-    font-size: 13px;
+    padding: torem(7px) torem(18px);
+    font-size: torem(13px);
     color: #fff;
     border-radius: calc(100vh - 1px);
     background-color: #29a93e;
@@ -275,74 +355,74 @@ export default {
     }
   }
   .video-w {
-  position: relative;
-  width: 100%;
-  height: 886px;
-
-  & > img,
-  .mask {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-  & > .mask {
+    position: relative;
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
+    height: auto;
+
+    & > img,
+    .mask {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    & > .mask {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
 }
   .content-w {
   /*padding: 5% 0 10% 0;*/
   .yyfw {
     background: #F4F4F4;
     text-align: center;
-    padding-top: 58px;
-    padding-bottom: 112px;
+    padding-top: torem(58px);
+    padding-bottom: torem(112px);
     &_t {
-      font-size: 34px;
+      font-size: torem(34px);
       font-family: Microsoft YaHei;
       font-weight: bold;
       color: #333333;
     }
     &_subt {
-      font-size: 28px;
+      font-size: torem(28px);
       font-family: Arial;
       font-weight: 400;
       color: #999999;
       text-transform: uppercase;
-      margin-top: 15px;
-      margin-bottom: 60px;
+      margin-top: torem(15px);
+      margin-bottom: torem(60px);
     }
     &_c {
       display: flex;
       align-items: center;
       justify-content: center;
       &_i {
-        width: 386px;
-        height: 374px;
+        width: torem(386px);
+        height: torem(374px);
         background: #FFFFFF;
-        border-radius: 10px;
-        margin-right: 20px;
+        border-radius: torem(10px);
+        margin-right: torem(20px);
         position: relative;
         .img {
           width: 100%;
-          height: 240px;
-          border-radius: 10px 10px 0px 0px;
+          height: torem(240px);
+          border-radius: torem(10px) torem(10px) 0px 0px;
           background: center center no-repeat;
           background-size: auto;
         }
         .info {
           text-align: left;
-          padding: 20px 11px;
+          padding: torem(20px) torem(11px);
           .info_t {
-            font-size: 18px;
+            font-size: torem(18px);
             font-family: Microsoft YaHei;
             font-weight: bold;
             color: #333333;
-            margin-bottom: 15px;
+            margin-bottom: torem(15px);
           }
           .info_t1 {
-            font-size: 14px;
+            font-size: torem(14px);
             font-family: Microsoft YaHei;
             font-weight: 400;
             color: #666666;
@@ -353,19 +433,19 @@ export default {
         display: none
       }
       &_i:hover {
-        box-shadow: 0px 12px 18px -1px hsl(0deg 0% 49% / 35%);
+        box-shadow: 0px torem(12px) torem(18px) torem(-1px) hsl(0deg 0% 49% / 35%);
       }
       &_i:hover .hover {
         display: block;
         position: absolute;
         left: 45%;
-        bottom: -21px;
-        width: 43px;
-        height: 43px;
+        bottom: torem(-21px);
+        width: torem(43px);
+        height: torem(43px);
         text-align: center;
-        line-height: 43px;
+        line-height: torem(43px);
         background: #30C159;
-        box-shadow: 0px 2px 8px 0px rgba(48, 193, 89, 0.35);
+        box-shadow: 0px torem(2px) torem(8px) 0px rgba(48, 193, 89, 0.35);
         border-radius: 50%;
         cursor: pointer;
       }
@@ -374,59 +454,59 @@ export default {
   .zncp {
     background: #ffffff;
     text-align: center;
-    padding-top: 58px;
-    padding-bottom: 112px;
+    padding-top: torem(58px);
+    padding-bottom: torem(112px);
     &_t {
-      font-size: 34px;
+      font-size: torem(34px);
       font-family: Microsoft YaHei;
       font-weight: bold;
       color: #333333;
     }
     &_subt {
-      font-size: 28px;
+      font-size: torem(28px);
       font-family: Arial;
       font-weight: 400;
       color: #999999;
       text-transform: uppercase;
-      margin-top: 15px;
-      margin-bottom: 60px;
+      margin-top: torem(15px);
+      margin-bottom: torem(60px);
     }
     &_c {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 20px;
+      margin-bottom: torem(20px);
       &_i {
-        width: 590px;
-        height: 400px;
+        width: torem(590px);
+        height: torem(400px);
         position: relative;
-        margin-right: 18px;
-        border-radius: 10px;
+        margin-right: torem(18px);
+        border-radius: torem(10px);
         background: center center no-repeat;
         background-image: url('../assets/image/medicalCarebg1.png');
         background-size: auto;
         display: block;
         &_info {
           position: absolute;
-          bottom: 23px;
-          left: 19px;
+          bottom: torem(23px);
+          left: torem(19px);
           text-align: left;
           &_a {
-            font-size: 16px;
+            font-size: torem(16px);
             font-family: Microsoft YaHei;
             font-weight: 400;
             color: #FFFFFF;
-            margin-bottom: 13px;
+            margin-bottom: torem(13px);
           }
           &_t {
-            font-size: 20px;
+            font-size: torem(20px);
             font-family: Microsoft YaHei;
             font-weight: bold;
             color: #FFFFFF;
-            margin-bottom: 8px;
+            margin-bottom: torem(8px);
           }
           &_t1 {
-            font-size: 14px;
+            font-size: torem(14px);
             font-family: Microsoft YaHei;
             font-weight: 400;
             color: #FFFFFF;
@@ -437,27 +517,27 @@ export default {
         display: none;
       }
       &_i:hover {
-        box-shadow: 0 0 0 0 #333, inset 0 0 0 0 #423880, inset 0 -224px 118px -107px #5f534a, inset 0px 0px 0 0 #5f534a;
+        box-shadow: 0 0 0 0 #333, inset 0 0 0 0 #423880, inset 0 -7.4666666667rem 3.9333333333rem -3.5666666667rem rgb(0 0 0 / 78%), inset 0px 0px 0 0 rgb(0 0 0 / 69%)
       }
       &_i:hover .hover {
         display: block;
-        font-size: 16px;
+        font-size: torem(16px);
         font-family: Microsoft YaHei;
         font-weight: 400;
         color: #30C159;
         cursor: pointer;
-        margin-top: 15px;
+        margin-top: torem(15px);
       }
     }
   }
   .jjfa {
     &_c {
       width: 100%;
-      height: 400px;
+      height: torem(400px);
       position: relative;
       &_img {
         width: 100%;
-        height: 400px;
+        height: torem(400px);
         background: url('../assets/image/solutionBg1.png') center center no-repeat;
         background-size: auto;
       }
@@ -466,68 +546,83 @@ export default {
         left: 20%;
         top: 30%;
         &_t {
-          font-size: 42px;
+          font-size: torem(42px);
           font-family: OPPOSans;
           font-weight: bold;
           color: #FFFFFF;
-          margin-bottom: 18px;
+          margin-bottom: torem(18px);
         }
         &_t1 {
-          font-size: 16px;
+          font-size: torem(16px);
           font-family: OPPOSans;
           font-weight: 400;
           color: #FFFFFF;
-          margin-bottom: 29px;
+          margin-bottom: torem(29px);
         }
         &_b {
-          width: 122px;
-          height: 40px;
-          background: #FFFFFF;
-          border: 1px solid #FFFFFF;
-          border-radius: 20px;
-          font-size: 16px;
+          width: torem(122px);
+          height: torem(40px);
+          border: torem(1px) solid #FFFFFF;
+          border-radius: torem(20px);
+          font-size: torem(16px);
           font-family: Microsoft YaHei;
           font-weight: 400;
-          color: #39C460;
+          color: #ffffff;
           display: flex;
           align-items: center;
           justify-content: center;
+          cursor: pointer;
         }
       }
     }
   }
+    .jjfa_c_info_b:hover {
+      width: torem(122px);
+      height: torem(40px);
+      background: #FFFFFF;
+      border: torem(1px) solid #FFFFFF;
+      border-radius: torem(20px);
+      font-size: torem(16px);
+      font-family: Microsoft YaHei;
+      font-weight: 400;
+      color: #39C460;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
   .xwhd {
     background: #F4F4F4;
     text-align: center;
-    padding-top: 58px;
-    padding-bottom: 112px;
+    padding-top: torem(58px);
+    padding-bottom: torem(112px);
     &_t {
-      font-size: 34px;
+      font-size: torem(34px);
       font-family: Microsoft YaHei;
       font-weight: bold;
       color: #333333;
     }
     &_subt {
-      font-size: 28px;
+      font-size: torem(28px);
       font-family: Arial;
       font-weight: 400;
       color: #999999;
       text-transform: uppercase;
-      margin-top: 15px;
-      margin-bottom: 60px;
+      margin-top: torem(15px);
+      margin-bottom: torem(60px);
     }
     &_c {
       &_top {
         width: 100%;
-        border-bottom: 1px solid #EEEEEE;
-        margin-bottom: 19px;
+        border-bottom: torem(1px) solid #EEEEEE;
+        margin-bottom: torem(19px);
         position: relative;
         .triangle {
           width: 0;
           height: 0;
-          border-left: 8px solid transparent;
-          border-right: 8px solid transparent;
-          border-bottom: 8px solid #fff;
+          border-left: torem(8px) solid transparent;
+          border-right: torem(8px) solid transparent;
+          border-bottom: torem(8px) solid #fff;
           position: absolute;
           left: 13%;
           bottom: 0;
@@ -536,13 +631,13 @@ export default {
           margin-bottom: 0px;
         }
         &_b {
-          width: 120px;
-          height: 46px;
+          width: torem(120px);
+          height: torem(46px);
           background: #30C159;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 20px;
+          font-size: torem(20px);
           font-family: Microsoft YaHei;
           font-weight: 400;
           color: #FFFFFF;
@@ -553,131 +648,145 @@ export default {
         align-items: center;
         justify-content: center;
         &_i {
-          width: 386px;
-          height: 472px;
+          width: torem(386px);
+          height: torem(472px);
           background: #F4F4F4;
-          border-radius: 10px;
-          margin-right: 20px;
+          border-radius: torem(10px);
+          margin-right: torem(20px);
           &_img {
             width: 100%;
-            height: 240px;
-            border-radius: 10px 10px 0px 0px;
+            height: torem(240px);
+            border-radius: torem(10px) torem(10px) 0px 0px;
             background: center center no-repeat;
-            background-size: auto;
+            background-size: cover;
           }
           &_info {
-            height: 167px;
+            height: torem(167px);
             text-align: left;
-            padding: 20px 11px;
+            padding: torem(15px) torem(11px);
+            padding-bottom: 0;
             background: #FFFFFF;
-            border-radius: 10px;
+            border-radius: 0px 0px torem(10px) torem(10px);
             &_t {
-              font-size: 14px;
+              font-size: torem(14px);
               font-family: Microsoft YaHei;
               font-weight: bold;
               color: #333333;
-              margin-bottom: 15px;
+              margin-bottom: torem(15px)
             }
             &_t1 {
-              font-size: 14px;
+              font-size: torem(14px);
               font-family: Microsoft YaHei;
               font-weight: 400;
               color: #666666;
+              width: 100%;
+              height: torem(60px);
+              max-height: torem(60px);
+              overflow: hidden;
+              display: -webkit-box;
+              -webkit-line-clamp: 3;
+              -webkit-box-orient: vertical;
+            }
+            &_t2 {
+              margin-bottom: torem(20px);
+              text-align: right;
+              font-size: torem(14px);
+              font-family: Microsoft YaHei;
+              font-weight: 400;
+              color: #999999;
             }
           }
         }
         &_list {
-          width: 386px;
-          height: 396px;
+          width: torem(386px);
+          height: torem(396px);
           background: #FFFFFF;
-          border-radius: 0px 0px 10px 10px;
+          border-radius: 0px 0px torem(10px) torem(10px);
           &_c {
-            height: 97px;
-            padding: 28px 30px;
+            height: torem(97px);
+            padding: torem(28px) torem(30px);
             display: flex;
             align-items: center;
             text-align: left;
-            border-bottom: 1px solid #EEEEEE;
+            border-bottom: torem(1px) solid #EEEEEE;
+            cursor: pointer;
             &_id {
-              font-size: 28px;
+              font-size: torem(28px);
               font-family: Arial;
               font-weight: bold;
               color: #666666;
               &_s {
-                font-size: 20px;
+                font-size: torem(20px);
                 color: #999999;
               }
             }
             &_t {
-              font-size: 14px;
+              font-size: torem(14px);
               font-family: Microsoft YaHei;
               font-weight: bold;
               color: #333333;
-              margin-left: 11px;
+              margin-left: torem(11px);
             }
           }
           &_c:last-child {
             border-bottom: none;
           }
         }
+        .pointInfo {
+          display: flex;
+          align-items: center;
+        }
         .point {
-          width: 12px;
-          height: 12px;
+          width: torem(12px);
+          height: torem(12px);
           background: #30C159;
           border-radius: 50%;
-          margin-top: 18px;
+          margin-top: torem(18px);
+          margin-right: torem(5px);
+        }
+        .pointC {
+          width: torem(12px);
+          height: torem(12px);
+          border-radius: 50%;
+          margin-top: torem(18px);
+          margin-right: torem(5px);
+          background: #CCCCCC;
         }
       }
+    }
+    .xwhd_c_bottom_list:hover {
+      box-shadow: 0px torem(12px) torem(18px) torem(-1px) hsl(0deg 0% 49% / 35%);
+    }
+    .xwhd_c_bottom_i_h:hover {
+      box-shadow: 0px torem(12px) torem(18px) torem(-1px) hsl(0deg 0% 49% / 35%);
     }
     &_bottom {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-top: 60px;
+      margin-top: torem(60px);
       &_b {
-        width: 122px;
-        height: 40px;
-        border: 1px solid #333333;
-        border-radius: 20px;
+        width: torem(122px);
+        height: torem(40px);
+        border: torem(1px) solid #333333;
+        border-radius: torem(20px);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 16px;
+        font-size: torem(16px);
         font-family: Microsoft YaHei;
         font-weight: 400;
         color: #333333;
-        margin-right: 57px;
+        margin-right: torem(57px);
       }
       &_b:hover {
         color: #ffffff;
-        border: 1px solid #30C159;
+        border: torem(1px) solid #30C159;
         background: #30C159;
-        border-radius: 20px;
+        border-radius: torem(20px);
         cursor: pointer;
       }
     }
   }
 }
-  .back-top {
-    position: fixed;
-    right: 0;
-    bottom: 20%;
-    .back-top-f {
-      width: 80px;
-      height: 80px;
-      background: #57cb78;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .back-top-s {
-      width: 80px;
-      height: 80px;
-      background: #ababab;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  }
 </style>
