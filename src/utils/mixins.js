@@ -17,6 +17,7 @@ const index = {
     },
 
     beforeRouteUpdate(to, from, next) {
+        console.log('跳转：', this.$refs)
         this.$refs.tabs.scrollTo(to.query.id);
         next();
     },

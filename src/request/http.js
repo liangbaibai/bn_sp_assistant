@@ -15,7 +15,6 @@ function getBaseUrl() {
   switch (process.env.NODE_ENV) {
     case 'development': return ''
     case 'testing': return 'http://192.168.10.195/'
-    case 'beta': return 'https://www.bainianyang.com'
     case 'production': return 'https://www.bainianyang.com'
     default : return 'http://192.168.10.195/'
   }

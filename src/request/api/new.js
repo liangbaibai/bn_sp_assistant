@@ -1,5 +1,5 @@
 import { ajax } from '../http'
-const admin = '/official-website'
+const admin = '/official_s2'
 
 // 获取资讯分类
 export const categoryData = params => {

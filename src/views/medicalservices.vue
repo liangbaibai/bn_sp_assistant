@@ -10,6 +10,9 @@
         title-active-color="#29A93E"
         color="#29A93E"
         line-height="0"
+        ref="tabs"
+        sticky
+        id="tabsId"
         @click="onTabsClick"
       >
         <van-tab title-class="tab_title" name="长护险">
@@ -54,36 +57,6 @@
           </div>
           <hl v-show="showTabHl"/>
         </van-tab>
-<!--
-        <van-tab title-class="tab_title" name="陪护">
-          <div slot="title" class="tab-title-w">
-            <div
-              :class="
-                tabActive === '陪护'
-                  ? 'tab-title&#45;&#45;border tab-title'
-                  : 'tab-title'
-              "
-            >
-              陪护
-            </div>
-          </div>
-          <ph v-show="showTabPh"/>
-        </van-tab>
-
-        <van-tab title-class="tab_title" name="护理">
-          <div slot="title" class="tab-title-w">
-            <div
-              :class="
-                tabActive === '护理'
-                  ? 'tab-title&#45;&#45;border tab-title'
-                  : 'tab-title'
-              "
-            >
-              护理
-            </div>
-          </div>
-          <hl v-show="showTabHl"/>
-        </van-tab>-->
       </van-tabs>
     </div>
 
@@ -106,11 +79,22 @@ export default {
     ph,
     hl
   },
-  created() {},
-
-  watch: {},
-
-  mounted() {},
+  created() {
+    let path = this.$route.query.id
+    if (path == '长护险') {
+      this.showTabChx = true
+      this.tabActive = '长护险'
+    } else if (path == '陪护') {
+      this.showTabPh = true
+      this.tabActive = '陪护'
+    } else if (path == '护理') {
+      this.showTabHl = true
+      this.tabActive = '护理'
+    }
+  },
+  mounted() {
+    this.scrollToCmtList()
+  },
 
   data() {
     return {
@@ -128,13 +112,75 @@ export default {
       console.log('点击：1',tab);
       if(tab == '长护险') {
         this.showTabChx = true
+        this.showTabPh = false
+        this.showTabHl = false
       } else if (tab == '陪护') {
         this.showTabPh = true
+        this.showTabChx = false
+        this.showTabHl = false
       } else if (tab == '护理') {
         this.showTabHl = true
+        this.showTabChx = false
+        this.showTabPh = false
       }
+    },
+    // 实现滚动条平滑滚动的方法
+    scrollToCmtList() {
+      // 1.1 返回文档在垂直方向已滚动的像素值
+      const now = window.scrollY
+      // 1.2 目标位置（文章信息区域的高度）
+      let dist = document.querySelector('.banner-w').offsetHeight
+      // 1.3 可滚动高度 = 整个文档的高度 - 浏览器窗口的视口（viewport）高度
+      const avalibleHeight = document.documentElement.scrollHeight - window.innerHeight
+
+      // 2.1 如果【目标高度】 大于 【可滚动的高度】
+      if (dist > avalibleHeight) {
+        // 2.2 就把目标高度，设置为可滚动的高度
+        dist = avalibleHeight
+      }
+
+      // 3. 动态计算出步长值
+      const step = (dist - now) / 10
+
+      setTimeout(() => {
+        // 4.2 如果当前的滚动的距离不大于 1px，则直接滚动到目标位置，并退出递归
+        if (Math.abs(step) <= 1) {
+          return window.scrollTo(0, dist)
+        }
+        // 4.1 每隔 10ms 执行一次滚动，并递归地进行下一次的滚动
+        window.scrollTo(0, now + step)
+        this.scrollToCmtList()
+      }, 10)
     }
   },
+  watch: {
+    $route: {
+      deep: true,
+      handler(newVal, oldVal) {
+        console.log('跳转监听路由：', newVal)
+        if (newVal.query.id == '长护险') {
+          this.showTabChx = true
+          this.showTabPh = false
+          this.showTabHl = false
+          this.tabActive = '长护险'
+        } else if (newVal.query.id == '陪护') {
+          this.showTabPh = true
+          this.showTabChx = false
+          this.showTabHl = false
+          this.tabActive = '陪护'
+        } else if (newVal.query.id == '护理') {
+          this.showTabHl = true
+          this.showTabChx = false
+          this.showTabPh = false
+          this.tabActive = '护理'
+        }
+        this.scrollToCmtList()
+      }
+    },
+    tabActive(val) {
+      console.log('监听tab:', val)
+    }
+  }
 };
 </script>
 
@@ -210,6 +256,9 @@ export default {
     .van-sticky {
       padding-bottom: 0px;
       padding-top: torem(26px);
+    }
+    .van-sticky--fixed {
+      top: torem(73px);
     }
     .van-tabs__content {
       margin-top: torem(43px);

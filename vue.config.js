@@ -14,15 +14,15 @@ module.exports = {
     https: false, // false关闭https，true为开启
     open: false, // 自动打开浏览器
     proxy: {
-      '/official-website': {
+      '/official_s2': {
         // target: 'http://192.168.10.85:10001/', // 后端本地
-        target: 'http://192.168.10.195/',
+        target: 'https://www.bainianyang.com/',
         changeOrigin: true,  // 设置跨域
         pathRewrite: {}
       },
     }
   },
-  publicPath: '',
+  publicPath:'/html/pc',
   chainWebpack: (config) => {
     config.resolve.alias
       .set('@', resolve('src'))
