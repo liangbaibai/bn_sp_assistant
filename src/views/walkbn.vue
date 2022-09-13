@@ -370,6 +370,13 @@ export default {
     width: 1000px;
     margin: 0 auto;
     padding: 0 0 torem(78px) 0;
+    .van-sticky {
+      padding-bottom: 0px;
+      padding-top: torem(26px);
+    }
+    .van-sticky--fixed {
+      top: torem(73px);
+    }
   }
 
   .tab-content {

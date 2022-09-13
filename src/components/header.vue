@@ -1,5 +1,5 @@
 <template>
-  <div :class="'header-w '+ $route.meta.headerClass">
+  <div :class="'header-w '+ $route.meta.headerClass" id="header-w">
     <div class="header-c grid-contain">
       <div class="nav-w">
         <div class="logo-w" @click="onLogoClick"><img src="@/assets/image/webLogo.png" alt="" /></div>
@@ -43,13 +43,23 @@ export default {
           let that = this;
           for (let i = 0; i < target.length; i++) {
             target[i].addEventListener("mouseover", () => {
+              console.log('mouseover',)
               // 切换左侧默认选项为第一个
               targetChild.addEventListener("mouseleave", () => {
                 targetChild.style.display = 'none'
               })
               that.$refs.tabsMenu.handleTabClick(1, String(i));
             });
+            target[i].addEventListener("mouseleave", () => {
+              console.log('mouseleave')
+              let targetPane = document.getElementById('pane-' + that.indexCheckTitle)
+              targetPane.addEventListener("mouseleave", () => {
+                console.log('targetPane-mouseleave', targetPane, that.indexCheckTitle)
+                that.indexCheckTitle = that.indexTitle
+              })
+            })
             target[i].addEventListener("mouseenter", () => {
+              console.log('mouseenter')
               targetChild.style.display = 'block'
               targetChild.children[i].style.display = 'block'
               that.indexCheckTitle = that.navList[i].title
@@ -229,6 +239,7 @@ export default {
       ],
       navIndex: null,
       indexCheckTitle: '', // tabs
+      indexTitle: '', // tabs
       indexCheckTitleChild: '', // tabs二级菜单
       indexCheckName: '', // tabs
       menuSecondary: '', // 二级菜单
@@ -243,6 +254,7 @@ export default {
           this.indexCheckTitleChild = item.menu[0].url
           this.menuSecondary = item.menu
           this.indexCheckTitle = item.title
+          this.indexTitle = item.title
           this.indexCheckName = item.name
           sessionStorage.setItem('routeName', this.indexCheckTitle)
           this.$router.push({
@@ -253,8 +265,9 @@ export default {
     },
     // 二级菜单点击
     tabChildClick(tab, event) {
+      this.indexTitle = this.indexCheckTitle
       this.indexCheckTitleChild = tab.paneName
-      console.log('选中二级：', tab)
+      console.log('选中二级：', this.indexTitle)
       this.$router.push({
         path: '/' + tab.paneName,
       });
@@ -332,7 +345,7 @@ export default {
   .el-tabs {
     margin-bottom: torem(1px);
     position: relative;
-    left: torem(600px);
+    left: torem(715px);
   }
   .el-tabs__header {
     margin: 0;

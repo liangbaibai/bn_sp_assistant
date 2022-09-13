@@ -2,7 +2,7 @@
   <div class="home-w">
     <div class="home-c ">
       <div class="video-w">
-         <my-video :src="'http://1253484761.vod2.myqcloud.com/9d41b30bvodcq1253484761/7033e149387702301233726239/f0.mp4'"></my-video>
+         <my-video :src="videoStr"></my-video>
 <!--        <img src="@/assets/image/h-b-1.png" alt="" />-->
         <div class="mask"></div>
       </div>
@@ -150,6 +150,7 @@ export default {
 
   data() {
     return {
+      videoStr: 'http://1253484761.vod2.myqcloud.com/9d41b30bvodcq1253484761/7033e149387702301233726239/f0.mp4',
       medicalCareList: [{
         title: '长护险',
         text: '7年磨一剑，专注居家养老服务;5大服务保障体系，18项服务标准;三甲医院专家教在线指导，千名专业护理人员倾情服务',
@@ -517,7 +518,7 @@ export default {
         display: none;
       }
       &_i:hover {
-        box-shadow: 0 0 0 0 #333, inset 0 0 0 0 #423880, inset 0 -7.4666666667rem 3.9333333333rem -3.5666666667rem rgb(0 0 0 / 78%), inset 0px 0px 0 0 rgb(0 0 0 / 69%)
+        box-shadow: 0 0 0 0 #333, inset 0 0 0 0 #423880, inset 0 -7.4666666667rem 3.9333333333rem -3.5666666667rem rgb(0 0 0 / 68%), inset 0px 0px 0 0 rgb(0 0 0 / 59%)
       }
       &_i:hover .hover {
         display: block;
@@ -726,6 +727,9 @@ export default {
               font-weight: bold;
               color: #333333;
               margin-left: torem(11px);
+            }
+            &_t:hover {
+              color: #30C159;
             }
           }
           &_c:last-child {

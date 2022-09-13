@@ -1,6 +1,6 @@
 <template>
-  <div class="bloodPressure">
-    <div class="bloodPressure_top">
+  <div class="bloodPressure" id="bloodPressure">
+    <div class="bloodPressure_top" id="bloodPressure_top">
       <div class="bloodPressure_top_t">全自动双管血压计</div>
       <el-button class="bloodPressure_top_btn" type="success" plain @click="toBuy">立即购买</el-button>
     </div>
@@ -43,6 +43,29 @@
     },
     mounted() {
       this.topFunction()
+      setTimeout(() => {
+        let mechanismDetailInfo = document.getElementById('bloodPressure')
+        let myNav = document.querySelector('.bloodPressure_top')
+        console.log("页面滚动", mechanismDetailInfo);
+        mechanismDetailInfo.addEventListener("scroll", function (e) {
+          let scrollTop = e.target.scrollTop;
+          let clientHeight = e.target.clientHeight;
+          let scrollHeight = e.target.scrollHeight;
+          console.log("页面滚动", scrollTop,clientHeight,scrollHeight);
+          if (scrollTop > 0) {
+            let process = document.getElementById('header-w')
+            let ylWatchTop = document.getElementById('bloodPressure_top')
+            process.style.display = 'none'
+            ylWatchTop.style.top = '0'
+            process.style.zIndex = '9999 !important'
+          } else {
+            let process = document.getElementById('header-w')
+            let ylWatchTop = document.getElementById('bloodPressure_top')
+            process.style.display = 'block'
+            ylWatchTop.style.top = 73 / 30 * 32 + 'px'
+          }
+        })
+      },500)
     },
     methods: {
       topFunction() {
@@ -63,6 +86,9 @@
   }
   .bloodPressure {
     background: #FFFFFF;
+    overflow-y: scroll;
+    height: 100%;
+    max-height: 100vh;
     &_top {
       position: fixed;
       width: 100vw;
@@ -97,5 +123,24 @@
       justify-content: center;
       margin-top: torem(68px);
     }
+  }
+  /*修改滚动条样式*/
+  .bloodPressure::-webkit-scrollbar{
+    width: 0px;
+    /*height: 30px;*/
+  }
+  .bloodPressure::-webkit-scrollbar-track{
+    border-radius: 0px;
+  }
+  .bloodPressure::-webkit-scrollbar-thumb{
+    background: #D9D9D9;
+    border-radius: 0px;
+  }
+  .bloodPressure::-webkit-scrollbar-thumb:hover{
+    background: #D9D9D9;
+    border-radius: 0px;
+  }
+  .bloodPressure::-webkit-scrollbar-corner{
+    border-radius: 0px;
   }
 </style>

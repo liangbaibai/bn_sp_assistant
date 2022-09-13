@@ -1,6 +1,6 @@
 <template>
-  <div class="weighingScale">
-    <div class="weighingScale_top">
+  <div class="weighingScale" id="weighingScale">
+    <div class="weighingScale_top" id="weighingScale_top">
       <div class="weighingScale_top_t">秤要精准 也要颜值</div>
       <el-button class="weighingScale_top_btn" type="success" plain @click="toBuy">立即购买</el-button>
     </div>
@@ -38,6 +38,29 @@
     },
     mounted() {
       this.topFunction()
+      setTimeout(() => {
+        let mechanismDetailInfo = document.getElementById('weighingScale')
+        let myNav = document.querySelector('.weighingScale_top')
+        console.log("页面滚动", mechanismDetailInfo);
+        mechanismDetailInfo.addEventListener("scroll", function (e) {
+          let scrollTop = e.target.scrollTop;
+          let clientHeight = e.target.clientHeight;
+          let scrollHeight = e.target.scrollHeight;
+          console.log("页面滚动", scrollTop,clientHeight,scrollHeight);
+          if (scrollTop > 0) {
+            let process = document.getElementById('header-w')
+            let ylWatchTop = document.getElementById('weighingScale_top')
+            process.style.display = 'none'
+            ylWatchTop.style.top = '0'
+            process.style.zIndex = '9999 !important'
+          } else {
+            let process = document.getElementById('header-w')
+            let ylWatchTop = document.getElementById('weighingScale_top')
+            process.style.display = 'block'
+            ylWatchTop.style.top = 73 / 30 * 32 + 'px'
+          }
+        })
+      },500)
     },
     methods: {
       topFunction() {
@@ -58,6 +81,9 @@
   }
   .weighingScale {
     background: #FFFFFF;
+    overflow-y: scroll;
+    height: 100%;
+    max-height: 100vh;
     &_top {
       position: fixed;
       width: 100vw;
@@ -92,5 +118,24 @@
       justify-content: center;
       margin-top: torem(68px);
     }
+  }
+  /*修改滚动条样式*/
+  .weighingScale::-webkit-scrollbar{
+    width: 0px;
+    /*height: 30px;*/
+  }
+  .weighingScale::-webkit-scrollbar-track{
+    border-radius: 0px;
+  }
+  .weighingScale::-webkit-scrollbar-thumb{
+    background: #D9D9D9;
+    border-radius: 0px;
+  }
+  .weighingScale::-webkit-scrollbar-thumb:hover{
+    background: #D9D9D9;
+    border-radius: 0px;
+  }
+  .weighingScale::-webkit-scrollbar-corner{
+    border-radius: 0px;
   }
 </style>
