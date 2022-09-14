@@ -150,7 +150,7 @@ export default {
       top: 29%;
       &_t {
         font-size: torem(36px);
-        font-family: OPPOSans;
+        font-family: Microsoft YaHei;
         font-weight: bold;
         color: #FFFFFF;
         margin-bottom: torem(18px);

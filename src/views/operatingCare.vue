@@ -36,9 +36,9 @@
       </div>
     </div>
     <div class="main-w-img">
-      <img src="@/assets/image/yyCare_d_p1.png" alt="" style="width: 650px; height: auto;">
+      <img src="@/assets/image/yyCare_d_p1.png" alt="" class="yyCare_d_p1">
       <div class="main-w-img-r">
-        <img src="@/assets/image/yypt_icon.png" alt="" style="width: 95px;height: 12px;">
+        <img src="@/assets/image/yypt_icon.png" alt="" class="yypt_icon">
         <div class="main-w-img-r-c">
           <div class="main-w-img-r-c-t">长护险资料一键上传</div>
           <div class="main-w-img-r-c-p">长护险申报一体化平台，能提供从报名、资料审查、进度查询、结果公示等全流程在线支持，一个云端账号即可实现全程轻松操作。
@@ -48,19 +48,19 @@
     </div>
     <div class="main-w-img-right">
       <div class="main-w-img-right-r">
-        <img src="@/assets/image/yypt_icon.png" alt="" style="width: 95px;height: 12px;">
+        <img src="@/assets/image/yypt_icon.png" alt="" class="yypt_icon">
         <div class="main-w-img-right-r-c">
           <div class="main-w-img-right-r-c-t">护士、护工人员救援响应</div>
           <div class="main-w-img-right-r-c-p">长护险申报一体化平台，能提供从报名、资料审查、进度查询、结果公示等全流程在线支持，一个云端账号即可实现全程轻松操作。
           </div>
         </div>
       </div>
-      <img src="@/assets/image/yyCare_d_p2.png" alt="" style="width: 488px; height: auto;">
+      <img src="@/assets/image/yyCare_d_p2.png" alt="" class="yyCare_d_p2">
     </div>
     <div class="main-w-img">
-      <img src="@/assets/image/yyCare_d_p3.png" alt="" style="width: 467px; height: auto;">
+      <img src="@/assets/image/yyCare_d_p3.png" alt="" class="yyCare_d_p3">
       <div class="main-w-img-r">
-        <img src="@/assets/image/yypt_icon.png" alt="" style="width: 95px;height: 12px;">
+        <img src="@/assets/image/yypt_icon.png" alt="" class="yypt_icon">
         <div class="main-w-img-r-c">
           <div class="main-w-img-r-c-t">社区服务订单分配</div>
           <div class="main-w-img-r-c-p">平台注册的护士、护工人员（兼职、全职），可以如同“滴滴司机”一样注册、上线，接受平台分配的上门护理、居家陪护、医院陪护等订单，获得可观的经济收入。
@@ -70,7 +70,7 @@
     </div>
     <div class="main-w-img-btm">
       <div class="main-w-img-btm-r">
-        <img src="@/assets/image/yypt_icon.png" alt="" style="width: 95px;height: 12px;">
+        <img src="@/assets/image/yypt_icon.png" alt="" class="yypt_icon">
         <div class="main-w-img-btm-r-c">
           <div class="main-w-img-btm-r-c-t">医护人员学习、培训</div>
           <div class="main-w-img-btm-r-c-p">护士、护工人员职业技能高效率在线学习、培训平台。致力于为学习者提供优质的在线学习服务，帮助学习者提升各方面的能力，满足不同层次的学习需求，建立持续的个人学习数据信息档案。
@@ -112,7 +112,7 @@
 
           &_t {
             font-size: torem(42px);
-            font-family: OPPOSans;
+            font-family: Microsoft YaHei;
             font-weight: bold;
             color: #333333;
             line-height: torem(69px);
@@ -122,7 +122,7 @@
 
           &_p {
             font-size: torem(24px);
-            font-family: OPPOSans;
+            font-family: Microsoft YaHei;
             font-weight: 400;
             color: #333333;
             margin-bottom: torem(13px);
@@ -132,7 +132,7 @@
             width: torem(405px);
             height: auto;
             font-size: torem(14px);
-            font-family: OPPOSans;
+            font-family: Microsoft YaHei;
             font-weight: 400;
             color: #333333;
             line-height: torem(25px);
@@ -201,14 +201,19 @@
         }
       }
     }
+    .banner-w_imgs {
+      width: torem(407px);
+      height: torem(782px);
+      margin-top: torem(30px);
+    }
     .main-w {
-      margin-top: torem(228px);
+      margin-top: torem(184px);
       padding-bottom: torem(41px);
       &_top {
         text-align: center;
         &_t {
           font-size: torem(32px);
-          font-family: OPPOSans;
+          font-family: Microsoft YaHei;
           font-weight: 300;
           color: #666666;
           margin-bottom: torem(35px);
@@ -221,7 +226,7 @@
         }
         &_p {
           font-size: torem(32px);
-          font-family: OPPOSans;
+          font-family: Microsoft YaHei;
           font-weight: bold;
           color: #333333;
           margin: 0 auto;
@@ -267,6 +272,22 @@
           }
         }
       }
+    }
+    .yyCare_d_p1 {
+      width: torem(650px);
+      height: auto;
+    }
+    .yypt_icon {
+      width: torem(95px);
+      height: torem(12px);
+    }
+    .yyCare_d_p2 {
+      width: torem(488px);
+      height: auto;
+    }
+    .yyCare_d_p3 {
+      width: torem(467px);
+      height: auto;
     }
     .main-w-img-right {
       display: flex;

@@ -1,24 +1,23 @@
 <template>
-  <div class="medicalservices-w">
+  <div class="medicalservices-w" id="medicalservices-w">
     <div class="banner-w">
       <img src="@/assets/image/m-b-1.png" alt="" />
     </div>
-
-    <div class="main-w">
+    <div class="main-w" id="main-w">
       <van-tabs
-        v-model="tabActive"
-        title-active-color="#29A93E"
-        color="#29A93E"
-        line-height="0"
-        ref="tabs"
-        sticky
-        id="tabsId"
-        @click="onTabsClick"
+          v-model="tabActive"
+          title-active-color="#29A93E"
+          color="#29A93E"
+          line-height="0"
+          ref="tabs"
+          sticky
+          id="tabsId"
+          @click="onTabsClick"
       >
         <van-tab title-class="tab_title" name="长护险">
           <div slot="title" class="tab-title-w">
             <div
-              :class="
+                :class="
                 tabActive === '长护险'
                   ? 'tab-title--border tab-title'
                   : 'tab-title'
@@ -94,6 +93,29 @@ export default {
   },
   mounted() {
     this.scrollToCmtList()
+    setTimeout(() => {
+      let mechanismDetailInfo = document.getElementById('medicalservices-w')
+      let myNav = document.querySelector('.van-sticky')
+      console.log("页面滚动1", mechanismDetailInfo);
+      mechanismDetailInfo.addEventListener("scroll", function (e) {
+        let scrollTop = e.target.scrollTop;
+        let clientHeight = e.target.clientHeight;
+        let scrollHeight = e.target.scrollHeight;
+        console.log("页面滚动2", scrollTop,clientHeight,scrollHeight);
+        if (scrollTop > 0) {
+          let process = document.getElementById('header-w')
+          let ylWatchTop = document.querySelector('.van-sticky')
+          process.style.display = 'none'
+          ylWatchTop.style.top = '0'
+          process.style.zIndex = '9999 !important'
+        } else {
+          let process = document.getElementById('header-w')
+          let ylWatchTop = document.querySelector('.van-sticky')
+          process.style.display = 'block'
+          ylWatchTop.style.top = 73 / 30 * 32 + 'px'
+        }
+      })
+    },500)
   },
 
   data() {
@@ -189,149 +211,170 @@ export default {
   @function torem($px){//$px为需要转换的字号
     @return $px / 30px * 1rem; //100px为根字体大小
   }
-.medicalservices-w {
-  background-color: #fff;
-  .banner-w {
-    .el-carousel__container {
-      height: torem(500px);
-    }
-    .el-carousel__button {
-      width: torem(10px);
-      height: torem(10px);
-      background: #30C159;
-      border-radius: 50%;
-    }
-    .el-carousel--horizontal {
-      position: relative;
-    }
-    .el-carousel__indicators--outside {
-      position: absolute;
-      bottom: torem(4px);
-    }
-    .el-carousel__indicator.is-active button {
-      opacity: 1;
-      background: #30C159;
-    }
-    .el-carousel__indicators--outside button {
-      opacity: 1;
-      background: #FFFFFF;
-    }
-  }
-  .main-w {
-    .van-tabs--line .van-tabs__wrap {
-      width: 60%;
-      border-bottom: torem(1px) solid #F4F4F4;
-    }
-    .tab-title-w .tab-title--border {
-      font-size: torem(20px);
-      font-family: Microsoft YaHei;
-      font-weight: bold;
-      color: #30C159;
-    }
-    .tab-title-w .tab-title {
-      font-size: torem(20px);
-      font-family: Microsoft YaHei;
-      font-weight: 400;
-      color: #333333;
-      line-height: torem(28px);
-    }
-    .tab-title_line {
-      width: 100%;
-      height: torem(4px);
-      border-radius: torem(5px);
-      background: #23ac38;
-      position: absolute;
-    }
-    .tab-title-w .tab-title--border {
-      margin: 0;
-      border-bottom: torem(4px) solid #23ac38;
-    }
-    .van-tabs--line .van-tabs__wrap .van-tabs__nav--line {
-      width: 50%;
-      margin: 0 auto;
-    }
-    .van-tab__text--ellipsis {
-      margin-bottom: torem(-5px);
-    }
-    .van-sticky {
-      padding-bottom: 0px;
-      padding-top: torem(26px);
-    }
-    .van-sticky--fixed {
-      top: torem(73px);
-    }
-    .van-tabs__content {
-      margin-top: torem(43px);
-    }
-  }
-  img {
-    width: 100%;
+  .medicalservices-w {
+    background-color: #fff;
+    overflow-y: scroll;
     height: 100%;
-  }
-}
-
-.pro_introduce-2 {
-  .detail {
-    width: 70%;
-  }
-}
-.pro_introduce-3 {
-  .tab-content {
-    /*margin: 52px 0 0 0;*/
-    .tab-img:nth-child(2){
-      margin: 45px 0;
+    max-height: 100vh;
+    .banner-w {
+      .el-carousel__container {
+        height: torem(500px);
+      }
+      .el-carousel__button {
+        width: torem(10px);
+        height: torem(10px);
+        background: #30C159;
+        border-radius: 50%;
+      }
+      .el-carousel--horizontal {
+        position: relative;
+      }
+      .el-carousel__indicators--outside {
+        position: absolute;
+        bottom: torem(4px);
+      }
+      .el-carousel__indicator.is-active button {
+        opacity: 1;
+        background: #30C159;
+      }
+      .el-carousel__indicators--outside button {
+        opacity: 1;
+        background: #FFFFFF;
+      }
+    }
+    .main-w {
+      .van-tabs--line .van-tabs__wrap {
+        width: 60%;
+        border-bottom: torem(1px) solid #F4F4F4;
+      }
+      .tab-title-w .tab-title--border {
+        font-size: torem(20px);
+        font-family: Microsoft YaHei;
+        font-weight: bold;
+        color: #30C159;
+      }
+      .tab-title-w .tab-title {
+        font-size: torem(20px);
+        font-family: Microsoft YaHei;
+        font-weight: 400;
+        color: #333333;
+        line-height: torem(28px);
+      }
+      .tab-title_line {
+        width: 100%;
+        height: torem(4px);
+        border-radius: torem(5px);
+        background: #23ac38;
+        position: absolute;
+      }
+      .tab-title-w .tab-title--border {
+        margin: 0;
+        border-bottom: torem(4px) solid #23ac38;
+      }
+      .van-tabs--line .van-tabs__wrap .van-tabs__nav--line {
+        width: 50%;
+        margin: 0 auto;
+      }
+      .van-tab__text--ellipsis {
+        margin-bottom: torem(-5px);
+      }
+      .van-sticky {
+        padding-bottom: 0px;
+        padding-top: torem(26px);
+      }
+      .van-sticky--fixed {
+        top: torem(73px);
+      }
+      .van-tabs__content {
+        margin-top: torem(43px);
+      }
+    }
+    img {
+      width: 100%;
+      height: 100%;
     }
   }
-}
+  /*修改滚动条样式*/
+  .medicalservices-w::-webkit-scrollbar{
+    width: 0px;
+    /*height: 30px;*/
+  }
+  .medicalservices-w::-webkit-scrollbar-track{
+    border-radius: 0px;
+  }
+  .medicalservices-w::-webkit-scrollbar-thumb{
+    background: #D9D9D9;
+    border-radius: 0px;
+  }
+  .medicalservices-w::-webkit-scrollbar-thumb:hover{
+    background: #D9D9D9;
+    border-radius: 0px;
+  }
+  .medicalservices-w::-webkit-scrollbar-corner{
+    border-radius: 0px;
+  }
+  .pro_introduce-2 {
+    .detail {
+      width: 70%;
+    }
+  }
+  .pro_introduce-3 {
+    .tab-content {
+      /*margin: 52px 0 0 0;*/
+      .tab-img:nth-child(2){
+        margin: 45px 0;
+      }
+    }
+  }
 
-.tab-img {
-}
+  .tab-img {
+  }
 
 
-/*服务内容*/
-.service-content {
-  /*padding: 65px 0;*/
-  background-color: #fff;
-  .title-w {
-    padding: 0 35%;
+  /*服务内容*/
+  .service-content {
+    /*padding: 65px 0;*/
+    background-color: #fff;
+    .title-w {
+      padding: 0 35%;
+      text-align: center;
+      .line {
+        width: 40px;
+        height: 3px;
+        margin: 0 auto;
+        background-color: #29a93e;
+      }
+      .name {
+        margin: 15px 0;
+        color: #333;
+        font-size: 22px;
+        font-weight: bold;
+      }
+      .desc {
+        font-size: 10px;
+        color: #666;
+        line-height: 24px;
+      }
+    }
+    .detail {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0 0 0 10px;
+      margin: 52px auto;
+    }
+  }
+
+  /*立即咨询*/
+  .consult-btn {
+    width: 286px;
+    margin: 0 auto;
+    padding: 10px 0;
     text-align: center;
-    .line {
-      width: 40px;
-      height: 3px;
-      margin: 0 auto;
-      background-color: #29a93e;
-    }
-    .name {
-      margin: 15px 0;
-      color: #333;
-      font-size: 22px;  
-      font-weight: bold;
-    }
-    .desc {
-      font-size: 10px;
-      color: #666;
-      line-height: 24px;
-    }
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: #fff;
+    background-color: #29a93e;
+    border-radius: calc(100vh - 1%);
+    cursor: pointer;
   }
-  .detail {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0 0 0 10px;
-    margin: 52px auto;
-  }
-}
-
-/*立即咨询*/
-.consult-btn {
-  width: 286px;
-  margin: 0 auto;
-  padding: 10px 0;
-  text-align: center;
-  font-size: 16px;
-  letter-spacing: 2px;
-  color: #fff;
-  background-color: #29a93e;
-  border-radius: calc(100vh - 1%);
-  cursor: pointer;
-}
 </style>

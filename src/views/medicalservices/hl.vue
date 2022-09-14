@@ -69,26 +69,29 @@
 </script>
 
 <style lang="scss" scoped>
+  @function torem($px){//$px为需要转换的字号
+    @return $px / 30px * 1rem; //100px为根字体大小
+  }
   .tab-block {
     /*数据统计区域*/
     .data-w {
-      padding: 61px 25%;
+      padding: torem(61px) 25%;
       background: url("../../assets/image/yiyang_bg.png") center center no-repeat;
       background-size: cover;
-      height: 400px;
+      height: torem(400px);
       .data-w-c {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 45px;
+        margin-bottom: torem(45px);
       }
       .data-w-btn {
-        width: 240px;
-        height: 48px;
+        width: torem(240px);
+        height: torem(48px);
         background: linear-gradient(5deg, #FFFFFF, #FFFFFF);
-        box-shadow: 0px 8px 12px 0px rgba(48, 193, 89, 0.35);
-        border-radius: 24px;
-        font-size: 16px;
+        box-shadow: 0px torem(8px) torem(12px) 0px rgba(48, 193, 89, 0.35);
+        border-radius: torem(24px);
+        font-size: torem(16px);
         font-family: Microsoft YaHei;
         font-weight: 400;
         color: #30C159;
@@ -103,16 +106,16 @@
         justify-content: space-between;
         align-items: center;
         .icon {
-          width: 114px;
-          margin: 0 0 13px 0;
+          width: torem(114px);
+          margin: 0 0 torem(13px) 0;
         }
         .num {
           color: #fff;
-          font-size: 42px;
+          font-size: torem(42px);
         }
         .desc {
           color: #FFFFFF;
-          font-size: 16px;
+          font-size: torem(16px);
         }
       }
     }

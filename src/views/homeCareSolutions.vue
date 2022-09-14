@@ -84,14 +84,14 @@
         top: 29%;
         &_t {
           font-size: torem(36px);
-          font-family: OPPOSans;
+          font-family: Microsoft YaHei;
           font-weight: bold;
-          color: #FFFFFF;
+          color: #333333;
           margin-bottom: torem(18px);
           &.s {
             font-size: torem(16px);
             font-weight: 400;
-            color: #FFFFFF;
+            color: #666666;
           }
         }
         &_btn {
@@ -149,6 +149,9 @@
             align-items: center;
             &.m {
               margin-right: torem(128px)
+            }
+            &.m:nth-last-child(1) {
+              margin-right: 0
             }
           }
           &_line {

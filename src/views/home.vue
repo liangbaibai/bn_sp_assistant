@@ -13,13 +13,13 @@
           <div class="yyfw_t">医养服务</div>
           <div class="yyfw_subt">the medical nursing services</div>
           <div class="yyfw_c">
-            <div class="yyfw_c_i" v-for="(item,index) in medicalCareList">
+            <div class="yyfw_c_i" v-for="(item,index) in medicalCareList" @click="toCare(index)">
               <div class="img" :style="{backgroundImage: `url(${item.img})`}"></div>
               <div class="info">
                 <div class="info_t">{{item.title}}</div>
                 <div class="info_t1">{{item.text}}</div>
               </div>
-              <div class="hover" @click="toCare(index)">
+              <div class="hover">
                 <i class="iconfont icon-guanwang-shouyetubiao" style="color: #ffffff;font-size: 33px;"></i>
               </div>
             </div>
@@ -32,22 +32,22 @@
           <div class="zncp_c">
             <div class="zncp_c_i"
                  :style="{width: index == 0 ? '793px' : index == 1 ? '389px' : '590px', backgroundImage: `url(${item.img})`}"
-                 v-for="(item,index) in smartProductList">
+                 v-for="(item,index) in smartProductList" @click="toProduct(1,index)">
               <div class="zncp_c_i_info">
-                <div class="zncp_c_i_info_a">产品</div>
+<!--                <div class="zncp_c_i_info_a">产品</div>-->
                 <div class="zncp_c_i_info_t">{{item.title}}</div>
                 <div class="zncp_c_i_info_t1">{{item.text}}</div>
-                <div class="hover" @click="toProduct(1,index)">了解更多<i class="el-icon-arrow-right" style="color: #30C159;font-weight: bold;"/></div>
+                <div class="hover">了解更多<i class="el-icon-arrow-right" style="color: #30C159;font-weight: bold;"/></div>
               </div>
             </div>
           </div>
           <div class="zncp_c">
-            <div class="zncp_c_i" v-for="(item,index) in smartProductList2" :style="{backgroundImage: `url(${item.img})`}">
+            <div class="zncp_c_i" v-for="(item,index) in smartProductList2" @click="toProduct(2,index)" :style="{backgroundImage: `url(${item.img})`}">
               <div class="zncp_c_i_info">
-                <div class="zncp_c_i_info_a">产品</div>
+<!--                <div class="zncp_c_i_info_a">产品</div>-->
                 <div class="zncp_c_i_info_t">{{item.title}}</div>
                 <div class="zncp_c_i_info_t1">{{item.text}}</div>
-                <div class="hover" @click="toProduct(2,index)">了解更多<i class="el-icon-arrow-right" style="color: #30C159;font-weight: bold;"/></div>
+                <div class="hover">了解更多<i class="el-icon-arrow-right" style="color: #30C159;font-weight: bold;"/></div>
               </div>
             </div>
           </div>
@@ -434,6 +434,7 @@ export default {
         display: none
       }
       &_i:hover {
+        cursor: pointer;
         box-shadow: 0px torem(12px) torem(18px) torem(-1px) hsl(0deg 0% 49% / 35%);
       }
       &_i:hover .hover {
@@ -480,18 +481,21 @@ export default {
       &_i {
         width: torem(590px);
         height: torem(400px);
+        max-height: torem(400px);
         position: relative;
         margin-right: torem(18px);
         border-radius: torem(10px);
         background: center center no-repeat;
         background-image: url('../assets/image/medicalCarebg1.png');
         background-size: auto;
-        display: block;
+        display: inline-block;
+        cursor: pointer;
         &_info {
           position: absolute;
           bottom: torem(23px);
           left: torem(19px);
           text-align: left;
+          display: inline-block;
           &_a {
             font-size: torem(16px);
             font-family: Microsoft YaHei;
@@ -518,10 +522,10 @@ export default {
         display: none;
       }
       &_i:hover {
-        box-shadow: 0 0 0 0 #333, inset 0 0 0 0 #423880, inset 0 -7.4666666667rem 3.9333333333rem -3.5666666667rem rgb(0 0 0 / 68%), inset 0px 0px 0 0 rgb(0 0 0 / 59%)
+        box-shadow: 0 0 0 0 #333, inset 0 0 0 0 #423880, inset 0 -7.4666666667rem 3.9333333333rem -3.5666666667rem rgb(0 0 0 / 68%), inset 0px 0px 0 0 rgb(0 0 0 / 59%);
       }
       &_i:hover .hover {
-        display: block;
+        display: contents;
         font-size: torem(16px);
         font-family: Microsoft YaHei;
         font-weight: 400;
@@ -548,14 +552,14 @@ export default {
         top: 30%;
         &_t {
           font-size: torem(42px);
-          font-family: OPPOSans;
+          font-family: Microsoft YaHei;
           font-weight: bold;
           color: #FFFFFF;
           margin-bottom: torem(18px);
         }
         &_t1 {
           font-size: torem(16px);
-          font-family: OPPOSans;
+          font-family: Microsoft YaHei;
           font-weight: 400;
           color: #FFFFFF;
           margin-bottom: torem(29px);

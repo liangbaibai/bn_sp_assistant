@@ -25,7 +25,8 @@
           </div>
           <div class="tab-block-1 tab-content">
             <div class="tab-img">
-              <img src="@/assets/image/qyzx_qy_bn.png" alt="" />
+              <img v-if="bgTitle == '企业资讯'" src="@/assets/image/qyzx_qy_bn.png" alt="" />
+              <img v-else src="@/assets/image/qyzx_jk_bn.png" alt="" />
               <div class="img-content">
                 <p class="img-content-p">{{bgTitle}}</p>
                 <p class="t-2">The enterprise information</p>
@@ -291,7 +292,7 @@ export default {
         .t-2 {
           margin: torem(13px) 0 0 0;
           font-size: torem(22px);
-          font-family: OPPOSans;
+          font-family: Microsoft YaHei;
           font-weight: 400;
           color: #999999;
           text-transform: uppercase;
@@ -316,6 +317,10 @@ export default {
     }
     .tab-title-w .tab-title--border {
       border-bottom: torem(3px) solid #30C159;
+      margin-bottom: 0;
+    }
+    .van-tab__text--ellipsis {
+      margin-bottom: torem(-6px);
     }
   }
   .dynamic-main {
@@ -344,14 +349,14 @@ export default {
 
     display: flex;
     align-items: center;
-    transition: transform 0.2s ease-in-out;
+    /*transition: transform 0.2s ease-in-out;*/
     & > img {
       width: torem(229px);
       height: torem(171px);
       border-radius: torem(5px);
     }
     &:hover {
-      transform: scale(1.05);
+      /*transform: scale(1.05);*/
       cursor: pointer;
       .title {
         color: #29a93e;

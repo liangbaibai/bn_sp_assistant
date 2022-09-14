@@ -382,7 +382,7 @@ export default {
     z-index: 9999;
     background: #ffffff;
     width: 100vw;
-    left: torem(-600px);
+    left: torem(-715px);
   }
   .el-tabs__item:hover {
     color: #30C159;

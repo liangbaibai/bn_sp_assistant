@@ -36,9 +36,9 @@
       </div>
     </div>
     <div class="main-w-img">
-      <img src="@/assets/image/yypt_d_p1.png" alt="" style="width: 667px; height: auto;">
+      <img src="@/assets/image/yypt_d_p1.png" alt="" class="yypt_d_p1">
       <div class="main-w-img-r">
-        <img src="@/assets/image/yypt_icon.png" alt="" style="width: 95px;height: 12px;">
+        <img src="@/assets/image/yypt_icon.png" alt="" class="yypt_icon">
         <div class="main-w-img-r-c">
           <div class="main-w-img-r-c-t">功能全貌展示</div>
           <div class="main-w-img-r-c-btn">
@@ -86,7 +86,7 @@
     </div>
     <div class="main-w-img-blood">
       <div class="main-w-img-blood-l">
-        <img src="@/assets/image/yypt_icon.png" alt="" style="width: 95px;height: 12px;">
+        <img src="@/assets/image/yypt_icon.png" alt="" class="yypt_icon">
         <div class="main-w-img-blood-l-c">
           <div class="main-w-img-blood-l-c-t">血压健康管理</div>
           <div class="main-w-img-blood-l-c-p">
@@ -103,12 +103,12 @@
           </div>
         </div>
       </div>
-      <img src="@/assets/image/yypt_d_p2.png" alt="" style="width: 1193px; height: auto;">
+      <img src="@/assets/image/yypt_d_p2.png" alt="" class="yypt_d_p2">
     </div>
     <div class="main-w-img-healthy">
-      <img src="@/assets/image/yypt_d_p3.png" alt="" style="width: 1193px; height: auto;">
+      <img src="@/assets/image/yypt_d_p3.png" alt="" class="yypt_d_p3">
       <div class="main-w-img-healthy-l">
-        <img src="@/assets/image/yypt_icon.png" alt="" style="width: 95px;height: 12px;">
+        <img src="@/assets/image/yypt_icon.png" alt="" class="yypt_icon">
         <div class="main-w-img-healthy-l-c">
           <div class="main-w-img-healthy-l-c-t">健康周报</div>
           <div class="main-w-img-healthy-l-c-p">
@@ -119,7 +119,7 @@
     </div>
     <div class="main-w-img-warn">
       <div class="main-w-img-warn-l">
-        <img src="@/assets/image/yypt_icon.png" alt="" style="width: 95px;height: 12px;">
+        <img src="@/assets/image/yypt_icon.png" alt="" class="yypt_icon">
         <div class="main-w-img-warn-l-c">
           <div class="main-w-img-warn-l-c-t">健康风险预警</div>
           <div class="main-w-img-warn-l-c-p">
@@ -127,11 +127,11 @@
           </div>
         </div>
       </div>
-      <img src="@/assets/image/yypt_d_p4.png" alt="" style="width: 1127px; height: auto;">
+      <img src="@/assets/image/yypt_d_p4.png" alt="" class="yypt_d_p4">
     </div>
     <div class="main-w-img-history">
       <div class="main-w-img-history-r">
-        <img src="@/assets/image/yypt_icon.png" alt="" style="width: 95px;height: 12px;">
+        <img src="@/assets/image/yypt_icon.png" alt="" class="yypt_icon">
         <div class="main-w-img-history-r-c">
           <div class="main-w-img-history-r-c-t">电子围栏、历史轨迹</div>
           <div class="main-w-img-history-r-c-p">可设定多个电子围栏,指定用户活动范围,用户离开指定范围，APP实时自动预警，告知用户亲属位置动态及时找回。此外，通过智能设备的多重定位，以及PDR融合定位和AR识别算法加持，APP可以记录实现活动轨迹的定位和回放。
@@ -141,7 +141,7 @@
     </div>
     <div class="main-w-img-culture">
       <div class="main-w-img-culture-r">
-        <img src="@/assets/image/yypt_icon.png" alt="" style="width: 95px;height: 12px;">
+        <img src="@/assets/image/yypt_icon.png" alt="" class="yypt_icon">
         <div class="main-w-img-culture-r-c">
           <div class="main-w-img-culture-r-c-t">广场舞文化</div>
           <div class="main-w-img-culture-r-c-p">可设定多个电子围栏,指定用户活动范围,用户离开指定范围，APP实时自动预警，告知用户亲属位置动态及时找回。此外，通过智能设备的多重定位，以及PDR融合定位和AR识别算法加持，APP可以记录实现活动轨迹的定位和回放。
@@ -201,7 +201,7 @@ export default {
         left: 19%;
         &_t {
           font-size: torem(42px);
-          font-family: OPPOSans;
+          font-family: Microsoft YaHei;
           font-weight: bold;
           color: #333333;
           line-height: torem(69px);
@@ -210,7 +210,7 @@ export default {
         }
         &_p {
           font-size: torem(24px);
-          font-family: OPPOSans;
+          font-family: Microsoft YaHei;
           font-weight: 400;
           color: #333333;
           margin-bottom: torem(13px);
@@ -219,7 +219,7 @@ export default {
           width: torem(405px);
           height: auto;
           font-size: torem(14px);
-          font-family: OPPOSans;
+          font-family: Microsoft YaHei;
           font-weight: 400;
           color: #333333;
           line-height: torem(25px);
@@ -280,14 +280,19 @@ export default {
       }
     }
   }
+  .banner-w_imgs {
+    width: torem(407px);
+    height: torem(782px);
+    margin-top: torem(30px);
+  }
   .main-w {
-    margin-top: torem(228px);
+    margin-top: torem(184px);
     padding-bottom: torem(41px);
     &_top {
       text-align: center;
       &_t {
         font-size: torem(32px);
-        font-family: OPPOSans;
+        font-family: Microsoft YaHei;
         font-weight: 300;
         color: #666666;
         margin-bottom: torem(35px);
@@ -300,7 +305,7 @@ export default {
       }
       &_p {
         font-size: torem(32px);
-        font-family: OPPOSans;
+        font-family: Microsoft YaHei;
         font-weight: bold;
         color: #333333;
         margin: 0 auto;
@@ -375,6 +380,26 @@ export default {
         }
       }
     }
+  }
+  .yypt_d_p1 {
+    width: torem(667px);
+    height: auto;
+  }
+  .yypt_icon {
+    width: torem(95px);
+    height: torem(12px);
+  }
+  .yypt_d_p2 {
+    width: torem(1193px);
+    height: auto;
+  }
+  .yypt_d_p3 {
+    width: torem(1193px);
+    height: auto;
+  }
+  .yypt_d_p4 {
+    width: torem(1127px);
+    height: auto;
   }
   .main-w-img-blood {
     position: relative;
