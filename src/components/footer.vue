@@ -162,12 +162,12 @@
               >
                 荣誉证书
               </div>
-              <div
+              <!--<div
                 class="item-i"
                 @click="onMenuItemClick('walkbn', '合作伙伴')"
               >
                 合作伙伴
-              </div>
+              </div>-->
               <div
                 class="item-i"
                 @click="onMenuItemClick('walkbn', '公司活动')"

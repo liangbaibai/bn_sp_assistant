@@ -210,9 +210,9 @@ export default {
           name: "walkbn",
           menu: [
             {
-              name: "品牌专区",
-              id: "品牌专区",
-              url: "walkbn?id=品牌专区",
+              name: "旗下品牌",
+              id: "旗下品牌",
+              url: "walkbn?id=旗下品牌",
             },
             {
               name: "百年文化",
@@ -223,11 +223,6 @@ export default {
               name: "荣誉证书",
               id: "荣誉证书",
               url: "walkbn?id=荣誉证书",
-            },
-            {
-              name: "合作伙伴",
-              id: "合作伙伴",
-              url: "walkbn?id=合作伙伴",
             },
             {
               name: "公司活动",

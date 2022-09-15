@@ -269,7 +269,11 @@ export default {
       }
       .tab-title-w .tab-title--border {
         margin: 0;
-        border-bottom: torem(4px) solid #23ac38;
+        border-bottom: torem(8px) solid #30C159;
+        font-size: torem(20px);
+        font-family: Microsoft YaHei;
+        font-weight: bold;
+        color: #30C159;
       }
       .van-tabs--line .van-tabs__wrap .van-tabs__nav--line {
         width: 50%;
@@ -281,6 +285,9 @@ export default {
       .van-sticky {
         padding-bottom: 0px;
         padding-top: torem(26px);
+      }
+      .van-tab--active {
+        margin-bottom: torem(-8px);
       }
       .van-sticky--fixed {
         top: torem(73px);
@@ -322,7 +329,7 @@ export default {
     .tab-content {
       /*margin: 52px 0 0 0;*/
       .tab-img:nth-child(2){
-        margin: 45px 0;
+        margin: torem(45px) 0;
       }
     }
   }
@@ -339,39 +346,40 @@ export default {
       padding: 0 35%;
       text-align: center;
       .line {
-        width: 40px;
-        height: 3px;
+        width: torem(6px);
+        height: torem(18px);
+        background: #30C159;
+        border-radius: torem(3px);
         margin: 0 auto;
-        background-color: #29a93e;
       }
       .name {
-        margin: 15px 0;
+        margin: torem(15px) 0;
         color: #333;
-        font-size: 22px;
+        font-size: torem(22px);
         font-weight: bold;
       }
       .desc {
-        font-size: 10px;
+        font-size: torem(10px);
         color: #666;
-        line-height: 24px;
+        line-height: torem(24px);
       }
     }
     .detail {
       display: flex;
       flex-wrap: wrap;
-      padding: 0 0 0 10px;
+      padding: 0 0 0 torem(10px);
       margin: 52px auto;
     }
   }
 
   /*立即咨询*/
   .consult-btn {
-    width: 286px;
+    width: torem(286px);
     margin: 0 auto;
-    padding: 10px 0;
+    padding: torem(10px) 0;
     text-align: center;
-    font-size: 16px;
-    letter-spacing: 2px;
+    font-size: torem(16px);
+    letter-spacing: torem(2px);
     color: #fff;
     background-color: #29a93e;
     border-radius: calc(100vh - 1%);

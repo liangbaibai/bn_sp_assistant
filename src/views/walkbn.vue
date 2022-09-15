@@ -1,7 +1,10 @@
 <template>
-  <div class="walkbn-w bg-fff">
+  <div class="walkbn-w bg-fff" id="walkbn-w">
     <div class="banner-w">
-      <img src="@/assets/image/w-b-1.png" alt="" />
+      <div class="top">
+        <div class="t1">走进百年</div>
+        <div class="t2">About BAINIAN</div>
+      </div>
     </div>
 
     <div class="main-w grid-contain">
@@ -14,39 +17,41 @@
         sticky
         ref="tabs"
       >
-        <van-tab title-class="tab_title" name="品牌专区">
+        <van-tab title-class="tab_title" name="旗下品牌">
           <div slot="title" class="tab-title-w">
             <div
               :class="
-                tabActive === '品牌专区'
+                tabActive === '旗下品牌'
                   ? 'tab-title--border tab-title'
                   : 'tab-title'
               "
             >
-              品牌专区
+              旗下品牌
             </div>
           </div>
           <div class="tab-block-1 tab-content">
             <div class="title-img">
-              <img src="@/assets/image/w-t-5.png" alt="" />
+              <div class="t1">旗下品牌</div>
+              <div class="t2">The company brand</div>
             </div>
             <div class="brand-s">
               <div class="brand-i">
-                <img src="@/assets/image/k-c-1.png" alt="" />
-                <div class="name">百年医养</div>
+                <div class="img">
+                  <img src="@/assets/image/k-c-1.png" alt="" />
+                </div>
                 <div class="desc">
                   百年医养是百年大健康旗下的居家养老服务品牌。我们目前拥有百年医养居家陪护、医院陪护、护理、长护险，居家医养一站式服务平台-百年医养APP，以及智慧养老解决方案等一系列业务。
-                   
                 </div>
               </div>
               <div class="brand-i">
-                <img src="@/assets/image/k-c-2.png" alt="" />
-                <div class="name">百狐</div>
+                <div class="img">
+                  <img src="@/assets/image/k-c-2.png" alt="" />
+                </div>
                 <div class="desc">
-                  百狐是百年大健康旗下的智能养老硬件设备品牌。我们坚持自主研发和前瞻性技术的持续投入，通过全系列智能穿戴设备及家庭医疗产品，为长者带来创新、领先、可信赖的产品。
-                   
+                  百来俏是百年大健康旗下的智能养老硬件设备品牌。我们坚持自主研发和前瞻性技术的持续投入，通过全系列智能穿戴设备及家庭医疗产品，为长者带来创新、领先、可信赖的产品。
                 </div>
               </div>
+              <img src="@/assets/image/k-c-bg.png" alt="" class="brand-s-img">
             </div>
           </div>
         </van-tab>
@@ -63,12 +68,46 @@
               百年文化
             </div>
           </div>
-          <div class="tab-block-2 tab-content">
+          <div class="tab-block-2 tab-content top1">
             <div class="title-img">
-              <img src="@/assets/image/w-t-4.png" alt="" />
+              <div class="t1">百年文化</div>
+              <div class="t2">BAINIAN culture</div>
             </div>
             <div class="w-culture-swipe">
-              <div class="swipe-i">
+              <div class="content">
+                <div style="position: relative">
+                  <img :src="bgImg" alt="" class="bgImg">
+                  <div class="square"></div>
+                  <div class="squareLeft"></div>
+                </div>
+                <div class="contentLeft">
+                  <div class="colon"><span>"</span></div>
+                  <div class="num">{{checkContent.num}}</div>
+                  <div class="title">{{checkContent.title}}</div>
+                  <div class="info">{{checkContent.content}}</div>
+                </div>
+              </div>
+              <div class="timeline">
+                <div class="timelineContent">
+                  <div class="timelineContentLine">
+                    <div class="flex" v-for="(item,index) in w_data.culture">
+                      <div style="flex:1"></div>
+                      <div :class="checkIndex == index ? 'dotBig' : 'dotBigTwo'" @click="checkCulture(item,index)">
+                        <div :class="checkIndex == index ? 'dot' : 'dotTwo'"></div>
+                      </div>
+                      <div class="item"></div>
+                    </div>
+                  </div>
+                  <div class="timelineInfo">
+                    <div class="flex" v-for="(item,index) in w_data.culture">
+                      <div class="item1"></div>
+                      <div class="text" :style="{color: checkIndex == index ? '#30C159' : '#333333'}" @click="checkCulture(item,index)">{{item.title}}</div>
+                      <div class="item1"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--<div class="swipe-i">
                 <div class="quotes"></div>
                 <div class="num">
                   {{
@@ -141,11 +180,10 @@
                     ].content
                   }}
                 </div>
-              </div>
+              </div>-->
             </div>
           </div>
         </van-tab>
-
         <van-tab title-class="tab_title" name="荣誉证书">
           <div slot="title" class="tab-title-w">
             <div
@@ -158,48 +196,12 @@
               荣誉证书
             </div>
           </div>
-          <div class="tab-block-3 tab-content">
-            <div class="title-img">
-              <img src="@/assets/image/w-t-1.png" alt="" />
-            </div>
-            <div class="tab-img">
-              <img src="@/assets/image/w-c-4.png" alt="" />
+          <div class="tab-block-3 tab-content top2">
+            <div >
+              <img src="@/assets/image/w-c-4.png" class="ryzs-img" alt="" />
             </div>
           </div>
         </van-tab>
-
-        <van-tab title-class="tab_title" name="合作伙伴">
-          <div slot="title" class="tab-title-w">
-            <div
-              :class="
-                tabActive === '合作伙伴'
-                  ? 'tab-title--border tab-title'
-                  : 'tab-title'
-              "
-            >
-              合作伙伴
-            </div>
-          </div>
-          <div class="tab-block-4 tab-content">
-            <div class="title-img">
-              <img src="@/assets/image/w-t-2.png" alt="" />
-            </div>
-
-            <div class="content-w">
-              <div class="view-img">
-                <img src="@/assets/image/w-c-5.png" alt="" />
-              </div>
-              <div class="detail">
-                <div class="title">广东乐心医疗电子股份有限公司</div>
-                <div class="line"></div>
-                <div class="desc">
-                  百年大健康携手广东乐心医疗电子股份有限公司，针对我国老年人智能健康管理需求，推出了血压计、体脂称、手环等百年医养系列长者智能设备。我们相信百年大健康与乐心医疗的强强联手，在双方的合作共赢下，百年医养品牌未来会继续做精做强。
-                </div>
-              </div>
-            </div>
-          </div>
-        </van-tab>
-
         <van-tab title-class="tab_title" name="公司活动">
           <div slot="title" class="tab-title-w">
             <div
@@ -214,7 +216,8 @@
           </div>
           <div class="tab-block-5 tab-content">
             <div class="title-img">
-              <img src="@/assets/image/w-t-3.png" alt="" />
+              <div class="t1">公司活动</div>
+              <div class="t2">Company activities</div>
             </div>
 
             <div class="w-activity-c">
@@ -275,49 +278,71 @@ import { myRequest } from "@/request/index";
 import { data_data_list } from "@/request/api/base";
 export default {
   mixins: [index],
-
-  props: {},
-  components: {},
-  created() {},
-
-  computed: {},
-
-  mounted() {},
+  mounted() {
+    setTimeout(() => {
+      let mechanismDetailInfo = document.getElementById('walkbn-w')
+      let myNav = document.querySelector('.van-sticky')
+      console.log("页面滚动1", mechanismDetailInfo);
+      mechanismDetailInfo.addEventListener("scroll", function (e) {
+        let scrollTop = e.target.scrollTop;
+        let clientHeight = e.target.clientHeight;
+        let scrollHeight = e.target.scrollHeight;
+        console.log("页面滚动2", scrollTop,clientHeight,scrollHeight);
+        if (scrollTop > 0) {
+          let process = document.getElementById('header-w')
+          let ylWatchTop = document.querySelector('.van-sticky')
+          process.style.display = 'none'
+          ylWatchTop.style.top = '0'
+          process.style.zIndex = '9999 !important'
+        } else {
+          let process = document.getElementById('header-w')
+          let ylWatchTop = document.querySelector('.van-sticky')
+          process.style.display = 'block'
+          ylWatchTop.style.top = 73 / 30 * 32 + 'px'
+        }
+      })
+    },500)
+  },
 
   data() {
     return {
       tabActive: "",
-
       w_data: {
         culture: [
           {
+            num: '01',
             title: "企业文化",
             content:
               "关注老人健康、快乐、幸福的晚年生活，维护老人的权益。我们百年大健康、医养平台等所有参与者，包括消费者、商家、第三方服务供应商、公益组织和其他人士，都享有成长或获益的机会。我们更加推崇和弘扬孝道文化这一我国优秀文化传统。并且始终如一地关注和满足老人的需求！",
             img: require("@/assets/image/w-c-3.png"),
           },
           {
+            num: '02',
             title: "企业愿景",
             content:
               "致力成为长者无忧智能健康生活的引领者。 影响和带动全社会关爱呵护我们成长的父母长辈。",
             img: require("@/assets/image/w-c-12.png"),
           },
           {
+            num: '03',
             title: "公司理念",
             content: "让每一位老人得到贴身又贴心服务， 安享愉悦晚年生活",
             img: require("@/assets/image/w-c-8.png"),
           },
           {
+            num: '04',
             title: "服务理念",
             content: "专业无忧 快捷贴心 省心安心",
             img: require("@/assets/image/w-c-9.png"),
           },
           {
+            num: '05',
             title: "公司价值观",
             content: "用户第一 \n 亲和友善 \n 尊老敬业 \n 弘扬孝道",
             img: require("@/assets/image/w-c-10.png"),
           },
           {
+            num: '06',
             title: "公司精神",
             content:
               "不怕累不嫌弃，守护温暖这片夕阳 \n 不怕苦能承受任何委屈，含泪微笑点燃希望 \n 不怕挫折始终做为爱的事业的引领人。\n 做有善心的人，做良心的机构，\n 呵护老人是我们的责任 \n 他们的现在，代表着我们的未来",
@@ -325,8 +350,16 @@ export default {
           },
         ], //百年文化
       },
-
       cultureIndex: 0,
+      bgImg: require("@/assets/image/w-c-3.png"),
+      checkContent: {
+        num: '01',
+        title: "企业文化",
+        content:
+          "关注老人健康、快乐、幸福的晚年生活，维护老人的权益。我们百年大健康、医养平台等所有参与者，包括消费者、商家、第三方服务供应商、公益组织和其他人士，都享有成长或获益的机会。我们更加推崇和弘扬孝道文化这一我国优秀文化传统。并且始终如一地关注和满足老人的需求！",
+        img: require("@/assets/image/w-c-3.png"),
+      },
+      checkIndex: 0
     };
   },
 
@@ -345,6 +378,10 @@ export default {
         this.cultureIndex = 0;
       }
     },
+    checkCulture(item,index) {
+      this.checkContent = item
+      this.checkIndex = index
+    }
   },
 
   updated() {},
@@ -356,228 +393,383 @@ export default {
   @function torem($px){//$px为需要转换的字号
     @return $px / 30px * 1rem; //100px为根字体大小
   }
-.walkbn-w {
-  background-color: #fff;
-  .van-tabs--line .van-tabs__wrap {
-    width: 65%;
-  }
-
-  .tab-block-1 {
-    margin: 0 0 torem(52px) 0;
-  }
-
-  .main-w {
-    width: 1000px;
-    margin: 0 auto;
-    padding: 0 0 torem(78px) 0;
-    .van-sticky {
-      padding-bottom: 0px;
-      padding-top: torem(26px);
+  .walkbn-w {
+    background-color: #fff;
+    overflow-y: scroll;
+    height: 100%;
+    max-height: 100vh;
+    overflow-x: hidden;
+    .banner-w {
+      width: 100vw;
+      height: torem(500px);
+      background: url("../assets/image/w-b-1.png") 100% 100% no-repeat;
+      background-size: cover;
+      position: relative;
+      .top {
+        position: absolute;
+        text-align: center;
+        top: torem(220px);
+        left: torem(860px);
+        .t1 {
+          font-size: torem(36px);
+          font-family: Microsoft YaHei;
+          font-weight: bold;
+          color: #333333;
+          margin-bottom: torem(10px);
+        }
+        .t2 {
+          font-size: torem(22px);
+          font-family: OPPOSans;
+          font-weight: 400;
+          color: #999999;
+          text-transform: uppercase;
+        }
+      }
     }
-    .van-sticky--fixed {
-      top: torem(73px);
+    .van-tabs--line .van-tabs__wrap {
+      width: 65%;
+    }
+
+    .tab-block-1 {
+      margin: 0 0 torem(52px) 0;
+    }
+
+    .main-w {
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 0 torem(78px) 0;
+      .tab-title--border{
+        font-size: torem(20px);
+        font-family: Microsoft YaHei;
+        font-weight: bold;
+        color: #30C159;
+        border-bottom: torem(4px) solid #30C159;
+      }
+      .van-sticky {
+        padding-bottom: 0px;
+        padding-top: torem(26px);
+      }
+      .van-sticky--fixed {
+        top: torem(73px);
+      }
+    }
+    .tab-content {
+      // margin: 0 20%;
+      &.top {
+        margin-top: torem(90px);
+      }
+      &.top1 {
+        margin-top: torem(210px);
+      }
+      &.top2 {
+        margin-top: torem(72px);
+      }
+      .ryzs-img {
+        width: 100vw;
+        height: auto;
+      }
+      .title-img {
+        margin: torem(52px) auto;
+        text-align: center;
+        .t1 {
+          font-size: torem(28px);
+          font-family: Microsoft YaHei;
+          font-weight: bold;
+          color: #333333;
+          margin-bottom: 5px;
+        }
+        .t2 {
+          font-size: torem(16px);
+          font-family: Arial;
+          font-weight: 400;
+          color: #999999;
+          text-transform: uppercase;
+        }
+        img {
+          width: torem(286px);
+          margin: 0 auto;
+        }
+      }
+    }
+    .brand-s {
+      display: flex;
+      justify-content: center;
+      margin: torem(52px) 0 0 0;
+      position: relative;
+      .brand-s-img {
+        width: 100vw;
+        height: auto;
+        position: absolute;
+        top: torem(240px);
+      }
+    }
+    .brand-i {
+      width: torem(420px);
+      color: #333;
+      .img {
+        width: torem(420px);
+        height: torem(280px);
+        background: #F4F4F4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+          width: torem(242px);
+          height: auto;
+        }
+      }
+      .name {
+        margin: torem(12px) 0;
+        font-size: torem(14px);
+        font-weight: bold;
+      }
+      .desc {
+        text-align: center;
+        line-height: torem(24px);
+        font-size: torem(12px);
+        margin: torem(21px) torem(24px);
+      }
+    }
+    .brand-i:nth-child(1) {
+      margin-right: torem(126px);
     }
   }
-
-  .tab-content {
-    // margin: 0 20%;
-
-    .title-img {
-      margin: torem(52px) 0;
-      img {
-        width: torem(286px);
+  /*修改滚动条样式*/
+  .walkbn-w::-webkit-scrollbar{
+    width: 0px;
+    /*height: 30px;*/
+  }
+  .walkbn-w::-webkit-scrollbar-track{
+    border-radius: 0px;
+  }
+  .walkbn-w::-webkit-scrollbar-thumb{
+    background: #D9D9D9;
+    border-radius: 0px;
+  }
+  .walkbn-w::-webkit-scrollbar-thumb:hover{
+    background: #D9D9D9;
+    border-radius: 0px;
+  }
+  .walkbn-w::-webkit-scrollbar-corner{
+    border-radius: 0px;
+  }
+  /*百年文化*/
+  .w-culture-swipe {
+    .content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .bgImg {
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: torem(640px);
+        height: torem(480px);
+        position: relative;
+        z-index: 9999;
+      }
+      .square {
+        position: absolute;
+        top: torem(-20px);
+        right: torem(-20px);
+        width: torem(100px);
+        height: torem(100px);
+        background: #30C159;
+      }
+      .squareLeft {
+        position: absolute;
+        left: torem(-20px);
+        bottom: torem(-20px);
+        width: torem(100px);
+        height: torem(100px);
+        background: #30C159;
+      }
+      .contentLeft {
+        width: torem(324px);
+        margin-left: torem(109px);
+        .colon {
+          font-size: torem(51px);
+          font-family: "Microsoft YaHei";
+          font-weight: bold;
+          color: #333333;
+          margin-bottom: torem(-20px);
+        }
+        .num {
+          font-size: torem(60px);
+          font-family: "Microsoft YaHei";
+          font-weight: bold;
+          color: #333333;
+        }
+        .title {
+          font-size: torem(20px);
+          font-family: Microsoft YaHei;
+          font-weight: bold;
+          color: #30C159;
+          margin-top: torem(8px);
+        }
+        .info {
+          font-size: torem(14px);
+          font-family: Microsoft YaHei;
+          font-weight: 400;
+          color: #333333;
+          line-height: torem(28px);
+          margin-top: torem(10px);
+        }
+      }
+    }
+    .timeline {
+      margin-top: torem(105px);
+      .timelineContent{
+        width: 100vw;
+        height: torem(50px);
+        border:0px solid red;
+        .timelineContentLine {
+          width: 100vw;
+          padding: 0 torem(350px);
+          display:flex;
+          height: torem(4px);
+          background: linear-gradient(to right, rgba(238, 238, 238, 0.1), rgba(238, 238, 238, 0.3), rgba(238, 238, 238, 0.6), #EEEEEE, rgba(238, 238, 238, 0.6), rgba(238, 238, 238, 0.3), rgba(238, 238, 238, 0.1));
+        }
+        .flex {
+          /*flex: 1;*/
+          display:flex;
+          width: torem(166px);
+        }
+      }
+      .timelineInfo {
+        display:flex;
+        margin-top: torem(10px);
+        padding: 0 torem(350px);
+        .text {
+          font-size: torem(14px);
+          font-family: Microsoft YaHei;
+          font-weight: bold;
+          color: #333333;
+          margin-top: torem(5px);
+          cursor: pointer;
+        }
+      }
+      .dotBig{
+        cursor: pointer;
+        border: torem(1px) solid #30C159;
+        width: torem(19px);
+        height: torem(19px);
+        border-radius: 50%;
+        background: white;
         margin: 0 auto;
+        margin-bottom: torem(-6px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: torem(-7px);
+        .dot{
+          background: #30C159;
+          width: torem(10px);
+          height: torem(10px);
+          border-radius: 50%;
+          /*margin: auto;*/
+        }
+      }
+      .dotBigTwo {
+        cursor: pointer;
+        border: torem(1px) solid #999999;
+        width: torem(13px);
+        height: torem(13px);
+        border-radius: 50%;
+        background: white;
+        margin: 0 auto;
+        margin-bottom: torem(-6px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: torem(-7px);
+        .dotTwo {
+          background: #999999;
+          width: torem(7px);
+          height: torem(7px);
+          border-radius: 50%;
+          /*margin: auto;*/
+        }
+      }
+      .item{
+        flex:1;
+        /*border-bottom:1px solid #cdcdcd;*/
+      }
+      .item1{
+        flex:1;
+        border-bottom:0px solid #cdcdcd;
       }
     }
   }
-  .brand-s {
-    display: flex;
-    justify-content: space-around;
-    margin: torem(52px) 0 0 0;
-  }
-  .brand-i {
-    width: torem(260px);
-    color: #333;
-    & > img {
-      width: 100%;
-      height: auto;
-    }
-    .name {
-      margin: torem(12px) 0;
-      font-size: torem(14px);
-      font-weight: bold;
-    }
-    .desc {
-      line-height: torem(24px);
-      font-size: torem(12px);
-    }
-  }
-}
-/*百年文化*/
-.w-culture-swipe {
-  display: flex;
-  align-items: center;
-  height: torem(377px);
-  .swipe-i {
-    width: 20%;
-    height: 100%;
-    padding: torem(65px) torem(26px) 0 torem(18px);
-    background-color: #f4f4f4;
-    .quotes {
-      width: torem(16px);
-      height: torem(12px);
-      background: url("../assets/image/dian.png") 100% 100% / cover no-repeat;
-    }
-    .num {
-      margin: torem(13px) 0 torem(5px);
-      color: #ccc;
-      font-size: torem(52px);
-    }
-    .name {
-      margin: 0 0 torem(12px) 0;
-      font-size: torem(14px);
-      color: #333;
-      font-weight: bold;
-    }
-    .desc {
-      display: -webkit-box; /*值必须为-webkit-box或者-webkit-inline-box*/
-      -webkit-box-orient: vertical; /*值必须为vertical*/
-      -webkit-line-clamp: 8; /*值为数字，表示一共显示几行*/
-      overflow: hidden;
-      line-height: torem(22px);
-      color: #666;
-      font-size: torem(12px);
-    }
-  }
-  .active {
-    display: flex;
-    position: relative;
-    align-items: center;
-    width: 60%;
-    padding: torem(18px);
-    background-color: #29a93e;
-    .quotes {
-      background: url("../assets/image/dian-while.png") 100% 100% / cover
-        no-repeat;
-    }
-    .prev,
-    .next {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: torem(26px);
-      height: torem(26px);
-      margin: auto;
-      cursor: pointer;
-    }
-    .prev {
-      left: 0;
-      transform: translateX(-50%);
-      background: url("../assets/image/prev.png") 100% 100% / cover no-repeat;
-    }
-    .next {
-      right: 0;
-      transform: translateX(50%);
-      background: url("../assets/image/next.png") 100% 100% / cover no-repeat;
-    }
-  }
-  .view-l {
-    height: 100%;
-    width: 54%;
-
-  }
-  .view-r {
-    width: 46%;
-    height: 100%;
-    margin: 0 0 0 torem(21px);
-    padding: torem(26px) 0;
-
-    .num {
-      color: rgba(255, 255, 255, 0.5);
-    }
-    .name {
-      color: #fff;
-    }
-    .desc {
-      display: -webkit-box; /*值必须为-webkit-box或者-webkit-inline-box*/
-      -webkit-box-orient: vertical; /*值必须为vertical*/
-      -webkit-line-clamp: 8; /*值为数字，表示一共显示几行*/
-      overflow: hidden;
-      height: 60%;
-      color: rgba(255, 255, 255, 0.9);
-    }
-  }
-}
-/*公司活动*/
-.w-activity-c {
-  .swipe-c-w {
-    display: flex;
-    position: relative;
-    align-items: center;
-    margin: 0 0 torem(78px) 0;
-  }
-  .swipe-w {
-    position: relative;
-    z-index: 1;
-    width: torem(572px);
-  }
-
-  .content-detail {
-    position: relative;
-    z-index: 2;
-    width: torem(338px);
-    margin: 0 0 0 torem(-16px);
-    padding: torem(52px) torem(26px) torem(52px) torem(39px);
-    background: #f4f4f4;
-    .title {
-      font-size: torem(14px);
-      font-weight: bold;
-    }
-    .desc {
-      line-height: torem(24px);
-      font-size: torem(12px);
-    }
-  }
-}
-.walkbn-w {
-  .line {
-    width: torem(39px);
-    height: torem(2.5px);
-    margin: torem(18px) 0 torem(12px) 0;
-    background-color: #29a93e;
-    border-radius: torem(2px);
-  }
-  .tab-block-3 {
-    margin: 0;
-  }
-  .tab-block-4 {
-    .content-w {
+  /*公司活动*/
+  .w-activity-c {
+    .swipe-c-w {
       display: flex;
+      position: relative;
       align-items: center;
-      justify-content: space-between;
-      flex-wrap: nowrap;
-      margin: 0;
-      color: #333;
+      margin: 0 0 torem(78px) 0;
     }
-    .view-img {
-      width: 58%;
+    .swipe-w {
+      position: relative;
+      z-index: 1;
+      width: torem(572px);
     }
-    .detail {
-      width: 42%;
 
-      margin: 0 0 0 torem(78px);
-      padding: 0 torem(52px) 0 0;
-    }
-    .title {
-      font-size: torem(14px);
-      font-weight: bold;
-    }
-    .line {
-    }
-    .desc {
-      font-size: torem(12px);
-      line-height: torem(20px);
+    .content-detail {
+      position: relative;
+      z-index: 2;
+      width: torem(338px);
+      margin: 0 0 0 torem(-16px);
+      padding: torem(52px) torem(26px) torem(52px) torem(39px);
+      background: #f4f4f4;
+      .title {
+        font-size: torem(14px);
+        font-weight: bold;
+      }
+      .desc {
+        line-height: torem(24px);
+        font-size: torem(12px);
+      }
     }
   }
-}
+  .walkbn-w {
+    .line {
+      width: torem(39px);
+      height: torem(2.5px);
+      margin: torem(18px) 0 torem(12px) 0;
+      background-color: #29a93e;
+      border-radius: torem(2px);
+    }
+    .tab-block-3 {
+      margin: 0;
+    }
+    .tab-block-4 {
+      .content-w {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        margin: 0;
+        color: #333;
+      }
+      .view-img {
+        width: 58%;
+      }
+      .detail {
+        width: 42%;
+
+        margin: 0 0 0 torem(78px);
+        padding: 0 torem(52px) 0 0;
+      }
+      .title {
+        font-size: torem(14px);
+        font-weight: bold;
+      }
+      .line {
+      }
+      .desc {
+        font-size: torem(12px);
+        line-height: torem(20px);
+      }
+    }
+  }
 </style>

@@ -117,11 +117,15 @@ img {
 .tab-title-w {
   font-size: torem(16px);
   .tab-title {
+    font-size: torem(20px);
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+    color: #333333;
     padding: 0 0 torem(5px) 0;
     margin: torem(10px) 0;
   }
   .tab-title--border{
-    border-bottom: torem(2px) solid #23ac38;
+    border-bottom: torem(2px) solid #30C159;
   }
 }
 
