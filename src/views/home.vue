@@ -2,9 +2,14 @@
   <div class="home-w">
     <div class="home-c ">
       <div class="video-w">
-         <my-video :src="videoStr"></my-video>
-<!--        <img src="@/assets/image/h-b-1.png" alt="" />-->
+        <img src="@/assets/image/w-b-1.png" alt="" />
         <div class="mask"></div>
+        <div class="plays" @click="checkVideo"></div>
+        <div class="info">
+          <div class="t1">智能健康监护 就选百来俏</div>
+          <div class="t2">全新品牌代言人</div>
+          <div class="t2">虎艳芬《外来媳妇本地郎》二嫂 饰演者</div>
+        </div>
       </div>
       <!-- 内容 -->
       <div class="content-w grid-contain">
@@ -126,6 +131,16 @@
         </div>
       </div>
     </div>
+    <el-dialog
+        title=""
+        :visible.sync="showVideo"
+        append-to-body
+        label-position="left"
+        width="1000px"
+        class="previewDialog"
+        :before-close="handleVideoClose">
+      <my-video :src="videoStr"></my-video>
+    </el-dialog>
   </div>
 </template>
 
@@ -188,6 +203,7 @@ export default {
       otherInformationData: [], // 其他资讯列表
       otherInformation: [],
       checkOtherIndex: 0, // 选中其他资讯
+      showVideo: false, // 是否展开视频播放
     };
   },
   computed: {
@@ -322,6 +338,14 @@ export default {
           }
         })
       }
+    },
+    // 展开视频弹窗
+    checkVideo() {
+      this.showVideo = true
+    },
+    // 关闭视频
+    handleVideoClose() {
+      this.showVideo = false
     }
   },
   watch: {
@@ -359,8 +383,57 @@ export default {
     position: relative;
     width: 100%;
     height: auto;
-
-    & > img,
+    .img {
+      width: 100vw;
+      height: torem(700px)
+    }
+    .plays {
+      width: torem(75px);
+      height: torem(75px);
+      -webkit-box-shadow: 0 0 torem(5px) #FFFFFF;
+      box-shadow: 0 0 torem(5px) #FFFFFF;
+      border-radius: 50%;
+      position: relative;
+      z-index: 5;
+      cursor: pointer;
+      -webkit-transition: 0.3s;
+      transition: 0.3s;
+      position: absolute;
+      top: 40%;
+      right: torem(498px);
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .plays:hover {
+      box-shadow: 0 0 torem(30px) #FFFFFF;
+    }
+    .plays::before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      clip-path: polygon(20% 0, 100% 50%, 20% 100%);
+      background: #FFFFFF;
+      transform: scale(0.4);
+    }
+    .info {
+      position: absolute;
+      top: 35%;
+      left: torem(360px);
+      .t1 {
+        font-size: torem(36px);
+        font-family: Microsoft YaHei;
+        font-weight: bold;
+        color: #FFFFFF;
+        margin-bottom: torem(25px);
+      }
+      .t2 {
+        font-size: torem(18px);
+        font-family: Microsoft YaHei;
+        font-weight: 400;
+        color: #FFFFFF;
+        line-height: torem(25px);
+      }
+    }
     .mask {
       position: absolute;
       top: 0;
@@ -369,7 +442,7 @@ export default {
     & > .mask {
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(0, 0, 0, 0.45);
     }
 }
   .content-w {
@@ -797,4 +870,28 @@ export default {
     }
   }
 }
+  .previewDialog {
+    .el-dialog__header {
+      padding: 0;
+      top: torem(-15px);
+      right: torem(-15px);
+    }
+    .el-dialog__body {
+      padding: 0;
+    }
+    .el-dialog__headerbtn {
+      z-index: 9999;
+      width: torem(36px);
+      height: torem(36px);
+      background: #EEEEEE;
+      border-radius: 50%;
+      top: torem(-17px);
+      right: torem(-14px);
+    }
+    .el-dialog__headerbtn .el-dialog__close {
+      color: #999999;
+      font-size: torem(21px);
+      font-weight: bold;
+    }
+  }
 </style>

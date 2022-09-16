@@ -1,5 +1,5 @@
 <template>
-  <div class="newpage-w">
+  <div class="newpage-w" id="newpage-w">
     <div class="main-w">
       <van-tabs
         v-model="tabActive"
@@ -89,6 +89,29 @@ export default {
     }
     this.getCategoryList()
     this.getArticleList()
+    setTimeout(() => {
+      let mechanismDetailInfo = document.getElementById('newpage-w')
+      let myNav = document.querySelector('.van-sticky')
+      console.log("页面滚动1", mechanismDetailInfo);
+      mechanismDetailInfo.addEventListener("scroll", function (e) {
+        let scrollTop = e.target.scrollTop;
+        let clientHeight = e.target.clientHeight;
+        let scrollHeight = e.target.scrollHeight;
+        console.log("页面滚动2", scrollTop,clientHeight,scrollHeight);
+        if (scrollTop > 0) {
+          let process = document.getElementById('header-w')
+          let ylWatchTop = document.querySelector('.van-sticky')
+          process.style.display = 'none'
+          ylWatchTop.style.top = '0'
+          process.style.zIndex = '9999 !important'
+        } else {
+          let process = document.getElementById('header-w')
+          let ylWatchTop = document.querySelector('.van-sticky')
+          process.style.display = 'block'
+          ylWatchTop.style.top = 73 / 30 * 32 + 'px'
+        }
+      })
+    },500)
   },
 
   beforeRouteUpdate(to,from,next){
@@ -192,6 +215,9 @@ export default {
     @return $px / 30px * 1rem; //100px为根字体大小
   }
 .newpage-w {
+  overflow-y: scroll;
+  height: 100%;
+  max-height: 100vh;
   .el-pagination.is-background .btn-next, .el-pagination.is-background .btn-prev, .el-pagination.is-background .el-pager li {
     min-width: torem(22px) !important;
   }
@@ -398,4 +424,23 @@ export default {
     }
   }
 }
+  /*修改滚动条样式*/
+  .newpage-w::-webkit-scrollbar{
+    width: 0px;
+    /*height: 30px;*/
+  }
+  .newpage-w::-webkit-scrollbar-track{
+    border-radius: 0px;
+  }
+  .newpage-w::-webkit-scrollbar-thumb{
+    background: #D9D9D9;
+    border-radius: 0px;
+  }
+  .newpage-w::-webkit-scrollbar-thumb:hover{
+    background: #D9D9D9;
+    border-radius: 0px;
+  }
+  .newpage-w::-webkit-scrollbar-corner{
+    border-radius: 0px;
+  }
 </style>

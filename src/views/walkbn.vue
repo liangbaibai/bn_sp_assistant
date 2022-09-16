@@ -221,7 +221,150 @@
             </div>
 
             <div class="w-activity-c">
-              <div class="swipe-c-w">
+              <div class="content-c">
+                <div class="w-activity-c-l">
+                  <div class="w-activity-c-l-top">
+                    <div>
+                      <div class="t1">Review activities</div>
+                      <div class="t2">活动回顾</div>
+                    </div>
+                    <div class="t3">01</div>
+                    <img src="@/assets/image/line_type.png" class="line_type" alt="">
+                  </div>
+                  <div class="w-activity-c-l-botm">
+                    <div class="left">
+                      <div class="t1">
+                        <div>百年大健康携手家和家政，</div>
+                        <div>参与“安心家政 爱满羊城”活动！</div>
+                      </div>
+                      <div class="t2">2022/06/18</div>
+                      <div class="t3">
+                        2022年6月18日，为推动家政服务业高质量发展，提升“南粤家政”羊城行动的影响力，提高家政行业的关注度和认可度，由广州市妇女联合会联合广州市商务局、广州市市人力资源和社会保障局、天河区人民政府主办，广州市妇女儿童发展中心、广州市家庭服务联合会承办的“安心家政 爱满羊城”首届广州安心家政服务月活动在海心沙广场启动，主办方同时为市民推出“安心家政”品牌展，展示“南粤家政”羊城行动启动以来的主要实效成果。
+                      </div>
+                      <div class="botm-line"></div>
+                      <div style="display: flex;align-items: center">
+                        <div class="t5">01</div>
+                        <div class="t6"> /01</div>
+                      </div>
+                    </div>
+                    <div class="right">
+                      <el-carousel trigger="click" class="carouselImg" height="464px" :indicator-position="none">
+                        <el-carousel-item v-for="item in 1" :key="item">
+                          <img src="@/assets/image/w-c-6.png" alt="" />
+                        </el-carousel-item>
+                      </el-carousel>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="content-c-r">
+                <div class="w-activity-c-l">
+                  <div class="w-activity-c-l-top">
+                    <div style="text-align: left;">
+                      <div class="t1">Review activities</div>
+                      <div class="t2">活动回顾</div>
+                    </div>
+                    <div class="t3">02</div>
+                    <img src="@/assets/image/line_type.png" class="line_type" alt="">
+                  </div>
+                  <div class="w-activity-c-l-botm">
+                    <div class="left">
+                      <div class="t1">
+                        <div>践行初心丨情暖花山</div>
+                        <div>百年医养慰问低保、低收、特困、失能人员！</div>
+                      </div>
+                      <div class="t2">2021/10/18</div>
+                      <div class="t3">
+                        为弘扬中华民族传统美德，营造尊老、敬老、爱老、助老的良好风尚，2021年10月18日，广东百年医疗健康科技发展有限公司（简称百年医养）一行人，在总经理陈苏的带领下，对广州市花都区花山镇南村的低保、低收、特困、失能人员开展了“践行初心 情暖花山”慰问活动，向老人们致以最诚挚的问候和祝福。
+                      </div>
+                      <div class="botm-line"></div>
+                      <div style="display: flex;align-items: center">
+                        <div class="t5">01</div>
+                        <div class="t6"> /01</div>
+                      </div>
+                    </div>
+                    <div class="right">
+                      <el-carousel trigger="click" class="carouselImg" height="464px" :indicator-position="none">
+                        <el-carousel-item v-for="item in 1" :key="item">
+                          <img src="@/assets/image/w-c-s1.png" alt="" />
+                        </el-carousel-item>
+                      </el-carousel>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="content-c">
+                <div class="w-activity-c-l">
+                  <div class="w-activity-c-l-top">
+                    <div>
+                      <div class="t1">Review activities</div>
+                      <div class="t2">活动回顾</div>
+                    </div>
+                    <div class="t3">03</div>
+                    <img src="@/assets/image/line_type.png" class="line_type" alt="">
+                  </div>
+                  <div class="w-activity-c-l-botm">
+                    <div class="left">
+                      <div class="t1">
+                        <div>百年大健康走访慰问颐年养老院</div>
+                      </div>
+                      <div class="t2">2020/10/24</div>
+                      <div class="t3">
+                        带着对老人的尊敬与关怀，广东百年医疗健康科技发展有限公司（以下简称百年大健康）总经理陈苏率公司全体员工，于10月24日走访慰问了广州颐年养老院近200位老人，并开展了“浓情重阳 敬老爱老”公益演出活动。
+                      </div>
+                      <div class="botm-line"></div>
+                      <div style="display: flex;align-items: center">
+                        <div class="t5">01</div>
+                        <div class="t6"> /01</div>
+                      </div>
+                    </div>
+                    <div class="right">
+                      <el-carousel trigger="click" class="carouselImg" height="464px" :indicator-position="none">
+                        <el-carousel-item v-for="item in 1" :key="item">
+                          <img src="@/assets/image/w-c-s2.png" alt="" />
+                        </el-carousel-item>
+                      </el-carousel>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="content-c-r">
+                <div class="w-activity-c-l">
+                  <div class="w-activity-c-l-top">
+                    <div style="text-align: left;">
+                      <div class="t1">Review activities</div>
+                      <div class="t2">活动回顾</div>
+                    </div>
+                    <div class="t3">04</div>
+                    <img src="@/assets/image/line_type.png" class="line_type" alt="">
+                  </div>
+                  <div class="w-activity-c-l-botm">
+                    <div class="left">
+                      <div class="t1">
+                        <div>百年大健康携手家和家政，</div>
+                        <div>亮相“南粤家政 羊城超市”！</div>
+                      </div>
+                      <div class="t2">2020/09/27</div>
+                      <div class="t3">
+                        9 月 27 日，广州市总工会、团市委、市妇联、市人社局等联合举办的 " 粤菜师傅 "" 广东技工 "" 南粤家政 " 交流会在广州市青年文化宫启动。百年大健康携手家和家政，亮相“南粤家政 羊城超市”。
+                      </div>
+                      <div class="botm-line"></div>
+                      <div style="display: flex;align-items: center">
+                        <div class="t5">01</div>
+                        <div class="t6"> /01</div>
+                      </div>
+                    </div>
+                    <div class="right">
+                      <el-carousel trigger="click" class="carouselImg" height="464px" :indicator-position="none">
+                        <el-carousel-item v-for="item in 1" :key="item">
+                          <img src="@/assets/image/w-c-s3.png" alt="" />
+                        </el-carousel-item>
+                      </el-carousel>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--<div class="swipe-c-w">
                 <div class="swipe-w">
                   <el-carousel trigger="click" height="338px">
                     <el-carousel-item v-for="item in 4" :key="item">
@@ -229,7 +372,6 @@
                     </el-carousel-item>
                   </el-carousel>
                 </div>
-
                 <div class="content-detail">
                   <div class="title">百年大健康走访慰问颐年养老院</div>
                   <div class="line"></div>
@@ -239,7 +381,6 @@
                   </div>
                 </div>
               </div>
-
               <div class="swipe-c-w">
                 <div class="content-detail" style="margin: 0 -16px 0 0">
                   <div class="title">
@@ -261,7 +402,7 @@
                     </el-carousel-item>
                   </el-carousel>
                 </div>
-              </div>
+              </div>-->
             </div>
           </div>
         </van-tab>
@@ -713,7 +854,6 @@ export default {
       z-index: 1;
       width: torem(572px);
     }
-
     .content-detail {
       position: relative;
       z-index: 2;
@@ -728,6 +868,253 @@ export default {
       .desc {
         line-height: torem(24px);
         font-size: torem(12px);
+      }
+    }
+    .content-c {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: torem(135px);
+      margin-left: torem(-70px);
+      .w-activity-c-l {
+        .w-activity-c-l-top {
+          display: flex;
+          align-items: center;
+          position: relative;
+          width: torem(438px);
+          padding-left: torem(34px);
+          .t1 {
+            font-size: torem(20px);
+            font-family: Microsoft YaHei;
+            font-weight: 400;
+            color: #999999;
+            text-transform: uppercase;
+          }
+          .t2 {
+            font-size: torem(22px);
+            font-family: Microsoft YaHei;
+            font-weight: bold;
+            color: #30C159;
+          }
+          .t3 {
+            font-size: torem(50px);
+            font-family: Microsoft YaHei;
+            font-weight: 400;
+            color: #30C159;
+            margin-left: torem(76px);
+          }
+        }
+        .w-activity-c-l-botm {
+          width: torem(1137px);
+          height: torem(400px);
+          background: #FAFAFA;
+          margin-top: torem(75px);
+          position: relative;
+          .left {
+            width: torem(438px);
+            padding: torem(21px) torem(35px);
+            .t1 {
+              font-size: torem(18px);
+              font-family: Microsoft YaHei;
+              font-weight: bold;
+              color: #333333;
+              line-height: torem(28px);
+              margin-bottom: torem(8px);
+            }
+            .t2 {
+              font-size: torem(14px);
+              font-family: Arial;
+              font-weight: 400;
+              color: #30C159;
+              margin-bottom: torem(15px);
+            }
+            .t3 {
+              font-size: torem(14px);
+              font-family: Microsoft YaHei;
+              font-weight: 400;
+              color: #666666;
+              line-height: torem(23px);
+            }
+            .botm-line {
+              width: torem(44px);
+              height: torem(4px);
+              background: #666666;
+              border-radius: torem(2px);
+              margin-top: torem(35px);
+              margin-bottom: torem(20px);
+            }
+            .t5 {
+              font-size: torem(20px);
+              font-family: Arial;
+              font-weight: 400;
+              color: #333333;
+              margin-right: torem(5px);
+            }
+            .t6 {
+              font-size: torem(14px);
+              color: #999999;
+            }
+          }
+          .right {
+            position: absolute;
+            right: torem(-70px);
+            top: torem(-140px);
+            width: torem(769px);
+            height: torem(464px);
+            .carouselImg {
+              height: torem(464px);
+            }
+            .el-carousel--horizontal {
+              overflow: hidden !important;
+            }
+            .el-carousel__arrow--left {
+              left: 0;
+              border-radius: 0;
+              top: 97%;
+              background: rgba(0, 0, 0, 0.5);
+            }
+            .el-carousel__arrow--right {
+              left: torem(36px);
+              border-radius: 0;
+              top: 97%;
+              background: rgba(0, 0, 0, 0.5);
+            }
+          }
+        }
+        .line_type {
+          width: torem(110px);
+          height: auto;
+          position: absolute;
+          top: 0;
+          right: torem(153px);
+          z-index: 9999;
+        }
+      }
+    }
+    .content-c-r {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: torem(135px);
+      margin-right: torem(-90px);
+      .w-activity-c-l {
+
+        .w-activity-c-l-top {
+          display: flex;
+          align-items: center;
+          position: relative;
+          text-align: right;
+          justify-content: flex-end;
+          padding-right: torem(34px);
+          .t1 {
+            font-size: torem(20px);
+            font-family: Microsoft YaHei;
+            font-weight: 400;
+            color: #999999;
+            text-transform: uppercase;
+          }
+          .t2 {
+            font-size: torem(22px);
+            font-family: Microsoft YaHei;
+            font-weight: bold;
+            color: #30C159;
+          }
+          .t3 {
+            font-size: torem(50px);
+            font-family: Microsoft YaHei;
+            font-weight: 400;
+            color: #30C159;
+            margin-left: torem(96px);
+          }
+        }
+        .w-activity-c-l-botm {
+          width: torem(1137px);
+          height: torem(400px);
+          background: #FAFAFA;
+          margin-top: torem(75px);
+          position: relative;
+          .left {
+            width: torem(438px);
+            padding: torem(21px) torem(35px);
+            position: absolute;
+            right: 0;
+            .t1 {
+              font-size: torem(18px);
+              font-family: Microsoft YaHei;
+              font-weight: bold;
+              color: #333333;
+              line-height: torem(28px);
+              margin-bottom: torem(8px);
+            }
+            .t2 {
+              font-size: torem(14px);
+              font-family: Arial;
+              font-weight: 400;
+              color: #30C159;
+              margin-bottom: torem(15px);
+            }
+            .t3 {
+              font-size: torem(14px);
+              font-family: Microsoft YaHei;
+              font-weight: 400;
+              color: #666666;
+              line-height: torem(23px);
+            }
+            .botm-line {
+              width: torem(44px);
+              height: torem(4px);
+              background: #666666;
+              border-radius: torem(2px);
+              margin-top: torem(35px);
+              margin-bottom: torem(20px);
+            }
+            .t5 {
+              font-size: torem(20px);
+              font-family: Arial;
+              font-weight: 400;
+              color: #333333;
+              margin-right: torem(5px);
+            }
+            .t6 {
+              font-size: torem(14px);
+              color: #999999;
+            }
+          }
+          .right {
+            position: absolute;
+            left: torem(-70px);
+            top: torem(-140px);
+            width: torem(769px);
+            height: torem(464px);
+            .carouselImg {
+              height: torem(464px);
+            }
+            .el-carousel--horizontal {
+              overflow: hidden !important;
+            }
+            .el-carousel__arrow--left {
+              left: 0;
+              border-radius: 0;
+              top: 97%;
+              background: rgba(0, 0, 0, 0.5);
+            }
+            .el-carousel__arrow--right {
+              left: torem(36px);
+              border-radius: 0;
+              top: 97%;
+              background: rgba(0, 0, 0, 0.5);
+            }
+          }
+        }
+        .line_type {
+          width: torem(110px);
+          height: auto;
+          position: absolute;
+          top: 0;
+          right: torem(189px);
+          transform: rotate(180deg);
+          z-index: 9999;
+        }
       }
     }
   }

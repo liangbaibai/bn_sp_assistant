@@ -133,8 +133,8 @@ export default {
   width: auto;
   z-index: 1;
   .play {
-    width: torem(100px);
-    height: torem(100px);
+    width: torem(75px);
+    height: torem(75px);
     -webkit-box-shadow: 0 0 torem(5px) #ccc;
     box-shadow: 0 0 torem(5px) #ccc;
     border-radius: 50%;
@@ -144,8 +144,9 @@ export default {
     -webkit-transition: 0.3s;
     transition: 0.3s;
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 39%;
+    left: 44.5%;
+    background: rgba(255, 255, 255, 0.2);
   }
 
   .play:hover {
