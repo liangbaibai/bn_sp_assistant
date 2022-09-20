@@ -14,9 +14,9 @@ function getBaseUrl() {
   console.log('环境:NODE_ENV', process.env.NODE_ENV)
   switch (process.env.NODE_ENV) {
     case 'development': return ''
-    case 'testing': return 'http://192.168.10.195/'
+    case 'testing': return 'http://47.106.134.247/'
     case 'production': return 'https://www.bainianyang.com'
-    default : return 'http://192.168.10.195/'
+    default : return 'http://47.106.134.247/'
   }
 }
 // 拦截器的添加

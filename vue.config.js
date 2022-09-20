@@ -22,7 +22,7 @@ module.exports = {
       },
     }
   },
-  publicPath:'/html/pc',
+  publicPath:'/html/official-website',
   chainWebpack: (config) => {
     config.resolve.alias
       .set('@', resolve('src'))
