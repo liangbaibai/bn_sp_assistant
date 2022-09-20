@@ -325,8 +325,9 @@ export default {
     background: #ffffff;
   }
   .logo-w {
-    width: torem(110px);
-    min-width: torem(110px);
+    width: torem(149px);
+    min-width: torem(149px);
+    height: auto;
     cursor: pointer;
     position: absolute;
     left: torem(300px);
