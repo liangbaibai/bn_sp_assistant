@@ -4,6 +4,8 @@
         ref="videoRef"
         :src="src"
         controls
+        autoplay
+        muted
         @play="videoIsPlay = true;"
         @pause="videoIsPlay = false;"
         @ended="videoIsPlay = false;"

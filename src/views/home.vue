@@ -2,7 +2,18 @@
   <div class="home-w">
     <div class="home-c ">
       <div class="video-w">
-        <img src="@/assets/image/w-b-1.png" alt="" />
+<!--        <img src="@/assets/image/w-b-1.png" alt="" />-->
+        <video
+            :src="'http://1253484761.vod2.myqcloud.com/9d41b30bvodcq1253484761/57362113387702306239961417/f0.mp4'"
+            autoplay
+            muted
+            x-webkit-airplay="true"
+            playsinline="true"
+            webkit-playsinline="true"
+            loop
+            style="width: 100%">
+        </video>
+
         <div class="mask"></div>
         <div class="plays" @click="checkVideo"></div>
         <div class="info">
@@ -441,7 +452,7 @@ export default {
     }
     & > .mask {
       width: 100%;
-      height: 100%;
+      height: 99%;
       background-color: rgba(0, 0, 0, 0.45);
     }
 }
