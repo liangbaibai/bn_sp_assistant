@@ -32,7 +32,7 @@
       },
       // 返回顶部
       toTop() {
-        document.body.scrollTop = 0;
+        document.getElementById('app').scrollTop = 0;
         document.documentElement.scrollTop = 0;
       },
     }

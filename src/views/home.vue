@@ -11,7 +11,7 @@
             playsinline="true"
             webkit-playsinline="true"
             loop
-            style="width: 100%">
+            width="100%">
         </video>
 
         <div class="mask"></div>
@@ -576,7 +576,7 @@ export default {
         cursor: pointer;
         &_info {
           position: absolute;
-          bottom: torem(23px);
+          top: torem(328px);
           left: torem(19px);
           text-align: left;
           display: inline-block;
@@ -607,6 +607,9 @@ export default {
       }
       &_i:hover {
         box-shadow: 0 0 0 0 #333, inset 0 0 0 0 #423880, inset 0 -7.4666666667rem 3.9333333333rem -3.5666666667rem rgb(0 0 0 / 68%), inset 0px 0px 0 0 rgb(0 0 0 / 59%);
+      }
+      &_i:hover .zncp_c_i_info {
+        top: torem(300px);
       }
       &_i:hover .hover {
         display: contents;
@@ -847,10 +850,17 @@ export default {
       }
     }
     .xwhd_c_bottom_list:hover {
+      cursor: pointer;
       box-shadow: 0px torem(12px) torem(18px) torem(-1px) hsl(0deg 0% 49% / 35%);
+      border-radius: 0px 0px torem(10px) torem(10px);
     }
     .xwhd_c_bottom_i_h:hover {
+      cursor: pointer;
       box-shadow: 0px torem(12px) torem(18px) torem(-1px) hsl(0deg 0% 49% / 35%);
+      border-radius: 0px 0px torem(10px) torem(10px);
+      .xwhd_c_bottom_i_info_t {
+        color: #30C159;
+      }
     }
     &_bottom {
       display: flex;

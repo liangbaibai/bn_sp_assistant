@@ -56,6 +56,12 @@ export default {
               targetPane.addEventListener("mouseleave", () => {
                 console.log('targetPane-mouseleave', targetPane, that.indexCheckTitle)
                 that.indexCheckTitle = that.indexTitle
+                console.log('获取vuex"', that.$route.path, that.indexCheckTitle)
+                if (that.$route.path == '/home') {
+                  that.indexCheckTitle = ''
+                } else {
+                  that.indexCheckTitle = that.indexTitle
+                }
               })
             })
             target[i].addEventListener("mouseenter", () => {
@@ -67,7 +73,6 @@ export default {
           }
         });
     });
-    console.log('获取vuex"', this.$store.state.tabMenu.menuIndex)
     this.indexCheckTitle = sessionStorage.getItem('routeName')
   },
 
@@ -330,7 +335,7 @@ export default {
     height: auto;
     cursor: pointer;
     position: absolute;
-    left: torem(300px);
+    left: torem(359px);
   }
 }
 
@@ -341,7 +346,7 @@ export default {
   .el-tabs {
     margin-bottom: torem(1px);
     position: relative;
-    left: torem(715px);
+    left: torem(825px);
   }
   .el-tabs__header {
     margin: 0;
@@ -378,7 +383,7 @@ export default {
     z-index: 9999;
     background: #ffffff;
     width: 100vw;
-    left: torem(-715px);
+    left: torem(-825px);
   }
   .el-tabs__item:hover {
     color: #30C159;

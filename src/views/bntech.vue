@@ -192,9 +192,7 @@ export default {
   }
   .bntech-w {
     background-color: #fff;
-    overflow-y: scroll;
     height: 100%;
-    max-height: 100vh;
     .banner-w {
       width: torem(1920px);
       height: torem(500px);
@@ -225,11 +223,11 @@ export default {
     }
 
     .main-w {
-      width: 1000px;
+      width: 100%;
       margin: 0 auto;
-      padding: 0 0 torem(78px) 0;
+      padding: 0 torem(361px);
       .van-tabs--line .van-tabs__wrap {
-        width: 60%;
+        width: 76%;
         border-bottom: torem(1px) solid #F4F4F4;
       }
       .tab-title-w .tab-title--border {

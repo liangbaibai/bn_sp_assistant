@@ -9,7 +9,7 @@
         @play="videoIsPlay = true;"
         @pause="videoIsPlay = false;"
         @ended="videoIsPlay = false;"
-        style="width: 100%">
+        class="video-img">
     </video>
     <div class="play" v-show="!videoIsPlay" @click="changeVideoStatus()"></div>
   </div>
@@ -134,6 +134,10 @@ export default {
   position: relative;
   width: auto;
   z-index: 1;
+  .video-img {
+    width: 100%;
+    margin-bottom: torem(-2px);
+  }
   .play {
     width: torem(75px);
     height: torem(75px);

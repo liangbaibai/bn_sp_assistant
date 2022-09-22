@@ -86,9 +86,6 @@
   }
   .bloodPressure {
     background: #FFFFFF;
-    overflow-y: scroll;
-    height: 100%;
-    max-height: 100vh;
     &_top {
       position: fixed;
       width: 100vw;

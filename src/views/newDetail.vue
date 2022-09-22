@@ -218,7 +218,8 @@ export default {
       }
     }
     .new-content{
-      padding: 3% 10% 0 10%;
+      width: torem(1200px);
+      /*padding: 3% 10% 0 10%;*/
       margin: 0 auto;
       font-size: torem(12px);
       img {

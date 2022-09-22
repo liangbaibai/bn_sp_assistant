@@ -213,9 +213,7 @@ export default {
   }
   .medicalservices-w {
     background-color: #fff;
-    overflow-y: scroll;
     height: 100%;
-    max-height: 100vh;
     .banner-w {
       .el-carousel__container {
         height: torem(500px);

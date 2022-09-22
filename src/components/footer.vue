@@ -265,6 +265,10 @@ export default {
     .item-i {
       margin: 0 0 torem(10px) 0;
     }
+    .item-i:hover {
+      cursor: pointer;
+      color: #30C159;
+    }
   }
 }
 .copyright {
@@ -283,6 +287,10 @@ export default {
     display: flex;
     .item-i {
       margin: 0 torem(10px) 0 0;
+    }
+    .item-i:hover {
+      cursor: pointer;
+      color: #30C159;
     }
   }
 }

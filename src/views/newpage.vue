@@ -3,8 +3,8 @@
     <div class="main-w">
       <van-tabs
         v-model="tabActive"
-        title-active-color="#29A93E"
-        color="#29A93E"
+        title-active-color="#30C159"
+        color="#30C159"
         line-height="0"
         sticky
         animated
@@ -385,11 +385,11 @@ export default {
       /*transform: scale(1.05);*/
       cursor: pointer;
       .title {
-        color: #29a93e;
+        color: #30C159;
       }
     }
     .title {
-      margin: 0 0 torem(26px) 0;
+      margin: 0 0 torem(15px) 0;
       font-size: torem(18px);
       color: #333;
       font-weight: bold;
@@ -401,6 +401,7 @@ export default {
     .date {
       font-size: torem(12px);
       color: #666;
+      font-family: "Microsoft YaHei";
       font-weight: 400;
     }
     .content {

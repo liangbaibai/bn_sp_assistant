@@ -92,7 +92,10 @@
                   <div class="timelineContentLine">
                     <div class="flex" v-for="(item,index) in w_data.culture">
                       <div style="flex:1"></div>
-                      <div :class="checkIndex == index ? 'dotBig' : 'dotBigTwo'" @click="checkCulture(item,index)">
+                      <div
+                          :class="checkIndex == index ? 'dotBig' : 'dotBigTwo'"
+                          @mousemove="mousemoves($event,item,index)"
+                          @click="checkCulture(item,index)">
                         <div :class="checkIndex == index ? 'dot' : 'dotTwo'"></div>
                       </div>
                       <div class="item"></div>
@@ -101,86 +104,16 @@
                   <div class="timelineInfo">
                     <div class="flex" v-for="(item,index) in w_data.culture">
                       <div class="item1"></div>
-                      <div class="text" :style="{color: checkIndex == index ? '#30C159' : '#333333'}" @click="checkCulture(item,index)">{{item.title}}</div>
+                      <div
+                          class="text"
+                          :style="{color: checkIndex == index ? '#30C159' : '#333333'}"
+                          @mousemove="mousemoves($event,item,index)"
+                          @click="checkCulture(item,index)">{{item.title}}</div>
                       <div class="item1"></div>
                     </div>
                   </div>
                 </div>
               </div>
-              <!--<div class="swipe-i">
-                <div class="quotes"></div>
-                <div class="num">
-                  {{
-                    "0" +
-                    (cultureIndex === 0 ? w_data.culture.length : cultureIndex)
-                  }}
-                </div>
-                <div class="name">
-                  {{
-                    w_data.culture[
-                      cultureIndex < 1
-                        ? w_data.culture.length - 1
-                        : cultureIndex - 1
-                    ].title
-                  }}
-                </div>
-                <div class="desc">
-                  {{
-                    w_data.culture[
-                      cultureIndex < 1
-                        ? w_data.culture.length - 1
-                        : cultureIndex - 1
-                    ].content
-                  }}
-                </div>
-              </div>
-              <div class="swipe-i active">
-                <div class="view-l">
-                  <img :src="w_data.culture[cultureIndex].img" alt="" />
-                </div>
-                <div class="view-r">
-                  <div class="quotes"></div>
-                  <div class="num">{{ "0" + (cultureIndex + 1) }}</div>
-                  <div class="name">
-                    {{ w_data.culture[cultureIndex].title }}
-                  </div>
-                  <div class="desc">
-                    {{ w_data.culture[cultureIndex].content }}
-                  </div>
-                </div>
-
-                <div class="prev" @click="onCulturePrevClick"></div>
-                <div class="next" @click="onCultureNextClick"></div>
-              </div>
-              <div class="swipe-i">
-                <div class="quotes"></div>
-                <div class="num">
-                  {{
-                    "0" +
-                    (cultureIndex >= w_data.culture.length - 1
-                      ? 1
-                      : cultureIndex + 2)
-                  }}
-                </div>
-                <div class="name">
-                  {{
-                    w_data.culture[
-                      cultureIndex >= w_data.culture.length - 1
-                        ? 1
-                        : cultureIndex + 1
-                    ].title
-                  }}
-                </div>
-                <div class="desc">
-                  {{
-                    w_data.culture[
-                      cultureIndex >= w_data.culture.length - 1
-                        ? 1
-                        : cultureIndex + 1
-                    ].content
-                  }}
-                </div>
-              </div>-->
             </div>
           </div>
         </van-tab>
@@ -505,21 +438,14 @@ export default {
   },
 
   methods: {
-    onCulturePrevClick() {
-      if (this.cultureIndex > 0) {
-        this.cultureIndex--;
-      } else {
-        this.cultureIndex = this.w_data.culture.length - 1;
-      }
-    },
-    onCultureNextClick() {
-      if (this.cultureIndex < this.w_data.culture.length - 1) {
-        this.cultureIndex++;
-      } else {
-        this.cultureIndex = 0;
-      }
-    },
     checkCulture(item,index) {
+      this.bgImg = item.img
+      this.checkContent = item
+      this.checkIndex = index
+    },
+    mousemoves(event,item,index) {
+      console.log('鼠标经过：', item)
+      this.bgImg = item.img
       this.checkContent = item
       this.checkIndex = index
     }
@@ -536,10 +462,7 @@ export default {
   }
   .walkbn-w {
     background-color: #fff;
-    overflow-y: scroll;
     height: 100%;
-    max-height: 100vh;
-    overflow-x: hidden;
     .banner-w {
       width: 100vw;
       height: torem(500px);
@@ -587,6 +510,7 @@ export default {
         border-bottom: torem(4px) solid #30C159;
       }
       .van-sticky {
+        z-index: 9999;
         padding-bottom: 0px;
         padding-top: torem(26px);
       }
@@ -706,7 +630,7 @@ export default {
         width: torem(640px);
         height: torem(480px);
         position: relative;
-        z-index: 9999;
+        z-index: 888;
       }
       .square {
         position: absolute;
