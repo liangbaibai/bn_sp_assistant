@@ -41,6 +41,7 @@ export default {
   @return $px / 30px * 1rem; //100px为根字体大小
 }
 #app{
+  background: #ffffff;
   position: relative;
 }
 body{
