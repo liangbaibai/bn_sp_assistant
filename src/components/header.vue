@@ -274,6 +274,7 @@ export default {
     },
     //logo click
     onLogoClick() {
+      window.scrollTo(0, 0);
       this.$router.push("/");
     },
     getPath(){

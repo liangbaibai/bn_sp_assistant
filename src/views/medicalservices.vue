@@ -94,14 +94,9 @@ export default {
   mounted() {
     this.scrollToCmtList()
     setTimeout(() => {
-      let mechanismDetailInfo = document.getElementById('medicalservices-w')
-      let myNav = document.querySelector('.van-sticky')
-      console.log("页面滚动1", mechanismDetailInfo);
-      mechanismDetailInfo.addEventListener("scroll", function (e) {
-        let scrollTop = e.target.scrollTop;
-        let clientHeight = e.target.clientHeight;
-        let scrollHeight = e.target.scrollHeight;
-        console.log("页面滚动2", scrollTop,clientHeight,scrollHeight);
+      window.onscroll = function() {
+        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+        console.log('页面滚动：', scrollTop)
         if (scrollTop > 0) {
           let process = document.getElementById('header-w')
           let ylWatchTop = document.querySelector('.van-sticky')
@@ -114,7 +109,7 @@ export default {
           process.style.display = 'block'
           ylWatchTop.style.top = 73 / 30 * 32 + 'px'
         }
-      })
+      }
     },500)
   },
 

@@ -48,14 +48,9 @@
     mounted() {
       this.topFunction()
       setTimeout(() => {
-        let mechanismDetailInfo = document.getElementById('lxWatch')
-        let myNav = document.querySelector('.lxWatch_top')
-        console.log("页面滚动", mechanismDetailInfo);
-        mechanismDetailInfo.addEventListener("scroll", function (e) {
-          let scrollTop = e.target.scrollTop;
-          let clientHeight = e.target.clientHeight;
-          let scrollHeight = e.target.scrollHeight;
-          console.log("页面滚动", scrollTop,clientHeight,scrollHeight);
+        window.onscroll = function() {
+          let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+          console.log('页面滚动：', scrollTop)
           if (scrollTop > 0) {
             let process = document.getElementById('header-w')
             let ylWatchTop = document.getElementById('lxWatch_top')
@@ -68,7 +63,7 @@
             process.style.display = 'block'
             ylWatchTop.style.top = 73 / 30 * 32 + 'px'
           }
-        })
+        }
       },500)
     },
     methods: {

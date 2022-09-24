@@ -491,12 +491,14 @@ export default {
       }
     }
     .van-tabs--line .van-tabs__wrap {
-      width: 65%;
+      width: 51%;
     }
-
-    .tab-block-1 {
-      margin: 0 0 torem(52px) 0;
+    .van-tab__pane {
+      padding: torem(52px) 0;
     }
+/*    .tab-block-1 {
+      padding: torem(52px) 0;
+    }*/
 
     .main-w {
       width: 100%;
@@ -524,7 +526,7 @@ export default {
         margin-top: torem(90px);
       }
       &.top1 {
-        margin-top: torem(210px);
+        margin-top: torem(90px);
       }
       &.top2 {
         margin-top: torem(72px);
@@ -691,6 +693,7 @@ export default {
           width: 100vw;
           padding: 0 torem(350px);
           display:flex;
+          justify-content: center;
           height: torem(4px);
           background: linear-gradient(to right, rgba(238, 238, 238, 0.1), rgba(238, 238, 238, 0.3), rgba(238, 238, 238, 0.6), #EEEEEE, rgba(238, 238, 238, 0.6), rgba(238, 238, 238, 0.3), rgba(238, 238, 238, 0.1));
         }
@@ -702,6 +705,7 @@ export default {
       }
       .timelineInfo {
         display:flex;
+        justify-content: center;
         margin-top: torem(10px);
         padding: 0 torem(350px);
         .text {

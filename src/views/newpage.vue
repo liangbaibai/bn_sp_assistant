@@ -330,13 +330,13 @@ export default {
   .main-w {
     background: #f4f4f4;
     .tab-title-w .tab-title--border {
-      font-size: torem(14px);
+      font-size: torem(16px);
       font-family: Microsoft YaHei;
       font-weight: bold !important;
       color: #30C159 !important;
     }
     .tab-title-w .tab-title {
-      font-size: torem(14px);
+      font-size: torem(16px);
       font-family: Microsoft YaHei;
       font-weight: 400;
       color: #333333;
