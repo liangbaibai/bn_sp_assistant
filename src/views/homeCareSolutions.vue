@@ -4,7 +4,7 @@
       <img src="@/assets/image/zzuj_bn.png" alt="" />
       <div class="banner-w_i">
         <div class="banner-w_i_t">长者居家监护解决方案</div>
-        <div class="banner-w_i_t s">血压检测管理解决方案血压检测管理解决方案</div>
+        <div class="banner-w_i_t s">血压检测管理解决方案</div>
         <div class="banner-w_i_btn" @click="onContactClick">服务咨询</div>
       </div>
     </div>

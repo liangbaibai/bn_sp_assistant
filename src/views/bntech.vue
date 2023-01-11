@@ -3,7 +3,7 @@
     <div class="banner-w">
       <div class="top">
         <div class="t1">百年AI人工智能技术</div>
-        <div class="t2">血压检测管理解决方案血压检测管理解决方案</div>
+        <div class="t2">血压检测管理解决方案</div>
       </div>
     </div>
 
