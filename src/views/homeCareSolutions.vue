@@ -14,9 +14,7 @@
         <div class="main-w_c_t1">
           <div class="main-w_c_t1_p">智能健康监护</div>
           <div class="main-w_c_t1_p">适老设施改造</div>
-          <!-- todo: 暂时更换，用于微信申请 -->
-          <!--<div>医养服务上门</div>-->
-          <div>医养管家-上门服务</div>
+          <div>医养服务上门</div>
         </div>
         <div v-for="item in list">
           <div class="main-w_c_t2">

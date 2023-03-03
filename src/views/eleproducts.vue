@@ -13,16 +13,19 @@
         <div class="eleproducts-c_d_yl">
           <div class="eleproducts-c_d_yl_left">
             <img src="../assets/image/yl_logo.png" alt="" class="eleproducts-c_d_yl_left_ig">
-            <div class="eleproducts-c_d_yl_left_ti">医疗级健康监测手表</div>
-            <div class="eleproducts-c_d_yl_left_te">血压测量精准；心脑血管疾病预警；</div>
-            <div class="eleproducts-c_d_yl_left_te m">定位精准；电子围栏；一键救援； 双向通话</div>
+            <div class="eleproducts-c_d_yl_left_ti">智能健康监护手表 ST6 Pro</div>
+            <div class="eleproducts-c_d_yl_left_te">24小时血压健康监护</div>
+            <div class="eleproducts-c_d_yl_left_te m">
+              <div>心率监测、血压监测、血氧监测、SOS一键求援、蓝牙通话、</div>
+              <div>短信提示、吃药提醒、久坐提醒、支付宝支付、IP67级防水</div>
+            </div>
             <div class="eleproducts-c_d_yl_left_bn">
-              <div class="eleproducts-c_d_yl_left_bn_b" @click="toDetail(1)">了解更多</div>
-              <div class="eleproducts-c_d_yl_left_bn_b c" @click="toBuy(1)">立即购买</div>
+              <div class="eleproducts-c_d_yl_left_bn_b" @click="toDetail(3)">了解更多</div>
+              <div class="eleproducts-c_d_yl_left_bn_b c" @click="toBuy(3)">立即购买</div>
             </div>
           </div>
           <div class="eleproducts-c_d_yl_right">
-            <img src="../assets/image/yl_product_w.png" alt="" class="eleproducts-c_d_yl_right_ig">
+            <img src="../assets/image/lx_product_w.png" alt="" class="eleproducts-c_d_yl_right_ig">
           </div>
         </div>
         <!-- 全自动双管血压计 -->
@@ -52,17 +55,17 @@
         <!-- 乐心手环 -->
         <div class="eleproducts-c_d_yl pd">
           <div class="eleproducts-c_d_yl_left">
-            <img src="../assets/image/lx_logo.png" alt="" class="eleproducts-c_d_yl_left_ig lx">
-            <div class="eleproducts-c_d_yl_left_ti">24H全天候守护长者</div>
-            <div class="eleproducts-c_d_yl_left_te">心率、睡眠监测；全天活动监测；手环支付；</div>
-            <div class="eleproducts-c_d_yl_left_te m">天气提醒；来电拒接 ；微信短信；IP68级防水</div>
+            <img src="../assets/image/yl_logo.png" alt="" class="eleproducts-c_d_yl_left_ig">
+            <div class="eleproducts-c_d_yl_left_ti">医疗级健康监测手表</div>
+            <div class="eleproducts-c_d_yl_left_te">血压测量精准；心脑血管疾病预警；</div>
+            <div class="eleproducts-c_d_yl_left_te m">定位精准；电子围栏；一键救援； 双向通话</div>
             <div class="eleproducts-c_d_yl_left_bn">
-              <div class="eleproducts-c_d_yl_left_bn_b" @click="toDetail(3)">了解更多</div>
-              <div class="eleproducts-c_d_yl_left_bn_b c" @click="toBuy(3)">立即购买</div>
+              <div class="eleproducts-c_d_yl_left_bn_b" @click="toDetail(1)">了解更多</div>
+              <div class="eleproducts-c_d_yl_left_bn_b c" @click="toBuy(1)">立即购买</div>
             </div>
           </div>
           <div class="eleproducts-c_d_yl_right">
-            <img src="../assets/image/lx_product_w.png" alt="" class="eleproducts-c_d_yl_right_ig">
+            <img src="../assets/image/yl_product_w.png" alt="" class="eleproducts-c_d_yl_right_ig">
           </div>
         </div>
         <!-- 秤要精准 也要颜值 -->

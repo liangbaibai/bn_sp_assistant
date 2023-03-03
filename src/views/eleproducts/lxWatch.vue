@@ -38,10 +38,6 @@
         require('../../assets/image/lx_w_d_i_16.jpg'),
         require('../../assets/image/lx_w_d_i_17.jpg'),
         require('../../assets/image/lx_w_d_i_18.jpg'),
-        require('../../assets/image/lx_w_d_i_19.jpg'),
-        require('../../assets/image/lx_w_d_i_20.jpg'),
-        require('../../assets/image/lx_w_d_i_21.jpg'),
-        require('../../assets/image/lx_w_d_i_22.jpg'),
       ]
       }
     },

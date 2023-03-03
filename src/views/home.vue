@@ -195,8 +195,8 @@ export default {
         text: '血压测量精准|心脑血管疾病预警|定位精准 电子围栏|一键救援 双向通话',
         img: require('../assets/image/smartProductBg1.png'),
       }, {
-        title: '百年医养&乐心手环',
-        text: '24H全天候守护长者',
+        title: '智能健康监护手表 ST6 Pro',
+        text: '智慧助老 安全守护',
         img: require('../assets/image/smartProductBg2.png'),
       }], // 智能产品
       smartProductList2: [{
