@@ -116,6 +116,12 @@ const routes = [
     component: () => import('@/views/operatingCare'),
     meta: { title: '运营平台', headerClass: 'origin--header' },
   },
+  {
+    path: '/medicalCare',
+    name: 'medicalCare',
+    component: () => import('@/views/medicalCare'),
+    meta: { title: '运营平台', headerClass: 'origin--header' },
+  },
 ];
 
 const router = new VueRouter({

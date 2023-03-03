@@ -177,11 +177,11 @@ export default {
   data() {
     return {
       videoStr: 'http://1253484761.vod2.myqcloud.com/9d41b30bvodcq1253484761/7033e149387702301233726239/f0.mp4',
-      medicalCareList: [{
+      medicalCareList: [/*{
         title: '长护险',
         text: '7年磨一剑，专注居家养老服务;5大服务保障体系，18项服务标准;三甲医院专家教在线指导，千名专业护理人员倾情服务',
         img: require('../assets/image/medicalCarebg1.png')
-      },{
+      },*/{
         title: '护理服务 首选百年医养',
         text: '方便 省心 专业',
         img: require('../assets/image/medicalCarebg2.png')
@@ -195,8 +195,8 @@ export default {
         text: '血压测量精准|心脑血管疾病预警|定位精准 电子围栏|一键救援 双向通话',
         img: require('../assets/image/smartProductBg1.png'),
       }, {
-        title: '百年医养&乐心手环',
-        text: '24H全天候守护长者',
+        title: '智能健康监护手表 ST6 Pro',
+        text: '智慧助老 安全守护',
         img: require('../assets/image/smartProductBg2.png'),
       }], // 智能产品
       smartProductList2: [{
@@ -750,7 +750,7 @@ export default {
             height: torem(240px);
             border-radius: torem(10px) torem(10px) 0px 0px;
             background: center center no-repeat;
-            background-size: cover;
+            background-size: contain;
           }
           &_info {
             height: torem(167px);

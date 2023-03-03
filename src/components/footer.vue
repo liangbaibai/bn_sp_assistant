@@ -49,12 +49,12 @@
               >
                 陪护
               </div>
-              <div
+              <!--<div
                 class="item-i"
                 @click="onMenuItemClick('medicalservices', '长护险')"
               >
                 长护险
-              </div>
+              </div>-->
             </div>
           </div>
           <div class="item-w">

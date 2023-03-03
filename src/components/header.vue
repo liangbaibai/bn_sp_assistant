@@ -111,7 +111,7 @@ export default {
               url: "eleproducts/ylWatch",
             },
             {
-              name: "手环",
+              name: "st6手表",
               img: require("@/assets/image/tab_img_sh.png"),
               id: "手环",
               url: "eleproducts/lxWatch",
@@ -152,16 +152,22 @@ export default {
           name: "operating",
           menu: [
             {
-              name: "客户端",
+              name: "百年医养用户端",
               img: require("@/assets/image/ewm01.png"),
               id: "客户端",
               url: "operating",
             },
             {
-              name: "医护端",
+              name: "百年医养医护端",
               img: require("@/assets/image/ewm02.png"),
               id: "医护端",
               url: "operatingCare",
+            },
+            {
+              name: "医养管家",
+              img: require("@/assets/image/ewm02.png"),
+              id: "医养管家",
+              url: "medicalCare",
             },
           ],
         },
