@@ -158,7 +158,7 @@ export default {
         window.open('https://detail.tmall.com/item.htm?spm=a1z10.1-b.w4004-24145098791.4.8bc41015MTAlOJ&id=667456271317')
       } else if (type == 3) {
         // 全自动双管血压计
-        window.open('https://bailaiqiao.tmall.com/?spm=a220o.1000855.1997427133.d4918061.398b7286shY1m0')
+        window.open('https://m.tb.cn/h.UKeF24P?tk=vQWNdiJMEvy')
       } else if (type == 4) {
         // 体重秤
         window.open('https://bailaiqiao.tmall.com/?spm=a220o.1000855.1997427133.d4918061.398b7286shY1m0')

@@ -1,7 +1,7 @@
 <template>
   <div class="lxWatch" id="lxWatch">
     <div class="lxWatch_top" id="lxWatch_top">
-      <div class="lxWatch_top_t">24H全天候守护长者</div>
+      <div class="lxWatch_top_t">智能健康监护手表 ST6 Pro</div>
       <el-button class="lxWatch_top_btn" type="success" plain @click="toBuy">立即购买</el-button>
     </div>
     <div class="lxWatch_bottom">
@@ -69,7 +69,7 @@
       },
       // 跳转天猫购买
       toBuy() {
-        window.open('https://detail.tmall.com/item.htm?spm=a1z10.1-b.w4004-24145098791.4.8bc41015MTAlOJ&id=667456271317')
+        window.open('https://m.tb.cn/h.UKeF24P?tk=vQWNdiJMEvy')
       }
     }
   }
