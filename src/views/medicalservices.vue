@@ -14,12 +14,12 @@
           id="tabsId"
           @click="onTabsClick"
       >
-        <van-tab title-class="tab_title" name="长护险">
+        <!--<van-tab title-class="tab_title" name="长护险">
           <div slot="title" class="tab-title-w">
             <div
                 :class="
                 tabActive === '长护险'
-                  ? 'tab-title--border tab-title'
+                  ? 'tab-title&#45;&#45;border tab-title'
                   : 'tab-title'
               "
             >
@@ -27,7 +27,7 @@
             </div>
           </div>
           <chx v-show="showTabChx"/>
-        </van-tab>
+        </van-tab>-->
         <van-tab title-class="tab_title" name="陪护">
           <div slot="title" class="tab-title-w">
             <div
