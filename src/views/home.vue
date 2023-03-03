@@ -750,7 +750,7 @@ export default {
             height: torem(240px);
             border-radius: torem(10px) torem(10px) 0px 0px;
             background: center center no-repeat;
-            background-size: cover;
+            background-size: contain;
           }
           &_info {
             height: torem(167px);
