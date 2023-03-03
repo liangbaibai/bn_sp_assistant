@@ -84,11 +84,11 @@ export default {
           layoutType: "normal",
           name: "medicalservices",
           menu: [
-            {
+            /*{
               name: "长护险",
               id: "长护险",
               url: "medicalservices?id=长护险",
-            }, {
+            }, */{
               name: "陪护",
               id: "陪护",
               url: "medicalservices?id=陪护",
