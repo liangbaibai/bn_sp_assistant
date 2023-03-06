@@ -362,7 +362,8 @@
             text-align: left;
             letter-spacing: torem(1px);
             &.t1 {
-              width: torem(384px);
+              min-width: torem(384px);
+              white-space: nowrap
             }
           }
         }
