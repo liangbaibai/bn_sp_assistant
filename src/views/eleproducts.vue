@@ -11,7 +11,7 @@
       <div class="eleproducts-c_d">
         <!-- 医疗级健康监测手表 -->
         <div class="eleproducts-c_d_yl">
-          <div class="eleproducts-c_d_yl_left">
+          <div class="eleproducts-c_d_yl_left ri">
             <img src="../assets/image/yl_logo.png" alt="" class="eleproducts-c_d_yl_left_ig">
             <div class="eleproducts-c_d_yl_left_ti">智能健康监护手表 ST6 Pro</div>
             <div class="eleproducts-c_d_yl_left_te">24小时血压健康监护</div>
@@ -24,7 +24,7 @@
               <div class="eleproducts-c_d_yl_left_bn_b c" @click="toBuy(3)">立即购买</div>
             </div>
           </div>
-          <div class="eleproducts-c_d_yl_right">
+          <div class="eleproducts-c_d_yl_right ">
             <img src="../assets/image/lx_product_w.png" alt="" class="eleproducts-c_d_yl_right_ig">
           </div>
         </div>
@@ -33,7 +33,7 @@
           <div class="eleproducts-c_d_yl_right l">
             <img src="../assets/image/lx_product.png" alt="" class="eleproducts-c_d_yl_right_ig">
           </div>
-          <div class="eleproducts-c_d_yl_left">
+          <div class="eleproducts-c_d_yl_left le">
             <img src="../assets/image/lx_logo.png" alt="" class="eleproducts-c_d_yl_left_ig lx">
             <div class="eleproducts-c_d_yl_left_ti">全自动双管血压计</div>
             <div class="eleproducts-c_d_yl_left_te">
@@ -64,7 +64,7 @@
               <div class="eleproducts-c_d_yl_left_bn_b c" @click="toBuy(1)">立即购买</div>
             </div>
           </div>
-          <div class="eleproducts-c_d_yl_right">
+          <div class="eleproducts-c_d_yl_right ri">
             <img src="../assets/image/yl_product_w.png" alt="" class="eleproducts-c_d_yl_right_ig">
           </div>
         </div>
@@ -73,7 +73,7 @@
           <div class="eleproducts-c_d_yl_right l">
             <img src="../assets/image/lx_product_t.png" alt="" class="eleproducts-c_d_yl_right_ig">
           </div>
-          <div class="eleproducts-c_d_yl_left">
+          <div class="eleproducts-c_d_yl_left tri">
             <img src="../assets/image/lx_logo.png" alt="" class="eleproducts-c_d_yl_left_ig lx">
             <div class="eleproducts-c_d_yl_left_ti">秤要精准 也要颜值</div>
             <div class="eleproducts-c_d_yl_left_te">
@@ -222,7 +222,7 @@ export default {
       &_yl {
         background: #FFFFFF;
         border-radius: torem(20px);
-        padding: torem(81px) torem(114px);
+        padding: torem(81px) torem(90px);
         margin-bottom: torem(21px);
         display: flex;
         justify-content: space-between;
@@ -230,6 +230,15 @@ export default {
           padding-right: 0;
         }
         &_left {
+          &.ri {
+            margin-right: torem(154px);
+          }
+          &.tri {
+            margin-right: torem(100px);
+          }
+          &.le {
+            margin-right: torem(150px);
+          }
           &_ig {
             width: torem(124px);
             height: torem(41px);
@@ -292,6 +301,9 @@ export default {
         }
         &_right {
           margin-top: torem(-80px);
+          &.ri {
+            margin-right: 90px;
+          }
           &.l {
             margin-left: torem(-114px);
           }

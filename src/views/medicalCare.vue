@@ -22,8 +22,6 @@
         <div class="main-w_top_p">主要服务</div>
         <div class="main-w_top_h">用户健康监护、健康周报分析、上门护理服务、陪诊、中医理疗、推拿按摩</div>
       </div>
-    </div>
-    <div class="main-w">
       <div class="carouselBox">
         <el-carousel :loop="false" :autoplay="false" class="carousel">
           <el-carousel-item class="el-car-item" v-for="(list, index) in dataList" :key="index">
@@ -52,8 +50,8 @@
         <div style="position:absolute;top: 15%;left: 3%;">
           <img src="@/assets/image/yypt_icon.png" alt="" class="yypt_icon">
           <div class="main-w-img-right-r-c">
-            <div class="main-w-img-right-r-c-t">护士、护工人员救援响应</div>
-            <div class="main-w-img-right-r-c-p">长护险申报一体化平台，能提供从报名、资料审查、进度查询、结果公示等全流程在线支持，一个云端账号即可实现全程轻松操作。
+            <div class="main-w-img-right-r-c-t">查看实时状态</div>
+            <div class="main-w-img-right-r-c-p">医养管家通过关注附近用户，可进入用户主页面查看用户实时健康状态，如心率、血压、血氧等基本趋势监测数据，及睡眠等健康状态，并及时给予异常用户健康提醒。
             </div>
           </div>
         </div>
@@ -65,7 +63,10 @@
           <img src="@/assets/image/yypt_icon.png" alt="" class="yypt_icon">
           <div class="main-w-img-r-c">
             <div class="main-w-img-r-c-t">用户详情分析</div>
-            <div class="main-w-img-r-c-p">一个医养管家可同时管理多名用户，并通过对每位用户的实时趋势数据、历史趋势数据对比，实现对用户数量及高危风险用户的数据统计。
+            <div class="main-w-img-r-c-p t1">
+              <div>一个医养管家可同时管理多名用户，并通过对每位用户</div>
+              <div>的实时趋势数据、历史趋势数据对比，实现对用户数数</div>
+              <div>数量及高危风险用户的数据统计。</div>
             </div>
           </div>
         </div>
@@ -342,6 +343,9 @@
         }
         &-c {
           margin-top: torem(15px);
+          &.left {
+            margin-left: torem(50px);
+          }
           &-t {
             font-size: torem(36px);
             font-family: Microsoft YaHei;
@@ -357,6 +361,9 @@
             color: #666666;
             text-align: left;
             letter-spacing: torem(1px);
+            &.t1 {
+              width: torem(384px);
+            }
           }
         }
       }
@@ -463,6 +470,7 @@
     width: torem(1200px);
     height: auto;
     background-color: #ffffff;
+    margin-top: 40px;
     .carousel{
       width: 100%;
       height: auto;
