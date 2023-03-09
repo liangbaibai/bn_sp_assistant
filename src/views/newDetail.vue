@@ -223,8 +223,8 @@ export default {
       margin: 0 auto;
       font-size: torem(12px);
       img {
+        width: 100%;
         margin:torem(21px) 0;
-        width: auto;
         height: auto;
       }
     }
