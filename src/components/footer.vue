@@ -6,9 +6,9 @@
           <div class="item-w">
             <div class="item-title">联系我们</div>
             <div class="item-list">
-              <div class="item-i">联系热线：（020）8362 0723</div>
-              <div class="item-i">公司邮箱：954437313@qq.com</div>
-              <div class="item-i">公司传真:020-400-8998</div>
+              <div class="item-i">联系热线：{{detailData.phone}}</div>
+              <div class="item-i">公司邮箱：{{detailData.mailbox}}</div>
+              <div class="item-i">公司传真: {{detailData.fax}}</div>
             </div>
           </div>
 
@@ -49,12 +49,12 @@
               >
                 陪护
               </div>
-              <!--<div
+              <div
                 class="item-i"
                 @click="onMenuItemClick('medicalservices', '长护险')"
               >
                 长护险
-              </div>-->
+              </div>
             </div>
           </div>
           <div class="item-w">
@@ -179,30 +179,28 @@
         </div>
       </div>
       <div class="copyright">
-        <p>Copyright © 2020.百年医疗 保留所有权利。</p>
-        <p>粤ICP备20041036号</p>
+        <p>{{detailData.copyright}}</p>
+        <p>{{detailData.filings}}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { myRequest } from "@/request/index";
-import { getElement } from "@/utils/util";
-import {} from "@/request/api/base";
-import {} from "@/assets/js/index";
+import { outsideInfo } from "@/request/api/base";
 
 export default {
   props: {},
-  created() {},
-  components: {},
-
-  mounted() {},
-
   data() {
-    return {};
+    return {
+      detailData: {}, // 网站信息
+    };
   },
-
+  created() {
+    this.getOutsideData()
+  },
+  components: {},
+  mounted() {},
   methods: {
     onMenuItemClick(name, id) {
       this.$router.push({
@@ -212,10 +210,19 @@ export default {
         },
       });
       this.$store.commit('tabMenu/setMenuIndex', "/" + name)
-      // sessionStorage.setItem('routeName', name)
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
     },
+    // 获取网站信息
+    getOutsideData() {
+      const params = {}
+      outsideInfo(params).then(res => {
+        console.log('获取网站信息：', res)
+        if (res.code == 0) {
+          this.detailData = res.data
+        }
+      })
+    }
   },
 };
 </script>

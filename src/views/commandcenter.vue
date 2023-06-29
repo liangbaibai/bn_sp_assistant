@@ -101,8 +101,7 @@
 <script>
 import { index } from "@/utils/mixins";
 import serviceWindow from '@/components/serviceWindow'
-import { myRequest } from "@/request/index";
-import { data_data_list } from "@/request/api/base";
+
 export default {
   mixins: [index],
 

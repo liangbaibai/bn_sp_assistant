@@ -82,7 +82,7 @@ export default {
         {
           title: "医养服务",
           layoutType: "normal",
-          name: "medicalservices",
+          name: "medicalservices?id=陪护",
           menu: [
             /*{
               name: "长护险",

@@ -348,8 +348,7 @@
 <script>
 import { index } from "@/utils/mixins";
 import { getElement, debounce } from "@/utils/util";
-import { myRequest } from "@/request/index";
-import { data_data_list } from "@/request/api/base";
+
 export default {
   mixins: [index],
   mounted() {

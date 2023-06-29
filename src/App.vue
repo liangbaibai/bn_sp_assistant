@@ -9,8 +9,6 @@
 
 <script>
   import BackTop from '@/components/backTop'
-import { top_video } from "@/request/api/base";
-import { myRequest } from "@/request/index";
 import myHeader from "@/components/header.vue";
 import myFooter from "@/components/footer.vue";
 

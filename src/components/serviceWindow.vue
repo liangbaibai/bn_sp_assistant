@@ -24,7 +24,7 @@
               <div class="desc">可通过热线直接联系</div>
               <div class="desc">
                 <span class="key">联系热线：</span>
-                <span class="phone">（020）8362 0723</span>
+                <span class="phone">{{detailData.phone}}</span>
               </div>
             </div>
           </div>
@@ -43,7 +43,7 @@
               <div class="desc">可通过热线直接联系</div>
               <div class="desc">
                 <span class="key">联系热线：</span>
-                <span class="phone">（020）8362 0723</span>
+                <span class="phone">{{detailData.salesPhone}}</span>
               </div>
             </div>
           </div>
@@ -60,11 +60,21 @@
 
 <script>
 import maskmodal from "@/components/maskmodal.vue";
+import { outsideInfo } from "@/request/api/base";
+
 export default {
   props: {
     show: {
       type: Boolean,
     },
+  },
+  data() {
+    return {
+      detailData: {}, // 网站信息
+    }
+  },
+  created() {
+    this.getOutsideData()
   },
   components: {
     maskmodal,
@@ -74,6 +84,16 @@ export default {
     onCloseWindow() {
       this.$emit("onClose");
     },
+    // 获取网站信息
+    getOutsideData() {
+      const params = {}
+      outsideInfo(params).then(res => {
+        console.log('获取网站信息：', res)
+        if (res.code == 0) {
+          this.detailData = res.data
+        }
+      })
+    }
   },
 };
 </script>

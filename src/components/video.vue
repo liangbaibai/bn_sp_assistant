@@ -16,9 +16,6 @@
 </template>
 
 <script>
-import { myRequest } from "@/request/index";
-import { getElement } from "@/utils/util";
-import { class_list } from "@/request/api/base";
 
 export default {
   props: {

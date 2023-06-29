@@ -80,6 +80,7 @@ export default {
   },
   created() {
     let path = this.$route.query.id
+    console.log('path', path)
     if (path == '长护险') {
       this.showTabChx = true
       this.tabActive = '长护险'
