@@ -137,7 +137,7 @@ export default {
           path: '/eleproducts/bloodPressure'
         })
       } else if (type == 3) {
-        // 全自动双管血压计
+        // 智能健康监护手表 ST6 Pro
         this.$router.push({
           path: '/eleproducts/lxWatch'
         })
@@ -154,10 +154,10 @@ export default {
         // 医疗级健康监测手表
         window.open('https://detail.tmall.com/item.htm?spm=a220o.1000855.w4023-24145098805.3.15e7acaeTHpvD3&id=663449498011&sku_properties=149204407:3269303;204252002:1904313917')
       } else if (type == 2) {
-        // 乐心手表
+        // 全自动双管血压计
         window.open('https://detail.tmall.com/item.htm?spm=a1z10.1-b.w4004-24145098791.4.8bc41015MTAlOJ&id=667456271317')
       } else if (type == 3) {
-        // 全自动双管血压计
+        // 智能健康监护手表 ST6 Pro
         window.open('https://m.tb.cn/h.UKeF24P?tk=vQWNdiJMEvy')
       } else if (type == 4) {
         // 体重秤

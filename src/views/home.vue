@@ -46,9 +46,8 @@
           <div class="zncp_t">智能产品</div>
           <div class="zncp_subt">intelligent product</div>
           <div class="zncp_c">
-            <div class="zncp_c_i"
-                 :style="{width: index == 0 ? '793px' : index == 1 ? '389px' : '590px', backgroundImage: `url(${item.img})`}"
-                 v-for="(item,index) in smartProductList" @click="toProduct(1,index)">
+            <div class="zncp_c_i" v-for="(item,index) in smartProductList" @click="toProduct(1,index)">
+              <img :src="item.img" class="zncp_c_i_img" alt="">
               <div class="zncp_c_i_info">
 <!--                <div class="zncp_c_i_info_a">产品</div>-->
                 <div class="zncp_c_i_info_t">{{item.title}}</div>
@@ -56,11 +55,10 @@
                 <div class="hover">了解更多<i class="el-icon-arrow-right" style="color: #30C159;font-weight: bold;"/></div>
               </div>
             </div>
-          </div>
-          <div class="zncp_c">
-            <div class="zncp_c_i" v-for="(item,index) in smartProductList2" @click="toProduct(2,index)" :style="{backgroundImage: `url(${item.img})`}">
+            <div class="zncp_c_i" v-for="(item,index) in smartProductList2" @click="toProduct(2,index)">
+              <img :src="item.img" class="zncp_c_i_img" alt="">
               <div class="zncp_c_i_info">
-<!--                <div class="zncp_c_i_info_a">产品</div>-->
+                <!--                <div class="zncp_c_i_info_a">产品</div>-->
                 <div class="zncp_c_i_info_t">{{item.title}}</div>
                 <div class="zncp_c_i_info_t1">{{item.text}}</div>
                 <div class="hover">了解更多<i class="el-icon-arrow-right" style="color: #30C159;font-weight: bold;"/></div>
@@ -482,6 +480,7 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-wrap: wrap;
       &_i {
         width: torem(386px);
         height: torem(374px);
@@ -558,22 +557,24 @@ export default {
       margin-bottom: torem(60px);
     }
     &_c {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 85%;
+      margin: 0 auto;
       margin-bottom: torem(20px);
       &_i {
-        width: torem(590px);
+        width: auto;
         height: torem(400px);
+        max-width: torem(793px);
         max-height: torem(400px);
         position: relative;
         margin-right: torem(18px);
         border-radius: torem(10px);
-        background: center center no-repeat;
-        background-image: url('../assets/image/medicalCarebg1.png');
         background-size: auto;
         display: inline-block;
         cursor: pointer;
+        &_img {
+          object-fit: cover;
+          border-radius: torem(10px);
+        }
         &_info {
           position: absolute;
           top: torem(328px);
@@ -790,8 +791,8 @@ export default {
           }
         }
         &_list {
-          width: torem(386px);
-          height: torem(396px);
+          width: 100%;
+          height: calc(100% - 46px);
           background: #FFFFFF;
           border-radius: 0px 0px torem(10px) torem(10px);
           &_c {
