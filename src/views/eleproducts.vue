@@ -1,9 +1,9 @@
 <template>
   <div class="eleproducts-w">
-    <div class="banner-w">
+    <div class="banner-w" v-if="bannerList.length > 0">
       <el-carousel indicator-position="outside">
-        <el-carousel-item v-for="item in bannerList" :key="item">
-          <img :src="item" alt="" />
+        <el-carousel-item v-for="item in bannerList" :key="item.url">
+          <img :src="item.url" alt="" />
         </el-carousel-item>
       </el-carousel>
     </div>
@@ -102,12 +102,15 @@
 
 <script>
 import { index } from "@/utils/mixins";
+import { outsideImageList } from "@/request/api/base";
 
 export default {
   mixins: [index],
 
   props: {},
-  created() {},
+  created() {
+    this.getOutsideImageData()
+  },
 
   computed: {},
 
@@ -116,10 +119,7 @@ export default {
   data() {
     return {
       tabActive: "",
-      bannerList: [
-        require('../assets/image/e-b-n-1.png'),
-        require('../assets/image/e-b-n-2.png')
-      ], // banner图
+      bannerList: {}, // banner图
     }
   },
 
@@ -163,6 +163,20 @@ export default {
         // 体重秤
         window.open('https://bailaiqiao.tmall.com/?spm=a220o.1000855.1997427133.d4918061.398b7286shY1m0')
       }
+    },
+    // 获取轮播图
+    getOutsideImageData() {
+      const params = {
+        location: 1 // 展示位置 1.产品生态-位置1 2.百年技术-位置1
+      }
+      outsideImageList(params).then(res => {
+        console.log('获取轮播图：', res)
+        if (res.code == 0) {
+          this.bannerList = res.data
+        } else {
+          this.$message.error(res.msg)
+        }
+      })
     }
   },
 };

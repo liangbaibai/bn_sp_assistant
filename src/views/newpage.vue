@@ -34,16 +34,16 @@
             </div>
             <div class="dynamic-main grid-contain">
               <div class="new-i-w" v-for="item in tableList.data" @click="onDetailClick(item)">
-                <img :src="item.titleImg" alt="" />
+                <img :src="item.coverImage" alt="" />
                 <div class="content">
                   <div class="top">
                     <div class="title">{{item.title}}</div>
                     <div class="desc">
-                      {{item.brief}}
+                      {{item.excerpt}}
                     </div>
                   </div>
                   <div class="bottom">
-                    <div class="date">{{item.publishDatetime}}</div>
+                    <div class="date">{{item.createTime}}</div>
                   </div>
                 </div>
               </div>
@@ -68,12 +68,35 @@
 <script>
 import { index } from "@/utils/mixins";
 import NewDetail from './newDetail'
+import { outsideArticleList, articleTypeList } from '@/request/api/base'
 import { categoryData, articleData } from '@/request/api/new'
 
 export default {
   mixins: [index],
 
   props: {},
+  data() {
+    return {
+      tabActive: "",
+      bgTitle: '',
+      showDetail: true, // 是否显示详情
+      categoryList: [{
+        id: 1,
+        name: '企业资讯'
+      },{
+        id: 2,
+        name: '健康资讯'
+      }], // 资讯分类
+      categoryId: 1, // 资讯分类ID
+      articleList: [], // 资讯分类
+      articleInfo: {}, // 资讯详情
+      pageInfo: {
+        skip: 1,
+        limit: 4,
+      },
+      tableList: [], // 资讯列表
+    };
+  },
   components: { NewDetail },
   created() {},
 
@@ -119,23 +142,6 @@ export default {
     next()
   },
 
-  data() {
-    return {
-      tabActive: "",
-      bgTitle: '',
-      showDetail: true, // 是否显示详情
-      categoryList: [], // 资讯分类
-      categoryId: 1, // 资讯分类ID
-      articleList: [], // 资讯分类
-      articleInfo: {}, // 资讯详情
-      pageInfo: {
-        skip: 1,
-        limit: 4,
-      },
-      tableList: [], // 资讯列表
-    };
-  },
-
   methods: {
     handleSizeChange(val) {
       this.pageInfo.skip = val;
@@ -156,11 +162,11 @@ export default {
     // 获取资讯分类列表
     getArticleList(type) {
       const params = {
-        categoryId: this.categoryId, // 分类id
+        type: this.categoryId, // 分类id
         pageIndex: type == 1 ? 1 : this.pageInfo.skip, // 页数
         pageSize: this.pageInfo.limit, // 页码
       }
-      articleData(params).then(res => {
+      outsideArticleList(params).then(res => {
         console.log('获取资讯分类列表：', res)
         if (res.code == 0) {
           this.tableList = res
@@ -171,6 +177,8 @@ export default {
     },
     onDetailClick(item) {
       console.log('点击详情参数：', item)
+      let data = JSON.stringify(item)
+      sessionStorage.setItem('newDetail',data)
       this.$router.push({
         name: "newdetail",
         params: {

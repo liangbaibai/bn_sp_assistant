@@ -155,6 +155,7 @@
 
 <script>
 import { articleHome } from '@/request/api/new'
+import { outsideVideo } from '@/request/api/base'
 import myVideo from '@/components/video'
 import myFooter from '@/components/footer'
 import moment from 'moment'
@@ -165,7 +166,9 @@ export default {
     myVideo,
     myFooter
   },
-  created() {},
+  created() {
+    this.getVideo()
+  },
   mounted() {
     this.getArticleData()
   },
@@ -219,6 +222,15 @@ export default {
 
   },
   methods: {
+    // 获取视频
+    getVideo() {
+      const params = {
+        location: 1, // 展示位置 1.首页1 2.产品详情页1 3.产品详情页2
+      }
+      outsideVideo(params).then(res => {
+        console.log('获取视频：', res)
+      })
+    },
     getArticleData() {
       const params = {}
       articleHome(params).then(res => {

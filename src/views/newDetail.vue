@@ -46,14 +46,6 @@
   import { articleDetail, categoryData } from '@/request/api/new'
 
 export default {
-  props: {
-    articleInfo: {
-      type: Object,
-      default() {
-        return {}
-      }
-    }
-  },
   filters: {
     unescape(html) {
       return html
@@ -114,27 +106,13 @@ export default {
       })
     },
     getDetail() {
-      const params = {
-        id: this.$route.params.id
-        // id: this.articleInfo.id
-      }
-      console.log('获取资讯参数:', this.$route)
-      articleDetail(params).then(res => {
-        console.log('获取资讯详情:', res)
-        if (res.code == 0) {
-          this.articleDetailData = res.data
-
-          this.content = this.articleDetailData.content.replace(this.articleDetailData.content ? /&(?!#?\w+;)/g : /&/g, '&amp;')
-            .replace(/&lt;/g, "<")
-            .replace(/&gt;/g, ">")
-            .replace(/&quot;/g, "\"")
-            .replace(/&#39;/g, "\'")
-            .replace(/<\s/g, "<")
-          console.log('打印转换：', this.content)
-        } else {
-          this.$message.error(res.msg)
-        }
-      })
+      this.articleDetailData = JSON.parse(sessionStorage.getItem('newDetail'))
+      this.content = this.articleDetailData.content.replace(this.articleDetailData.content ? /&(?!#?\w+;)/g : /&/g, '&amp;')
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&quot;/g, "\"")
+        .replace(/&#39;/g, "\'")
+        .replace(/<\s/g, "<")
     }
   },
   watch: {

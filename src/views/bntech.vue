@@ -1,12 +1,18 @@
 <template>
   <div class="bntech-w" id="bntech-w">
-    <div class="banner-w">
+<!--    <div class="banner-w">
       <div class="top">
         <div class="t1">百年AI人工智能技术</div>
         <div class="t2">血压检测管理解决方案</div>
       </div>
+    </div>-->
+    <div class="banner-w" v-if="bannerList.length > 0">
+      <el-carousel indicator-position="outside">
+        <el-carousel-item v-for="item in bannerList" :key="item.url">
+          <img :src="item.url" alt="" />
+        </el-carousel-item>
+      </el-carousel>
     </div>
-
     <div class="main-w grid-contain">
       <van-tabs
         v-model="tabActive"
@@ -122,6 +128,7 @@
 
 <script>
 import { index } from "@/utils/mixins";
+import { outsideImageList } from "@/request/api/base";
 
 export default {
   mixins: [index],
@@ -129,6 +136,7 @@ export default {
   props: {},
   components: {},
   created() {
+
     let path = this.$route.query.id
     if (path == '硬件与软件') {
       this.showTabChx = true
@@ -143,6 +151,7 @@ export default {
       this.showTabHl = true
       this.tabActive = '软著'
     }
+    this.getOutsideImageData()
   },
 
   computed: {},
@@ -171,10 +180,26 @@ export default {
   data() {
     return {
       tabActive:'',
+      bannerList: {},
     };
   },
 
-  methods: {},
+  methods: {
+    // 获取轮播图
+    getOutsideImageData() {
+      const params = {
+        location: 2 // 展示位置 1.产品生态-位置1 2.百年技术-位置1
+      }
+      outsideImageList(params).then(res => {
+        console.log('获取轮播图：', res)
+        if (res.code == 0) {
+          this.bannerList = res.data
+        } else {
+          this.$message.error(res.msg)
+        }
+      })
+    }
+  },
 };
 </script>
 
@@ -187,28 +212,29 @@ export default {
     background-color: #fff;
     height: 100%;
     .banner-w {
-      width: torem(1920px);
-      height: torem(500px);
-      background: url("../assets/image/b-b-01.png") 100% 100% no-repeat;
-      background-size: cover;
-      position: relative;
-      .top {
+      .el-carousel__container {
+        height: torem(500px);
+      }
+      .el-carousel__button {
+        width: torem(10px);
+        height: torem(10px);
+        background: #30C159;
+        border-radius: 50%;
+      }
+      .el-carousel--horizontal {
+        position: relative;
+      }
+      .el-carousel__indicators--outside {
         position: absolute;
-        top: torem(203px);
-        left: torem(399px);
-        .t1 {
-          font-size: torem(36px);
-          font-family: "Microsoft YaHei";
-          font-weight: bold;
-          color: #FFFFFF;
-          margin-bottom: torem(18px);
-        }
-        .t2 {
-          font-size: torem(16px);
-          font-family: "Microsoft YaHei";
-          font-weight: 400;
-          color: #FFFFFF;
-        }
+        bottom: torem(4px);
+      }
+      .el-carousel__indicator.is-active button {
+        opacity: 1;
+        background: #30C159;
+      }
+      .el-carousel__indicators--outside button {
+        opacity: 1;
+        background: #FFFFFF;
       }
     }
     .van-tabs--line .van-tabs__wrap {
