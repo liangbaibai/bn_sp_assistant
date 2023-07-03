@@ -29,3 +29,7 @@ export const articleTypeList = params => {
 export const outsideArticleList = params => {
     return  ajax(`${website_s2}/outside/articleList`,'POST',{ params })
 }
+// 内容模块
+export const outsideContent = params => {
+    return  ajax(`${website_s2}/outside/content`,'POST',{ params })
+}

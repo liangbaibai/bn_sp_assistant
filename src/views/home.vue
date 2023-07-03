@@ -231,6 +231,7 @@ export default {
         console.log('获取视频：', res)
       })
     },
+    // 获取资讯信息
     getArticleData() {
       const params = {}
       articleHome(params).then(res => {
