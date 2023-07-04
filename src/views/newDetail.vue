@@ -43,7 +43,7 @@
 
 
 <script>
-  import { articleDetail, categoryData } from '@/request/api/new'
+  import { categoryData } from '@/request/api/new'
 
 export default {
   filters: {

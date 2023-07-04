@@ -33,171 +33,7 @@ export default {
   props: {},
   data() {
     return {
-      navList: [
-        {
-          name: "医养服务",
-          layoutType: "normal",
-          component: "medicalservices?id=陪护",
-          children: [
-            /*{
-              name: "长护险",
-              id: "长护险",
-              component: "medicalservices?id=长护险",
-            }, */{
-              name: "陪护",
-              id: "陪护",
-              component: "medicalservices?id=陪护",
-            }, {
-              name: "护理",
-              id: "护理",
-              component: "medicalservices?id=护理",
-            },
-          ],
-        },
-        {
-          name: "产品生态",
-          layoutType: "picture",
-          component: "eleproducts",
-          children: [
-            {
-              name: "手表",
-              img: require("@/assets/image/tab_img_sb.png"),
-              id: "手表",
-              component: "eleproducts/ylWatch",
-            },
-            {
-              name: "st6手表",
-              img: require("@/assets/image/tab_img_sh.png"),
-              id: "手环",
-              component: "eleproducts/lxWatch",
-            },{
-              name: "体脂秤",
-              img: require("@/assets/image/tab_img_tzc.png"),
-              id: "体脂秤",
-              component: "eleproducts/weighingScale",
-            },
-            {
-              name: "血压仪",
-              img: require("@/assets/image/tab_img_xyy.png"),
-              id: "血压仪",
-              component: "eleproducts/bloodPressure",
-            },
-          ],
-        },
-        {
-          name: "智慧养老方案",
-          layoutType: "normal",
-          component: "commandcenter",
-          children: [
-            {
-              name: "血压健康综合管理解决方案",
-              id: "血压健康综合管理解决方案",
-              component: "commandcenter",
-            },
-            {
-              name: "长者居家监护解决方案",
-              id: "长者居家监护解决方案",
-              component: "homeCareSolutions",
-            },
-          ],
-        },
-        {
-          name: "运营平台",
-          layoutType: "normal",
-          component: "operating",
-          children: [
-            {
-              name: "百年医养用户端",
-              img: require("@/assets/image/ewm01.png"),
-              id: "客户端",
-              component: "operating",
-            },
-            {
-              name: "百年医养医护端",
-              img: require("@/assets/image/ewm02.png"),
-              id: "医护端",
-              component: "operatingCare",
-            },
-            {
-              name: "医养管家",
-              img: require("@/assets/image/ewm02.png"),
-              id: "医养管家",
-              component: "medicalCare",
-            },
-          ],
-        },
-        {
-          name: "百年技术",
-          layoutType: "normal",
-          component: "bntech",
-          children: [
-            {
-              name: "硬件与软件",
-              id: "硬件与软件",
-              component: "bntech?id=硬件与软件",
-            },
-            {
-              name: "AI人工智能",
-              id: "AI人工智能",
-              component: "bntech?id=AI人工智能",
-            },
-            {
-              name: "专利",
-              id: "专利",
-              component: "bntech?id=专利",
-            },
-            {
-              name: "软著",
-              id: "软著",
-              component: "bntech?id=软著",
-            },
-          ],
-        },
-        {
-          name: "企业动态",
-          layoutType: "normal",
-          component: "new",
-          children: [
-            {
-              name: "企业资讯",
-              id: "企业资讯",
-              component: "new?id=企业资讯",
-            },
-            {
-              name: "健康资讯",
-              id: "健康资讯",
-              component: "new?id=健康资讯",
-            },
-          ],
-        },
-        {
-          name: "走进百年",
-          layoutType: "normal",
-          component: "walkbn",
-          children: [
-            {
-              name: "旗下品牌",
-              id: "旗下品牌",
-              component: "walkbn?id=旗下品牌",
-            },
-            {
-              name: "百年文化",
-              id: "百年文化",
-              component: "walkbn?id=百年文化",
-            },
-            {
-              name: "荣誉证书",
-              id: "荣誉证书",
-              component: "walkbn?id=荣誉证书",
-            },
-            {
-              name: "公司活动",
-              id: "公司活动",
-              component: "walkbn?id=公司活动",
-            },
-          ],
-        },
-      ],
+      navList: [],
       navIndex: null,
       navChileIndex: null,
     };
@@ -233,7 +69,7 @@ export default {
       navigationList(params).then(res => {
         console.log('获取菜单列表:', res)
         if (res.code == 0) {
-          this.navList = res.data
+          this.navList = JSON.parse(JSON.stringify(res.data))
         } else {
           this.$message.error(res.msg)
         }
@@ -250,7 +86,7 @@ export default {
     },
     // 二级菜单点击
     tabChildClick(item,data) {
-      console.log('二级菜单点击：', data)
+      console.log('二级菜单点击：', item,data)
       this.navIndex = item.id
       this.navChileIndex = data.id
       this.setInterview(data.id)
@@ -276,9 +112,15 @@ export default {
     $route: {
       deep: true,
       handler(newVal, oldVal) {
-        console.log('监听路由变化：header', newVal)
-        // new?id=健康资讯
-        this.$store.commit('tabMenu/setMenuIndex', newVal.path)
+        // console.log('监听路由变化：header', newVal.path,this.navList)
+        this.navList.forEach(item => {
+          let path = newVal.path + '?id=' + newVal.query.id
+          console.log('监听路由变化：header', path,item)
+          if (path == item.component) {
+            this.navIndex = item.id
+            this.navChileIndex = item.children[0].id
+          }
+        })
       }
     }
   }

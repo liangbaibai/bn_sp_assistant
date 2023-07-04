@@ -30,10 +30,10 @@
           <div class="yyfw_subt">the medical nursing services</div>
           <div class="yyfw_c">
             <div class="yyfw_c_i" v-for="(item,index) in medicalCareList" @click="toCare(index)">
-              <div class="img" :style="{backgroundImage: `url(${item.img})`}"></div>
+              <div class="img" :style="{backgroundImage: `url(${item.image})`}"></div>
               <div class="info">
                 <div class="info_t">{{item.title}}</div>
-                <div class="info_t1">{{item.text}}</div>
+                <div class="info_t1">{{item.content}}</div>
               </div>
               <div class="hover">
                 <i class="iconfont icon-guanwang-shouyetubiao" style="color: #ffffff;font-size: 33px;"></i>
@@ -47,33 +47,26 @@
           <div class="zncp_subt">intelligent product</div>
           <div class="zncp_c">
             <div class="zncp_c_i" v-for="(item,index) in smartProductList" @click="toProduct(1,index)">
-              <img :src="item.img" class="zncp_c_i_img" alt="">
+              <img :src="item.image" class="zncp_c_i_img" alt="">
               <div class="zncp_c_i_info">
 <!--                <div class="zncp_c_i_info_a">产品</div>-->
-                <div class="zncp_c_i_info_t">{{item.title}}</div>
-                <div class="zncp_c_i_info_t1">{{item.text}}</div>
-                <div class="hover">了解更多<i class="el-icon-arrow-right" style="color: #30C159;font-weight: bold;"/></div>
-              </div>
-            </div>
-            <div class="zncp_c_i" v-for="(item,index) in smartProductList2" @click="toProduct(2,index)">
-              <img :src="item.img" class="zncp_c_i_img" alt="">
-              <div class="zncp_c_i_info">
-                <!--                <div class="zncp_c_i_info_a">产品</div>-->
-                <div class="zncp_c_i_info_t">{{item.title}}</div>
-                <div class="zncp_c_i_info_t1">{{item.text}}</div>
-                <div class="hover">了解更多<i class="el-icon-arrow-right" style="color: #30C159;font-weight: bold;"/></div>
+                <div class="zncp_c_i_info_hover">
+                  <div class="zncp_c_i_info_t">{{item.title}}</div>
+                  <div class="zncp_c_i_info_t1">{{item.content}}</div>
+                  <div class="hover">了解更多<i class="el-icon-arrow-right" style="color: #30C159;font-weight: bold;"/></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <!-- 血压健康综合管理解决方案-->
         <div class="jjfa">
-          <div class="jjfa_c">
-            <div class="jjfa_c_img"></div>
+          <div class="jjfa_c" v-for="item in smartBloodList">
+            <img class="jjfa_c_img" :src="item.image"/>
             <div class="jjfa_c_info">
               <div class="jjfa_c_info_t">血压健康综合管理解决方案</div>
               <div class="jjfa_c_info_t1">血压动态监测丨血压异常干预丨血压管理周报</div>
-              <div class="jjfa_c_info_b" @click="toProgram()">查看详情</div>
+              <div class="jjfa_c_info_b" @click="toProgram(item)">查看详情</div>
             </div>
           </div>
         </div>
@@ -89,11 +82,11 @@
                   <div class="xwhd_c_top_b">最新资讯</div>
                 </div>
                 <div class="xwhd_c_bottom_i_h" @click="toDetail(newestInformation)">
-                  <div class="xwhd_c_bottom_i_img" :style="{backgroundImage: `url(${newestInformation.titleImg})`}"></div>
+                  <div class="xwhd_c_bottom_i_img" :style="{backgroundImage: `url(${newestInformation.coverImage})`}"></div>
                   <div class="xwhd_c_bottom_i_info">
                     <div class="xwhd_c_bottom_i_info_t">{{newestInformation.title}}</div>
-                    <div class="xwhd_c_bottom_i_info_t1">{{newestInformation.brief}}</div>
-                    <div class="xwhd_c_bottom_i_info_t2">{{newestActivity.publishDatetime}}</div>
+                    <div class="xwhd_c_bottom_i_info_t1">{{newestInformation.excerpt}}</div>
+                    <div class="xwhd_c_bottom_i_info_t2">{{newestActivity.stateTime}}</div>
                   </div>
                 </div>
               </div>
@@ -103,11 +96,11 @@
                   <div class="xwhd_c_top_b">最新活动</div>
                 </div>
                 <div class="xwhd_c_bottom_i_h" @click="toDetail(newestActivity)">
-                  <div class="xwhd_c_bottom_i_img" :style="{backgroundImage: `url(${newestActivity.titleImg})`}"></div>
+                  <div class="xwhd_c_bottom_i_img" :style="{backgroundImage: `url(${newestActivity.coverImage})`}"></div>
                   <div class="xwhd_c_bottom_i_info">
                     <div class="xwhd_c_bottom_i_info_t">{{newestActivity.title}}</div>
-                    <div class="xwhd_c_bottom_i_info_t1">{{newestActivity.brief}}</div>
-                    <div class="xwhd_c_bottom_i_info_t2">{{newestActivity.publishDatetime}}</div>
+                    <div class="xwhd_c_bottom_i_info_t1">{{newestActivity.excerpt}}</div>
+                    <div class="xwhd_c_bottom_i_info_t2">{{newestActivity.stateTime}}</div>
                   </div>
                 </div>
               </div>
@@ -155,60 +148,19 @@
 
 <script>
 import { articleHome } from '@/request/api/new'
-import { outsideVideo } from '@/request/api/base'
+import { outsideVideo, outsideContent,informationHome } from '@/request/api/base'
 import myVideo from '@/components/video'
 import myFooter from '@/components/footer'
 import moment from 'moment'
 
 export default {
   props: {},
-  components: {
-    myVideo,
-    myFooter
-  },
-  created() {
-    this.getVideo()
-  },
-  mounted() {
-    this.getArticleData()
-  },
-
-  updated() {},
-
   data() {
     return {
       videoStr: 'http://1253484761.vod2.myqcloud.com/9d41b30bvodcq1253484761/7033e149387702301233726239/f0.mp4',
-      medicalCareList: [{
-        title: '长护险',
-        text: '7年磨一剑，专注居家养老服务;5大服务保障体系，18项服务标准;三甲医院专家教在线指导，千名专业护理人员倾情服务',
-        img: require('../assets/image/medicalCarebg1.png')
-      },{
-        title: '护理服务 首选百年医养',
-        text: '方便 省心 专业',
-        img: require('../assets/image/medicalCarebg2.png')
-      },{
-        title: '居家陪护 五大保障',
-        text: '品牌口碑好丨统一标准丨细化管理丨服务人员背景清晰',
-        img: require('../assets/image/medicalCarebg3.png')
-      }], // 医养服务
-      smartProductList: [{
-        title: '医疗级健康监测手表',
-        text: '血压测量精准|心脑血管疾病预警|定位精准 电子围栏|一键救援 双向通话',
-        img: require('../assets/image/smartProductBg1.png'),
-      }, {
-        title: '智能健康监护手表 ST6 Pro',
-        text: '智慧助老 安全守护',
-        img: require('../assets/image/smartProductBg2.png'),
-      }], // 智能产品
-      smartProductList2: [{
-        title: '百年医养&乐心血压计',
-        text: '全自动双管血压计；双管，量血压才更准！',
-        img: require('../assets/image/smartProductBg3.png'),
-      },{
-        title: '百年医养&乐心体脂秤',
-        text: '秤要精准 也要颜值',
-        img: require('../assets/image/smartProductBg4.png'),
-      },],
+      medicalCareList: [], // 医养服务
+      smartProductList: [], // 智能产品
+      smartBloodList: [], // 血压管理
       newestInformation: [], // 最新资讯
       newestActivity: [], // 最新活动
       otherInformationList: [], // 其他资讯列表
@@ -216,10 +168,24 @@ export default {
       otherInformation: [],
       checkOtherIndex: 0, // 选中其他资讯
       showVideo: false, // 是否展开视频播放
+      menuId: null, // 菜单ID
     };
   },
   computed: {
 
+  },
+  components: {
+    myVideo,
+    myFooter
+  },
+  created() {
+    this.getVideo()
+    this.getOutsideContent(2)
+    this.getOutsideContent(3)
+    this.getOutsideContent(4)
+  },
+  mounted() {
+    this.getArticleData()
   },
   methods: {
     // 获取视频
@@ -231,10 +197,31 @@ export default {
         console.log('获取视频：', res)
       })
     },
+    // 获取内容
+    getOutsideContent(id) {
+      const params = {
+        contentMenuId: id, // 菜单id
+        platform: 1, //  平台: 1.pc电脑 2.mp手机
+      }
+      outsideContent(params).then(res => {
+        console.log('获取内容：', res)
+        if (res.code == 0) {
+          if (id == 2) {
+            this.medicalCareList = res.data.children
+          } else if (id == 3) {
+            this.smartProductList = res.data.children
+          } else if (id == 4) {
+            this.smartBloodList = res.data.children
+          }
+        } else {
+          this.$message.error(res.msg)
+        }
+      })
+    },
     // 获取资讯信息
     getArticleData() {
       const params = {}
-      articleHome(params).then(res => {
+      informationHome(params).then(res => {
         console.log('获取资讯信息:', res)
         if (res.code == 0) {
           this.newestInformation = res.data.newestInformation
@@ -244,14 +231,15 @@ export default {
           let monthsText = ''
           let list = res.data.otherInformationList.slice(0,12)
           this.otherInformationList = list.map(item => {
-            months = moment(item.publishDatetime).format('M') - 1
+            months = moment(item.stateTime).format('M') - 1
             monthsText = monthsShort[months]
             return {
               categoryId: item.categoryId,
               id: item.id,
-              publishDatetime: item.publishDatetime,
+              coverImage: item.coverImage,
+              stateTime: item.stateTime,
               time: monthsText,
-              date: moment(item.publishDatetime).format('DD'),
+              date: moment(item.stateTime).format('DD'),
               title: item.title,
             }
           })
@@ -318,9 +306,9 @@ export default {
       }
     },
     // 跳转解决方案
-    toProgram() {
+    toProgram(data) {
       this.$router.push({
-        path: 'commandcenter'
+        path: data.url
       })
     },
     // 跳转咨询
@@ -337,7 +325,7 @@ export default {
     },
     // 跳转咨询详情
     toDetail(detail) {
-      if (detail.categoryId == 1) {
+      if (detail.type == 1) {
         // 企业资讯
         this.$router.push({
           name: "newdetail",
@@ -348,7 +336,7 @@ export default {
             id: '企业资讯'
           }
         })
-      } else if (detail.categoryId == 2) {
+      } else if (detail.type == 2) {
         // 健康资讯
         this.$router.push({
           name: "newdetail",
@@ -377,7 +365,7 @@ export default {
       console.log('监听数据：2', data)
       this.otherInformation = data
       console.log('监听数据：3', this.otherInformation)
-    }
+    },
   }
 };
 </script>
@@ -594,6 +582,8 @@ export default {
           left: torem(19px);
           text-align: left;
           display: inline-block;
+          width: 100%;
+          height: 100%;
           &_a {
             font-size: torem(16px);
             font-family: Microsoft YaHei;
@@ -623,7 +613,14 @@ export default {
         box-shadow: 0 0 0 0 #333, inset 0 0 0 0 #423880, inset 0 -7.4666666667rem 3.9333333333rem -3.5666666667rem rgb(0 0 0 / 68%), inset 0px 0px 0 0 rgb(0 0 0 / 59%);
       }
       &_i:hover .zncp_c_i_info {
-        top: torem(300px);
+        top: 0;
+        left: 0;
+        padding-left: torem(19px);
+        box-shadow: 0 0 0 0 #333, inset 0 0 0 0 #423880, inset 0 -7.4666666667rem 3.9333333333rem -3.5666666667rem rgb(0 0 0 / 68%), inset 0px 0px 0 0 rgb(0 0 0 / 59%);
+        .zncp_c_i_info_hover {
+          position: absolute;
+          top: torem(300px);
+        }
       }
       &_i:hover .hover {
         display: contents;
@@ -644,8 +641,8 @@ export default {
       &_img {
         width: 100%;
         height: torem(400px);
-        background: url('../assets/image/solutionBg1.png') center center no-repeat;
-        background-size: auto;
+        /*background: url('../assets/image/solutionBg1.png') center center no-repeat;
+        background-size: auto;*/
       }
       &_info {
         position: absolute;

@@ -33,3 +33,7 @@ export const outsideArticleList = params => {
 export const outsideContent = params => {
     return  ajax(`${website_s2}/outside/content`,'POST',{ params })
 }
+// 首页新闻
+export const informationHome = params => {
+    return  ajax(`${website_s2}/outside/informationHome`,'POST',{ params })
+}

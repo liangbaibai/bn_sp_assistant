@@ -9,88 +9,33 @@
     </div>
     <div class="eleproducts-c">
       <div class="eleproducts-c_d">
-        <!-- 医疗级健康监测手表 -->
-        <div class="eleproducts-c_d_yl">
-          <div class="eleproducts-c_d_yl_left">
-            <img src="../assets/image/yl_logo.png" alt="" class="eleproducts-c_d_yl_left_ig">
-            <div class="eleproducts-c_d_yl_left_ti">智能健康监护手表 ST6 Pro</div>
-            <div class="eleproducts-c_d_yl_left_te">24小时血压健康监护</div>
-            <div class="eleproducts-c_d_yl_left_te m">
-              <div>心率监测、血压监测、血氧监测、SOS一键求援、蓝牙通话、</div>
-              <div>短信提示、吃药提醒、久坐提醒、支付宝支付、IP67级防水</div>
+        <div v-for="item in detailData">
+          <div class="eleproducts-c_d_yl" v-if="item.style == 1">
+            <div class="eleproducts-c_d_yl_left">
+              <img :src="item.logoImage" alt="" class="eleproducts-c_d_yl_left_ig">
+              <div class="eleproducts-c_d_yl_left_ti">{{item.title}}</div>
+              <div class="eleproducts-c_d_yl_left_te m" v-html="item.content"></div>
+              <div class="eleproducts-c_d_yl_left_bn">
+                <div class="eleproducts-c_d_yl_left_bn_b" @click="toDetail(item)">了解更多</div>
+                <div class="eleproducts-c_d_yl_left_bn_b c" @click="toBuy(item)">立即购买</div>
+              </div>
             </div>
-            <div class="eleproducts-c_d_yl_left_bn">
-              <div class="eleproducts-c_d_yl_left_bn_b" @click="toDetail(3)">了解更多</div>
-              <div class="eleproducts-c_d_yl_left_bn_b c" @click="toBuy(3)">立即购买</div>
-            </div>
-          </div>
-          <div class="eleproducts-c_d_yl_right">
-            <img src="../assets/image/lx_product_w.png" alt="" class="eleproducts-c_d_yl_right_ig">
-          </div>
-        </div>
-        <!-- 全自动双管血压计 -->
-        <div class="eleproducts-c_d_yl">
-          <div class="eleproducts-c_d_yl_right l">
-            <img src="../assets/image/lx_product.png" alt="" class="eleproducts-c_d_yl_right_ig">
-          </div>
-          <div class="eleproducts-c_d_yl_left">
-            <img src="../assets/image/lx_logo.png" alt="" class="eleproducts-c_d_yl_left_ig lx">
-            <div class="eleproducts-c_d_yl_left_ti">全自动双管血压计</div>
-            <div class="eleproducts-c_d_yl_left_te">
-              <span class="mg">一键测量</span>
-              <span class="mg">高清大屏</span>
-              <span class="mg">语音播报</span>
-            </div>
-            <div class="eleproducts-c_d_yl_left_te m">
-              <span class="mg">血压分析</span>
-              <span class="mg">降压方案</span>
-              <span class="mg">家人互联</span>
-            </div>
-            <div class="eleproducts-c_d_yl_left_bn">
-              <div class="eleproducts-c_d_yl_left_bn_b" @click="toDetail(2)">了解更多</div>
-              <div class="eleproducts-c_d_yl_left_bn_b c" @click="toBuy(2)">立即购买</div>
+            <div class="eleproducts-c_d_yl_right">
+              <img :src="item.image" alt="" class="eleproducts-c_d_yl_right_ig">
             </div>
           </div>
-        </div>
-        <!-- 乐心手环 -->
-        <div class="eleproducts-c_d_yl pd">
-          <div class="eleproducts-c_d_yl_left">
-            <img src="../assets/image/yl_logo.png" alt="" class="eleproducts-c_d_yl_left_ig">
-            <div class="eleproducts-c_d_yl_left_ti">医疗级健康监测手表</div>
-            <div class="eleproducts-c_d_yl_left_te">血压测量精准；心脑血管疾病预警；</div>
-            <div class="eleproducts-c_d_yl_left_te m">定位精准；电子围栏；一键救援； 双向通话</div>
-            <div class="eleproducts-c_d_yl_left_bn">
-              <div class="eleproducts-c_d_yl_left_bn_b" @click="toDetail(1)">了解更多</div>
-              <div class="eleproducts-c_d_yl_left_bn_b c" @click="toBuy(1)">立即购买</div>
+          <div class="eleproducts-c_d_yl" v-else>
+            <div class="eleproducts-c_d_yl_right l">
+              <img :src="item.image" alt="" class="eleproducts-c_d_yl_right_ig">
             </div>
-          </div>
-          <div class="eleproducts-c_d_yl_right">
-            <img src="../assets/image/yl_product_w.png" alt="" class="eleproducts-c_d_yl_right_ig">
-          </div>
-        </div>
-        <!-- 秤要精准 也要颜值 -->
-        <div class="eleproducts-c_d_yl">
-          <div class="eleproducts-c_d_yl_right l">
-            <img src="../assets/image/lx_product_t.png" alt="" class="eleproducts-c_d_yl_right_ig">
-          </div>
-          <div class="eleproducts-c_d_yl_left">
-            <img src="../assets/image/lx_logo.png" alt="" class="eleproducts-c_d_yl_left_ig lx">
-            <div class="eleproducts-c_d_yl_left_ti">秤要精准 也要颜值</div>
-            <div class="eleproducts-c_d_yl_left_te">
-              <span class="mg">上秤秒出15项数据</span>
-              <span class="mg">BIA测量精准的0.1%</span>
-            </div>
-            <div class="eleproducts-c_d_yl_left_te">
-              <span class="mg">26项数据感知身体</span>
-              <span class="mg">9种形体智能分析</span>
-            </div>
-            <div class="eleproducts-c_d_yl_left_te m">
-              <span class="mg">全身健康检测报告</span>
-              <span class="mg">360圆弧美学设计</span>
-            </div>
-            <div class="eleproducts-c_d_yl_left_bn">
-              <div class="eleproducts-c_d_yl_left_bn_b" @click="toDetail(4)">了解更多</div>
-              <div class="eleproducts-c_d_yl_left_bn_b c" @click="toBuy(4)">立即购买</div>
+            <div class="eleproducts-c_d_yl_left">
+              <img :src="item.logoImage" alt="" class="eleproducts-c_d_yl_left_ig">
+              <div class="eleproducts-c_d_yl_left_ti">{{item.title}}</div>
+              <div class="eleproducts-c_d_yl_left_te m" v-html="item.content"></div>
+              <div class="eleproducts-c_d_yl_left_bn">
+                <div class="eleproducts-c_d_yl_left_bn_b" @click="toDetail(item)">了解更多</div>
+                <div class="eleproducts-c_d_yl_left_bn_b c" @click="toBuy(item)">立即购买</div>
+              </div>
             </div>
           </div>
         </div>
@@ -102,13 +47,14 @@
 
 <script>
 import { index } from "@/utils/mixins";
-import { outsideImageList } from "@/request/api/base";
+import { outsideImageList,outsideContent } from "@/request/api/base";
 
 export default {
   mixins: [index],
 
   props: {},
   created() {
+    this.getOutsideContent()
     this.getOutsideImageData()
   },
 
@@ -120,49 +66,35 @@ export default {
     return {
       tabActive: "",
       bannerList: {}, // banner图
+      detailData: [], // 产品内容
     }
   },
 
   methods: {
-    // 跳转详情页
-    toDetail(type) {
-      if (type == 1) {
-        // 医疗级健康监测手表
-        this.$router.push({
-          path: '/eleproducts/ylWatch'
-        })
-      } else if (type == 2) {
-        // 全自动双管血压计
-        this.$router.push({
-          path: '/eleproducts/bloodPressure'
-        })
-      } else if (type == 3) {
-        // 智能健康监护手表 ST6 Pro
-        this.$router.push({
-          path: '/eleproducts/lxWatch'
-        })
-      } else if (type == 4) {
-        // 体重秤
-        this.$router.push({
-          path: '/eleproducts/weighingScale'
-        })
+    // 获取内容
+    getOutsideContent() {
+      const params = {
+        contentMenuId: 5, // 菜单id
+        platform: 1, //  平台: 1.pc电脑 2.mp手机
       }
+      outsideContent(params).then(res => {
+        console.log('获取内容：', res.data.children)
+        if (res.code == 0) {
+          this.detailData = res.data.children
+        } else {
+          this.$message.error(res.msg)
+        }
+      })
+    },
+    // 跳转详情页
+    toDetail(data) {
+      this.$router.push({
+        path: data.detailsUrl
+      })
     },
     // 跳转天猫购买
-    toBuy(type) {
-      if (type == 1) {
-        // 医疗级健康监测手表
-        window.open('https://detail.tmall.com/item.htm?spm=a220o.1000855.w4023-24145098805.3.15e7acaeTHpvD3&id=663449498011&sku_properties=149204407:3269303;204252002:1904313917')
-      } else if (type == 2) {
-        // 全自动双管血压计
-        window.open('https://detail.tmall.com/item.htm?spm=a1z10.1-b.w4004-24145098791.4.8bc41015MTAlOJ&id=667456271317')
-      } else if (type == 3) {
-        // 智能健康监护手表 ST6 Pro
-        window.open('https://m.tb.cn/h.UKeF24P?tk=vQWNdiJMEvy')
-      } else if (type == 4) {
-        // 体重秤
-        window.open('https://bailaiqiao.tmall.com/?spm=a220o.1000855.1997427133.d4918061.398b7286shY1m0')
-      }
+    toBuy(data) {
+      window.open(data.buyUrl)
     },
     // 获取轮播图
     getOutsideImageData() {
@@ -233,6 +165,7 @@ export default {
     align-items: center;
     justify-content: center;
     &_d {
+      width: torem(1200px);
       &_yl {
         background: #FFFFFF;
         border-radius: torem(20px);

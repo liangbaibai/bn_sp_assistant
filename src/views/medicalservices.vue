@@ -14,46 +14,12 @@
           id="tabsId"
           @click="onTabsClick"
       >
-        <!--<van-tab title-class="tab_title" name="长护险">
+        <van-tab v-for="(item,index) in tabList" title-class="tab_title" :name="item.name">
           <div slot="title" class="tab-title-w">
-            <div
-                :class="
-                tabActive === '长护险'
-                  ? 'tab-title&#45;&#45;border tab-title'
-                  : 'tab-title'
-              "
-            >
-              长护险
-            </div>
+            <div class="tab-title" :style="{borderBottom: tabActive == item.name ? '5px solid #30C159' : ''}">{{item.name}}</div>
           </div>
           <chx v-show="showTabChx"/>
-        </van-tab>-->
-        <van-tab title-class="tab_title" name="陪护">
-          <div slot="title" class="tab-title-w">
-            <div
-                :class="
-                tabActive === '陪护'
-                  ? 'tab-title--border tab-title'
-                  : 'tab-title'
-              "
-            >
-              陪护
-            </div>
-          </div>
           <ph v-show="showTabPh"/>
-        </van-tab>
-        <van-tab title-class="tab_title" name="护理">
-          <div slot="title" class="tab-title-w">
-            <div
-                :class="
-                tabActive === '护理'
-                  ? 'tab-title--border tab-title'
-                  : 'tab-title'
-              "
-            >
-              护理
-            </div>
-          </div>
           <hl v-show="showTabHl"/>
         </van-tab>
       </van-tabs>
@@ -64,6 +30,7 @@
 
 <script>
 import { index } from "@/utils/mixins";
+import { outsideContent } from '@/request/api/base'
 
 import chx from './medicalservices/chx'
 import ph from './medicalservices/ph'
@@ -79,18 +46,17 @@ export default {
     hl
   },
   created() {
+    this.getOutsideContent()
     let path = this.$route.query.id
     console.log('path', path)
     if (path == '长护险') {
       this.showTabChx = true
-      this.tabActive = '长护险'
     } else if (path == '陪护') {
       this.showTabPh = true
-      this.tabActive = '陪护'
     } else if (path == '护理') {
       this.showTabHl = true
-      this.tabActive = '护理'
     }
+    this.tabActive = path
   },
   mounted() {
     this.scrollToCmtList()
@@ -120,12 +86,34 @@ export default {
       showTabChx: true,
       showTabPh: false,
       showTabHl: false,
+      tabList: [], //
     };
   },
   computed: {
 
   },
   methods: {
+    // 获取内容
+    getOutsideContent() {
+      const params = {
+        contentMenuId: 2, // 菜单id
+        platform: 1, //  平台: 1.pc电脑 2.mp手机
+      }
+      outsideContent(params).then(res => {
+        console.log('获取内容：1', res.data.children)
+        if (res.code == 0) {
+          this.tabList = res.data.children.map(item => {
+            let reg = /[\u4e00-\u9fa5]/g;
+            return {
+              name: item.url.match(reg).join("")
+            }
+          })
+          console.log('获取内容：', this.tabList)
+        } else {
+          this.$message.error(res.msg)
+        }
+      })
+    },
     onTabsClick(tab, event) {
       console.log('点击：1',tab);
       if(tab == '长护险') {
@@ -241,33 +229,11 @@ export default {
         width: 60%;
         border-bottom: torem(1px) solid #F4F4F4;
       }
-      .tab-title-w .tab-title--border {
-        font-size: torem(20px);
-        font-family: Microsoft YaHei;
-        font-weight: bold;
-        color: #30C159;
-      }
       .tab-title-w .tab-title {
         font-size: torem(20px);
         font-family: Microsoft YaHei;
         font-weight: 400;
         color: #333333;
-        line-height: torem(28px);
-      }
-      .tab-title_line {
-        width: 100%;
-        height: torem(4px);
-        border-radius: torem(5px);
-        background: #23ac38;
-        position: absolute;
-      }
-      .tab-title-w .tab-title--border {
-        margin: 0;
-        border-bottom: torem(8px) solid #30C159;
-        font-size: torem(20px);
-        font-family: Microsoft YaHei;
-        font-weight: bold;
-        color: #30C159;
       }
       .van-tabs--line .van-tabs__wrap .van-tabs__nav--line {
         width: 50%;
@@ -313,70 +279,5 @@ export default {
   }
   .medicalservices-w::-webkit-scrollbar-corner{
     border-radius: 0px;
-  }
-  .pro_introduce-2 {
-    .detail {
-      width: 70%;
-    }
-  }
-  .pro_introduce-3 {
-    .tab-content {
-      /*margin: 52px 0 0 0;*/
-      .tab-img:nth-child(2){
-        margin: torem(45px) 0;
-      }
-    }
-  }
-
-  .tab-img {
-  }
-
-
-  /*服务内容*/
-  .service-content {
-    /*padding: 65px 0;*/
-    background-color: #fff;
-    .title-w {
-      padding: 0 35%;
-      text-align: center;
-      .line {
-        width: torem(6px);
-        height: torem(18px);
-        background: #30C159;
-        border-radius: torem(3px);
-        margin: 0 auto;
-      }
-      .name {
-        margin: torem(15px) 0;
-        color: #333;
-        font-size: torem(22px);
-        font-weight: bold;
-      }
-      .desc {
-        font-size: torem(10px);
-        color: #666;
-        line-height: torem(24px);
-      }
-    }
-    .detail {
-      display: flex;
-      flex-wrap: wrap;
-      padding: 0 0 0 torem(10px);
-      margin: 52px auto;
-    }
-  }
-
-  /*立即咨询*/
-  .consult-btn {
-    width: torem(286px);
-    margin: 0 auto;
-    padding: torem(10px) 0;
-    text-align: center;
-    font-size: torem(16px);
-    letter-spacing: torem(2px);
-    color: #fff;
-    background-color: #29a93e;
-    border-radius: calc(100vh - 1%);
-    cursor: pointer;
   }
 </style>

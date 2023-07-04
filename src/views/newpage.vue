@@ -68,7 +68,6 @@
 <script>
 import { index } from "@/utils/mixins";
 import NewDetail from './newDetail'
-import { outsideArticleList, articleTypeList } from '@/request/api/base'
 import { categoryData, articleData } from '@/request/api/new'
 
 export default {
@@ -166,7 +165,7 @@ export default {
         pageIndex: type == 1 ? 1 : this.pageInfo.skip, // 页数
         pageSize: this.pageInfo.limit, // 页码
       }
-      outsideArticleList(params).then(res => {
+      articleData(params).then(res => {
         console.log('获取资讯分类列表：', res)
         if (res.code == 0) {
           this.tableList = res
