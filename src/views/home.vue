@@ -234,7 +234,7 @@ export default {
             months = moment(item.stateTime).format('M') - 1
             monthsText = monthsShort[months]
             return {
-              categoryId: item.categoryId,
+              type: item.type,
               id: item.id,
               coverImage: item.coverImage,
               stateTime: item.stateTime,

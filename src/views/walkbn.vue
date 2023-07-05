@@ -31,24 +31,16 @@
           </div>
           <div class="tab-block-1 tab-content">
             <div class="title-img">
-              <div class="t1">旗下品牌</div>
-              <div class="t2">The company brand</div>
+              <div class="t1">{{brandData.title}}</div>
+              <div class="t2">{{brandData.subtitle}}</div>
             </div>
             <div class="brand-s">
-              <div class="brand-i">
+              <div class="brand-i" v-for="item in brandData.children">
                 <div class="img">
-                  <img src="@/assets/image/k-c-1.png" alt="" />
+                  <img :src="item.image" alt="" />
                 </div>
                 <div class="desc">
-                  百年医养是百年大健康旗下的居家养老服务品牌。我们目前拥有百年医养居家陪护、医院陪护、护理、长护险，居家医养一站式服务平台-百年医养APP，以及智慧养老解决方案等一系列业务。
-                </div>
-              </div>
-              <div class="brand-i">
-                <div class="img">
-                  <img src="@/assets/image/k-c-2.png" alt="" />
-                </div>
-                <div class="desc">
-                  百来俏是百年大健康旗下的智能养老硬件设备品牌。我们坚持自主研发和前瞻性技术的持续投入，通过全系列智能穿戴设备及家庭医疗产品，为长者带来创新、领先、可信赖的产品。
+                  {{item.content}}
                 </div>
               </div>
               <img src="@/assets/image/k-c-bg.png" alt="" class="brand-s-img">
@@ -70,8 +62,8 @@
           </div>
           <div class="tab-block-2 tab-content top1">
             <div class="title-img">
-              <div class="t1">百年文化</div>
-              <div class="t2">BAINIAN culture</div>
+              <div class="t1">{{cultureData.title}}</div>
+              <div class="t2">{{cultureData.subtitle}}</div>
             </div>
             <div class="w-culture-swipe">
               <div class="content">
@@ -90,7 +82,7 @@
               <div class="timeline">
                 <div class="timelineContent">
                   <div class="timelineContentLine">
-                    <div class="flex" v-for="(item,index) in w_data.culture">
+                    <div class="flex" v-for="(item,index) in cultureData.children">
                       <div style="flex:1"></div>
                       <div
                           :class="checkIndex == index ? 'dotBig' : 'dotBigTwo'"
@@ -102,7 +94,7 @@
                     </div>
                   </div>
                   <div class="timelineInfo">
-                    <div class="flex" v-for="(item,index) in w_data.culture">
+                    <div class="flex" v-for="(item,index) in cultureData.children">
                       <div class="item1"></div>
                       <div
                           class="text"
@@ -149,30 +141,29 @@
           </div>
           <div class="tab-block-5 tab-content">
             <div class="title-img">
-              <div class="t1">公司活动</div>
-              <div class="t2">Company activities</div>
+              <div class="t1">{{activityData.title}}</div>
+              <div class="t2">{{activityData.subtitle}}</div>
             </div>
 
             <div class="w-activity-c">
-              <div class="content-c">
+              <div v-for="item in activityData.children" :class="item.style == 1 ? 'content-c' : 'content-c-r'">
                 <div class="w-activity-c-l">
                   <div class="w-activity-c-l-top">
                     <div>
                       <div class="t1">Review activities</div>
                       <div class="t2">活动回顾</div>
                     </div>
-                    <div class="t3">01</div>
+                    <div class="t3">{{item.num}}</div>
                     <img src="@/assets/image/line_type.png" class="line_type" alt="">
                   </div>
                   <div class="w-activity-c-l-botm">
                     <div class="left">
                       <div class="t1">
-                        <div>百年大健康携手家和家政，</div>
-                        <div>参与“安心家政 爱满羊城”活动！</div>
+                        <div>{{item.title}}</div>
                       </div>
-                      <div class="t2">2022/06/18</div>
+                      <div class="t2">{{item.stateTime}}</div>
                       <div class="t3">
-                        2022年6月18日，为推动家政服务业高质量发展，提升“南粤家政”羊城行动的影响力，提高家政行业的关注度和认可度，由广州市妇女联合会联合广州市商务局、广州市市人力资源和社会保障局、天河区人民政府主办，广州市妇女儿童发展中心、广州市家庭服务联合会承办的“安心家政 爱满羊城”首届广州安心家政服务月活动在海心沙广场启动，主办方同时为市民推出“安心家政”品牌展，展示“南粤家政”羊城行动启动以来的主要实效成果。
+                        {{item.content}}
                       </div>
                       <div class="botm-line"></div>
                       <div style="display: flex;align-items: center">
@@ -181,16 +172,16 @@
                       </div>
                     </div>
                     <div class="right">
-                      <el-carousel trigger="click" class="carouselImg" height="464px" :indicator-position="none">
-                        <el-carousel-item v-for="item in 1" :key="item">
-                          <img src="@/assets/image/w-c-6.png" alt="" />
+                      <el-carousel trigger="click" class="carouselImg" height="464px" :indicator-position="'none'">
+                        <el-carousel-item :key="item.image">
+                          <img :src="item.image" alt="" />
                         </el-carousel-item>
                       </el-carousel>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="content-c-r">
+              <!--<div class="content-c-r">
                 <div class="w-activity-c-l">
                   <div class="w-activity-c-l-top">
                     <div style="text-align: left;">
@@ -217,7 +208,7 @@
                       </div>
                     </div>
                     <div class="right">
-                      <el-carousel trigger="click" class="carouselImg" height="464px" :indicator-position="none">
+                      <el-carousel trigger="click" class="carouselImg" height="464px" :indicator-position="'none'">
                         <el-carousel-item v-for="item in 1" :key="item">
                           <img src="@/assets/image/w-c-s1.png" alt="" />
                         </el-carousel-item>
@@ -252,7 +243,7 @@
                       </div>
                     </div>
                     <div class="right">
-                      <el-carousel trigger="click" class="carouselImg" height="464px" :indicator-position="none">
+                      <el-carousel trigger="click" class="carouselImg" height="464px" :indicator-position="'none'">
                         <el-carousel-item v-for="item in 1" :key="item">
                           <img src="@/assets/image/w-c-s2.png" alt="" />
                         </el-carousel-item>
@@ -288,52 +279,13 @@
                       </div>
                     </div>
                     <div class="right">
-                      <el-carousel trigger="click" class="carouselImg" height="464px" :indicator-position="none">
+                      <el-carousel trigger="click" class="carouselImg" height="464px" :indicator-position="'none'">
                         <el-carousel-item v-for="item in 1" :key="item">
                           <img src="@/assets/image/w-c-s3.png" alt="" />
                         </el-carousel-item>
                       </el-carousel>
                     </div>
                   </div>
-                </div>
-              </div>
-              <!--<div class="swipe-c-w">
-                <div class="swipe-w">
-                  <el-carousel trigger="click" height="338px">
-                    <el-carousel-item v-for="item in 4" :key="item">
-                      <img src="@/assets/image/w-c-6.png" alt="" />
-                    </el-carousel-item>
-                  </el-carousel>
-                </div>
-                <div class="content-detail">
-                  <div class="title">百年大健康走访慰问颐年养老院</div>
-                  <div class="line"></div>
-                  <div class="desc">
-                    带着对老人的尊敬与关怀，广东百年医疗健康科技发展有限公司（以下简称百年大健康）总经理陈苏率公司全体员工，于10月24日走访慰问了广州颐年养老院近200位老人，并开展了“浓情重阳
-                    敬老爱老”公益演出活动。
-                  </div>
-                </div>
-              </div>
-              <div class="swipe-c-w">
-                <div class="content-detail" style="margin: 0 -16px 0 0">
-                  <div class="title">
-                    百年大健康携手家和家政， 亮相“南粤家政 羊城超市”！
-                  </div>
-                  <div class="line"></div>
-                  <div class="desc">
-                    9 月 27
-                    日，广州市总工会、团市委、市妇联、市人社局等联合举办的 "
-                    粤菜师傅 "" 广东技工 "" 南粤家政 "
-                    交流会在广州市青年文化宫启动。百年大健康携手家和家政，亮相“南粤家政
-                    羊城超市”。
-                  </div>
-                </div>
-                <div class="swipe-w">
-                  <el-carousel trigger="click" height="338px">
-                    <el-carousel-item v-for="item in 4" :key="item">
-                      <img src="@/assets/image/w-c-7.png" alt="" />
-                    </el-carousel-item>
-                  </el-carousel>
                 </div>
               </div>-->
             </div>
@@ -347,10 +299,15 @@
 
 <script>
 import { index } from "@/utils/mixins";
-import { getElement, debounce } from "@/utils/util";
+import { outsideContent } from '@/request/api/base'
 
 export default {
   mixins: [index],
+  created() {
+    this.getOutsideContent(7)
+    this.getOutsideContent(8)
+    this.getOutsideContent(10)
+  },
   mounted() {
     setTimeout(() => {
       let mechanismDetailInfo = document.getElementById('walkbn-w')
@@ -380,49 +337,6 @@ export default {
   data() {
     return {
       tabActive: "",
-      w_data: {
-        culture: [
-          {
-            num: '01',
-            title: "企业文化",
-            content:
-              "关注老人健康、快乐、幸福的晚年生活，维护老人的权益。我们百年大健康、医养平台等所有参与者，包括消费者、商家、第三方服务供应商、公益组织和其他人士，都享有成长或获益的机会。我们更加推崇和弘扬孝道文化这一我国优秀文化传统。并且始终如一地关注和满足老人的需求！",
-            img: require("@/assets/image/w-c-3.png"),
-          },
-          {
-            num: '02',
-            title: "企业愿景",
-            content:
-              "致力成为长者无忧智能健康生活的引领者。 影响和带动全社会关爱呵护我们成长的父母长辈。",
-            img: require("@/assets/image/w-c-12.png"),
-          },
-          {
-            num: '03',
-            title: "公司理念",
-            content: "让每一位老人得到贴身又贴心服务， 安享愉悦晚年生活",
-            img: require("@/assets/image/w-c-8.png"),
-          },
-          {
-            num: '04',
-            title: "服务理念",
-            content: "专业无忧 快捷贴心 省心安心",
-            img: require("@/assets/image/w-c-9.png"),
-          },
-          {
-            num: '05',
-            title: "公司价值观",
-            content: "用户第一 \n 亲和友善 \n 尊老敬业 \n 弘扬孝道",
-            img: require("@/assets/image/w-c-10.png"),
-          },
-          {
-            num: '06',
-            title: "公司精神",
-            content:
-              "不怕累不嫌弃，守护温暖这片夕阳 \n 不怕苦能承受任何委屈，含泪微笑点燃希望 \n 不怕挫折始终做为爱的事业的引领人。\n 做有善心的人，做良心的机构，\n 呵护老人是我们的责任 \n 他们的现在，代表着我们的未来",
-            img: require("@/assets/image/w-c-11.png"),
-          },
-        ], //百年文化
-      },
       cultureIndex: 0,
       bgImg: require("@/assets/image/w-c-3.png"),
       checkContent: {
@@ -432,19 +346,65 @@ export default {
           "关注老人健康、快乐、幸福的晚年生活，维护老人的权益。我们百年大健康、医养平台等所有参与者，包括消费者、商家、第三方服务供应商、公益组织和其他人士，都享有成长或获益的机会。我们更加推崇和弘扬孝道文化这一我国优秀文化传统。并且始终如一地关注和满足老人的需求！",
         img: require("@/assets/image/w-c-3.png"),
       },
-      checkIndex: 0
+      checkIndex: 0,
+      brandData: {}, // 旗下品牌
+      cultureData: {}, // 百年文化
+      activityData: {}, // 公司活动
     };
   },
 
   methods: {
+    // 获取内容
+    getOutsideContent(id) {
+      const params = {
+        contentMenuId: id, // 菜单id
+        platform: 1, //  平台: 1.pc电脑 2.mp手机
+      }
+      outsideContent(params).then(res => {
+        // console.log('获取内容：1', res.data)
+        if (res.code == 0) {
+          if (id == 7) {
+            this.brandData = res.data
+          } else if(id == 8) {
+            let data = res.data.children.map((item,index) => {
+              return {
+                title: item.title,
+                content: item.content,
+                image: item.image,
+                num: '0'+(index+1),
+              }
+            })
+            this.cultureData = res.data
+            this.cultureData.children = data
+          } else if(id == 10) {
+            let data = JSON.parse(JSON.stringify(res.data))
+            let list = data.children.map((item,index) => {
+              return {
+                title: item.title,
+                content: item.content,
+                stateTime: item.stateTime,
+                style: item.style,
+                image: item.image,
+                num: '0'+(index+1),
+              }
+            })
+            this.activityData = res.data
+            this.activityData.children = list
+            console.log('获取内容：1', data)
+          }
+        } else {
+          this.$message.error(res.msg)
+        }
+      })
+    },
     checkCulture(item,index) {
-      this.bgImg = item.img
+      this.bgImg = item.image
       this.checkContent = item
       this.checkIndex = index
     },
     mousemoves(event,item,index) {
       console.log('鼠标经过：', item)
-      this.bgImg = item.img
+      this.bgImg = item.image
       this.checkContent = item
       this.checkIndex = index
     }
@@ -719,8 +679,8 @@ export default {
       .dotBig{
         cursor: pointer;
         border: torem(1px) solid #30C159;
-        width: torem(19px);
-        height: torem(19px);
+        width: torem(20px);
+        height: torem(20px);
         border-radius: 50%;
         background: white;
         margin: 0 auto;

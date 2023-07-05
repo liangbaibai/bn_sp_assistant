@@ -113,9 +113,15 @@ export default {
       deep: true,
       handler(newVal, oldVal) {
         // console.log('监听路由变化：header', newVal.path,this.navList)
+        console.log('监听路由变化：header', newVal)
         this.navList.forEach(item => {
-          let path = newVal.path + '?id=' + newVal.query.id
-          console.log('监听路由变化：header', path,item)
+
+          let path = ''
+          if (newVal.query.id) {
+            path = newVal.path + '?id=' + newVal.query.id
+          } else {
+            path = newVal.path
+          }
           if (path == item.component) {
             this.navIndex = item.id
             this.navChileIndex = item.children[0].id
